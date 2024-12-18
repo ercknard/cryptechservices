@@ -1,7 +1,30 @@
 import React, { useState, useEffect } from "react";
-import { Box, Button, Typography, Container, useTheme } from "@mui/material";
+import {
+  Box,
+  Button,
+  Typography,
+  Container,
+  useTheme,
+  Stack,
+  Card,
+  CardContent,
+  Grid,
+} from "@mui/material";
 import { useThemeContext } from "@/theme/themeProvider";
 import SocialLinksList from "./SocialLInksList";
+import Particlesview from "./Particles";
+import Marquee from "react-fast-marquee";
+import { keyframes } from "@emotion/react";
+import HomeMarquee from "./HomeMarquee";
+
+const spinAnimation = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+`;
 
 const HeroSection: React.FC = ({}) => {
   const theme = useTheme();
@@ -120,7 +143,7 @@ const HeroSection: React.FC = ({}) => {
         }}
       />
 
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" sx={{ position: "relative" }}>
         <Box position="relative" zIndex={1}>
           <Typography
             variant="h2"
@@ -149,6 +172,22 @@ const HeroSection: React.FC = ({}) => {
           </Button>
         </Box>
       </Container>
+
+      <Box
+        sx={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          opacity: 0.5,
+          pointerEvents: "none",
+        }}
+      >
+        <Particlesview />
+      </Box>
+
+      <HomeMarquee />
     </Box>
   );
 };

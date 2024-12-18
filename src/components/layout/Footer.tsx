@@ -171,18 +171,24 @@ export default function Footer() {
                 }}
               />
               <Stack spacing={1} direction={"row"}>
-                <Typography variant={"body1"} color={"custom.primaryText"}>
+                <Typography
+                  variant={"body1"}
+                  color={"custom.primaryText"}
+                  fontSize={"1.15rem"}
+                >
                   Cryptocurrency,
                 </Typography>
                 <Typography
                   variant={"body1"}
                   color={"custom.primaryTextGrayed"}
+                  fontSize={"1.15rem"}
                 >
                   Blockchain,
                 </Typography>
                 <Typography
                   variant={"body1"}
                   color={"custom.secondaryTextGrayed"}
+                  fontSize={"1.15rem"}
                 >
                   Web Development.
                 </Typography>

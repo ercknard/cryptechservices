@@ -239,7 +239,7 @@ export default function Navbar() {
                   color="primary"
                   size="large"
                 >
-                  Play
+                  Contact Us
                 </Button>
               </Stack>
             </Box>
@@ -344,7 +344,7 @@ export default function Navbar() {
                   color="primary"
                   size="large"
                 >
-                  Play
+                  Contact Us
                 </Button>
               </Stack>
             </Box>
