@@ -113,6 +113,7 @@ const HeroSection: React.FC = ({}) => {
           backgroundSize: "contained",
           backgroundPosition: "right",
           backgroundRepeat: "no-repeat",
+          pointerEvents: "none",
         }}
       />
 
@@ -128,6 +129,7 @@ const HeroSection: React.FC = ({}) => {
           backgroundPosition: "right",
           backgroundRepeat: "no-repeat",
           transform: "scaleX(-1)",
+          pointerEvents: "none",
         }}
       />
 
@@ -145,16 +147,22 @@ const HeroSection: React.FC = ({}) => {
 
       <Container maxWidth="lg" sx={{ position: "relative" }}>
         <Box position="relative" zIndex={1}>
-          <Typography
-            variant="h2"
-            fontWeight={600}
-            color="custom.primaryText"
-            gutterBottom
-          >
-            CRYPTECH SERVICES
-          </Typography>
+          <Stack direction={"row"} spacing={1}>
+            <Typography variant="h2" fontWeight={600} paddingBottom={1}>
+              Creating a Better
+            </Typography>
+            <Typography
+              variant="h2"
+              fontWeight={600}
+              color="custom.primaryText"
+              gutterBottom
+            >
+              IT Solutions,
+            </Typography>
+          </Stack>
           <Typography variant="h5" color="custom.secondaryText">
-            Unlocking Tomorrow&apos;s Digital Frontier with Cryptech Services:{" "}
+            Unlocking Tomorrow&apos;s Digital Frontier with{" "}
+            <span style={{ fontWeight: "bold" }}>Cryptech Services: </span>
             <span
               style={{
                 color: theme.palette.custom.mainColor,

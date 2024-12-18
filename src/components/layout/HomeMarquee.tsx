@@ -35,7 +35,7 @@ const HomeMarquee: React.FC = ({}) => {
           position: "absolute",
           left: "0",
           bottom: "0",
-          transform: "skewY(-1deg)",
+          transform: "skewY(-2deg)",
           height: "4rem",
           backgroundColor: `${theme.palette.custom.mainColor}`, // Apply the theme-based background color
         }}
@@ -49,7 +49,7 @@ const HomeMarquee: React.FC = ({}) => {
           height: "4rem",
           backgroundColor: `${theme.palette.custom.secondaryComponents}`, // Apply the theme-based background color
         }}
-        speed={50}
+        speed={25}
         gradient={true}
         gradientWidth={200}
         gradientColor={`${theme.palette.custom.primaryComponents}`}
@@ -100,7 +100,7 @@ const HomeMarquee: React.FC = ({}) => {
         >
           ❖
         </Typography>
-        <Typography fontSize={"1rem"}>CONSULTATION</Typography>
+        <Typography fontSize={"1rem"}>TECHNICAL CONSULTATION</Typography>
 
         <Typography
           marginLeft={"2rem"}
@@ -156,7 +156,7 @@ const HomeMarquee: React.FC = ({}) => {
         >
           ❖
         </Typography>
-        <Typography fontSize={"1rem"}>CONSULTATION</Typography>
+        <Typography fontSize={"1rem"}>TECHNICAL CONSULTATION</Typography>
         <Typography
           marginLeft={"2rem"}
           marginRight={"2rem"}
@@ -211,7 +211,7 @@ const HomeMarquee: React.FC = ({}) => {
         >
           ❖
         </Typography>
-        <Typography fontSize={"1rem"}>CONSULTATION</Typography>
+        <Typography fontSize={"1rem"}>TECHNICAL CONSULTATION</Typography>
         <Typography
           marginLeft={"2rem"}
           marginRight={"2rem"}
