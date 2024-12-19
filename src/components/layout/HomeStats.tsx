@@ -8,10 +8,17 @@ import {
   Box,
   Container,
   Stack,
+  Tooltip,
 } from "@mui/material";
+import { useState } from "react";
 import React from "react";
 import { useTheme } from "@mui/material";
 import { useThemeContext } from "@/theme/themeProvider";
+import CurrencyBitcoinOutlinedIcon from "@mui/icons-material/CurrencyBitcoinOutlined";
+import PrecisionManufacturingOutlinedIcon from "@mui/icons-material/PrecisionManufacturingOutlined";
+import ShieldOutlinedIcon from "@mui/icons-material/ShieldOutlined";
+import DesignServicesOutlinedIcon from "@mui/icons-material/DesignServicesOutlined";
+import SupportAgentOutlinedIcon from "@mui/icons-material/SupportAgentOutlined";
 
 // Define the types for the statistics
 interface StatsProps {
@@ -43,6 +50,10 @@ const HomeStats: React.FC<StatsProps> = ({
   const imageSrc =
     colorSetImageMap[activeSet.toString()] || colorSetImageMap[1];
 
+  const startYear = 2019;
+  const currentYear = new Date().getFullYear();
+  const CTExperience = currentYear - startYear;
+
   return (
     <Box position={"relative"} sx={{ paddingY: "5rem" }}>
       <Container>
@@ -54,15 +65,23 @@ const HomeStats: React.FC<StatsProps> = ({
           alignItems={"center"}
         >
           <Grid item xs={12} sm={6} md={7}>
-            <Stack spacing={2}>
-              <Typography fontSize={"1.25rem"} color="custom.primaryText">
+            <Stack spacing={1.5}>
+              <Typography fontSize={"1rem"} color="custom.primaryText">
                 Welcome to Cryptech Services
               </Typography>
-
-              <Typography variant={"h3"} fontWeight={"700"}>
-                What do we offer?
-              </Typography>
-
+              <Stack direction={"row"} spacing={1}>
+                <Typography variant="h3" paddingBottom={1}>
+                  Let us be Your
+                </Typography>
+                <Typography
+                  variant="h3"
+                  fontWeight={600}
+                  color="custom.primaryText"
+                  gutterBottom
+                >
+                  Partner
+                </Typography>
+              </Stack>
               <Typography variant={"h6"} color="custom.primaryTextGrayed">
                 We specialize in providing robust web3 and fullstack development
                 services, with a primary focus on cryptocurrency, blockchain
@@ -70,6 +89,72 @@ const HomeStats: React.FC<StatsProps> = ({
                 services in the realms of cybersecurity , as well as technical
                 support and consultation.
               </Typography>
+
+              {/* <Stack
+                direction={"row"}
+                justifyContent={"space-evenly"}
+                paddingTop={"2.5rem"}
+              >
+                <Tooltip title="Bitcoin" arrow>
+                  <CurrencyBitcoinOutlinedIcon
+                    sx={{
+                      color: `${theme.palette.custom.mainColor}`,
+                      fontSize: 40,
+                      "&:hover": {
+                        cursor: "pointer",
+                      },
+                    }}
+                  />
+                </Tooltip>
+
+                <Tooltip title="Manufacturing" arrow>
+                  <PrecisionManufacturingOutlinedIcon
+                    sx={{
+                      color: `${theme.palette.custom.mainColor}`,
+                      fontSize: 40,
+                      "&:hover": {
+                        cursor: "pointer",
+                      },
+                    }}
+                  />
+                </Tooltip>
+
+                <Tooltip title="Security" arrow>
+                  <ShieldOutlinedIcon
+                    sx={{
+                      color: `${theme.palette.custom.mainColor}`,
+                      fontSize: 40,
+                      "&:hover": {
+                        cursor: "pointer",
+                      },
+                    }}
+                  />
+                </Tooltip>
+
+                <Tooltip title="Design Services" arrow>
+                  <DesignServicesOutlinedIcon
+                    sx={{
+                      color: `${theme.palette.custom.mainColor}`,
+                      fontSize: 40,
+                      "&:hover": {
+                        cursor: "pointer",
+                      },
+                    }}
+                  />
+                </Tooltip>
+
+                <Tooltip title="Support" arrow>
+                  <SupportAgentOutlinedIcon
+                    sx={{
+                      color: `${theme.palette.custom.mainColor}`,
+                      fontSize: 40,
+                      "&:hover": {
+                        cursor: "pointer",
+                      },
+                    }}
+                  />
+                </Tooltip>
+              </Stack> */}
             </Stack>
           </Grid>
 
@@ -144,6 +229,7 @@ const HomeStats: React.FC<StatsProps> = ({
                 alignItems: "center",
                 cursor: "pointer",
                 transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                position: "relative", // Added to ensure image stays in position
                 "&:hover": {
                   transform: "scale(1.05)",
                   boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)",
@@ -156,9 +242,23 @@ const HomeStats: React.FC<StatsProps> = ({
                   Years of Experience as CT Team
                 </Typography>
                 <Typography variant="h4" color="primary" fontWeight="bold">
-                  {yearsOfExperience}+
+                  {CTExperience}
                 </Typography>
               </CardContent>
+
+              <Box
+                component="img"
+                src={imageSrc}
+                sx={{
+                  position: "absolute",
+                  left: "-8.25rem",
+                  top: "0",
+                  width: "100%",
+                  height: "100%",
+                  transform: "scale(-1)",
+                  pointerEvents: "none",
+                }}
+              />
             </Card>
           </Grid>
 
@@ -171,6 +271,7 @@ const HomeStats: React.FC<StatsProps> = ({
                 alignItems: "center",
                 cursor: "pointer",
                 transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                position: "relative", // Added to ensure image stays in position
                 "&:hover": {
                   transform: "scale(1.05)",
                   boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)",
@@ -186,6 +287,19 @@ const HomeStats: React.FC<StatsProps> = ({
                   {projectsCompleted}+
                 </Typography>
               </CardContent>
+              <Box
+                component="img"
+                src={imageSrc}
+                sx={{
+                  position: "absolute",
+                  left: "-8.25rem",
+                  top: "0",
+                  width: "100%",
+                  height: "100%",
+                  transform: "scale(-1)",
+                  pointerEvents: "none",
+                }}
+              />
             </Card>
           </Grid>
 
@@ -198,6 +312,7 @@ const HomeStats: React.FC<StatsProps> = ({
                 alignItems: "center",
                 cursor: "pointer",
                 transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                position: "relative", // Added to ensure image stays in position
                 "&:hover": {
                   transform: "scale(1.05)",
                   boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)",
@@ -213,6 +328,19 @@ const HomeStats: React.FC<StatsProps> = ({
                   {happyClients}+
                 </Typography>
               </CardContent>
+              <Box
+                component="img"
+                src={imageSrc}
+                sx={{
+                  position: "absolute",
+                  left: "-8.25rem",
+                  top: "0",
+                  width: "100%",
+                  height: "100%",
+                  transform: "scale(-1)",
+                  pointerEvents: "none",
+                }}
+              />
             </Card>
           </Grid>
 
@@ -225,6 +353,7 @@ const HomeStats: React.FC<StatsProps> = ({
                 alignItems: "center",
                 cursor: "pointer",
                 transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                position: "relative", // Added to ensure image stays in position
                 "&:hover": {
                   transform: "scale(1.05)",
                   boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)",
@@ -240,6 +369,19 @@ const HomeStats: React.FC<StatsProps> = ({
                   {teamMembers}
                 </Typography>
               </CardContent>
+              <Box
+                component="img"
+                src={imageSrc}
+                sx={{
+                  position: "absolute",
+                  left: "-8.25rem",
+                  top: "0",
+                  width: "100%",
+                  height: "100%",
+                  transform: "scale(-1)",
+                  pointerEvents: "none",
+                }}
+              />
             </Card>
           </Grid>
 
@@ -252,6 +394,7 @@ const HomeStats: React.FC<StatsProps> = ({
                 alignItems: "center",
                 cursor: "pointer",
                 transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                position: "relative", // Added to ensure image stays in position
                 "&:hover": {
                   transform: "scale(1.05)",
                   boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)",
@@ -267,6 +410,19 @@ const HomeStats: React.FC<StatsProps> = ({
                   {gameServers}
                 </Typography>
               </CardContent>
+              <Box
+                component="img"
+                src={imageSrc}
+                sx={{
+                  position: "absolute",
+                  left: "-8.25rem",
+                  top: "0",
+                  width: "100%",
+                  height: "100%",
+                  transform: "scale(-1)",
+                  pointerEvents: "none",
+                }}
+              />
             </Card>
           </Grid>
         </Grid>

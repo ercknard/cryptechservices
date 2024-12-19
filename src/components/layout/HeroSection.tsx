@@ -59,7 +59,7 @@ const HeroSection: React.FC = ({}) => {
         position: "relative",
         display: "flex",
         alignItems: "center",
-        height: "75vh",
+        height: "85vh",
         backgroundColor: "custom.primaryBackground",
         textAlign: "left",
         padding: "0 20px",
@@ -71,7 +71,7 @@ const HeroSection: React.FC = ({}) => {
           left: "0",
           top: "0",
           width: "calc(100vw - 5px)",
-          height: "75vh",
+          height: "85vh",
           backgroundImage: `url(/static/images/hero-cover.jpg)`,
           backgroundSize: "cover",
           backgroundPosition: "right",
@@ -86,7 +86,7 @@ const HeroSection: React.FC = ({}) => {
           left: "0",
           top: "0",
           width: "calc(100vw - 5px)",
-          height: "75vh",
+          height: "85vh",
           background: "rgba(43, 43, 43, .5)",
         }}
       />
@@ -97,7 +97,7 @@ const HeroSection: React.FC = ({}) => {
           left: "0",
           top: "0",
           width: "calc(100vw - 5px)",
-          height: "75vh",
+          height: "85vh",
           background: `radial-gradient(at right, transparent, ${theme.palette.custom.secondaryBackground}95, ${theme.palette.custom.secondaryBackground}99, ${theme.palette.custom.secondaryBackground}, ${theme.palette.custom.secondaryBackground})`,
         }}
       />

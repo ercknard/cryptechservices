@@ -6,6 +6,7 @@ import HeroSection from "@/components/layout/HeroSection";
 import Navbar from "@/components/layout/NavBar";
 import Footer from "@/components/layout/Footer";
 import HomeStats from "@/components/layout/HomeStats";
+import HomeProducts from "@/components/layout/HomeProducts";
 
 const HomePage = () => {
   return (
@@ -23,6 +24,7 @@ const HomePage = () => {
           teamMembers={8}
           gameServers={3}
         />
+        <HomeProducts />
         <Footer />
         {/* <Typography variant="h1">
           This is the home page of the application.
