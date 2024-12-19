@@ -159,7 +159,15 @@ const HomeStats: React.FC<StatsProps> = ({
           </Grid>
 
           <Grid item xs={12} sm={6} md={5}>
-            <Box sx={{ position: "relative" }}>
+            <Box
+              sx={{
+                position: "relative",
+                "&:hover": {
+                  transform: "scale(1.05)", // Scale the entire box on hover
+                  transition: "transform 0.3s ease", // Smooth scaling transition
+                },
+              }}
+            >
               <Box
                 sx={{
                   position: "absolute",
@@ -169,6 +177,10 @@ const HomeStats: React.FC<StatsProps> = ({
                   height: "75%",
                   transform: "translate(-50%, -50%)",
                   background: `${theme.palette.custom.mainColor}`,
+                  transition: "background 0.3s ease", // Transition background color on hover
+                  "&:hover": {
+                    background: `${theme.palette.custom.secondaryComponents}`, // Change background on hover
+                  },
                 }}
               />
               <Box
@@ -177,6 +189,10 @@ const HomeStats: React.FC<StatsProps> = ({
                 sx={{
                   width: "100%",
                   clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)",
+                  transition: "transform 0.3s ease",
+                  "&:hover": {
+                    transform: "scale(1.2)", // Slight zoom effect on hover
+                  },
                 }}
               />
 
@@ -188,6 +204,10 @@ const HomeStats: React.FC<StatsProps> = ({
                   width: "100%",
                   height: "100%",
                   background: `radial-gradient(at center, transparent, ${theme.palette.custom.secondaryBackground})`,
+                  transition: "opacity 0.3s ease",
+                  "&:hover": {
+                    opacity: 0.7, // Fade the background slightly on hover
+                  },
                 }}
               />
 
@@ -200,6 +220,10 @@ const HomeStats: React.FC<StatsProps> = ({
                   top: "10%",
                   width: "100%",
                   height: "100%",
+                  transition: "transform 0.3s ease",
+                  "&:hover": {
+                    transform: "scale(1.05)", // Slight zoom effect on hover
+                  },
                 }}
               />
 
@@ -213,6 +237,10 @@ const HomeStats: React.FC<StatsProps> = ({
                   width: "100%",
                   height: "100%",
                   transform: "scale(-1)",
+                  transition: "transform 0.3s ease",
+                  "&:hover": {
+                    transform: "scale(-1.05)", // Slight zoom effect and scale flip
+                  },
                 }}
               />
             </Box>
