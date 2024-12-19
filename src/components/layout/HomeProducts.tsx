@@ -112,7 +112,7 @@ const HomeProducts: React.FC = ({}) => {
         alignItems: "center",
         backgroundColor: "custom.secondaryBackground",
         textAlign: "left",
-        paddingY: "10rem",
+        paddingY: "2.5rem",
       }}
     >
       <Container maxWidth="lg" sx={{ position: "relative" }}>
@@ -314,6 +314,18 @@ const HomeProducts: React.FC = ({}) => {
                     {card.description}
                   </Typography>
                 </CardContent>
+                <Box
+                  component="img"
+                  src={imageSrc}
+                  sx={{
+                    position: "absolute",
+                    right: "0",
+                    top: "0",
+                    height: "100%",
+                    pointerEvents: "none",
+                    aspectRatio: "auto",
+                  }}
+                />
               </Card>
             </Grid>
           ))}

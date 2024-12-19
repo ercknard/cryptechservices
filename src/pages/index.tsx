@@ -7,6 +7,9 @@ import Navbar from "@/components/layout/NavBar";
 import Footer from "@/components/layout/Footer";
 import HomeStats from "@/components/layout/HomeStats";
 import HomeProducts from "@/components/layout/HomeProducts";
+import HomeFAQ from "@/components/layout/HomeFAQ";
+import HomeSubscribe from "@/components/layout/HomeSubscribe";
+import GitFeedsSection from "@/components/layout/GitFeedsSection";
 
 const HomePage = () => {
   return (
@@ -25,6 +28,9 @@ const HomePage = () => {
           gameServers={3}
         />
         <HomeProducts />
+        <GitFeedsSection />
+        <HomeFAQ />
+        <HomeSubscribe />
         <Footer />
         {/* <Typography variant="h1">
           This is the home page of the application.

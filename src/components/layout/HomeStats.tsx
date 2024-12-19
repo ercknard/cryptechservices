@@ -55,7 +55,7 @@ const HomeStats: React.FC<StatsProps> = ({
   const CTExperience = currentYear - startYear;
 
   return (
-    <Box position={"relative"} sx={{ paddingY: "5rem" }}>
+    <Box position={"relative"} sx={{ paddingY: "2.5rem" }}>
       <Container>
         <Grid
           container
@@ -279,12 +279,11 @@ const HomeStats: React.FC<StatsProps> = ({
                 src={imageSrc}
                 sx={{
                   position: "absolute",
-                  left: "-8.25rem",
+                  right: "0",
                   top: "0",
-                  width: "100%",
                   height: "100%",
-                  transform: "scale(-1)",
                   pointerEvents: "none",
+                  aspectRatio: "auto",
                 }}
               />
             </Card>
@@ -320,12 +319,11 @@ const HomeStats: React.FC<StatsProps> = ({
                 src={imageSrc}
                 sx={{
                   position: "absolute",
-                  left: "-8.25rem",
+                  right: "0",
                   top: "0",
-                  width: "100%",
                   height: "100%",
-                  transform: "scale(-1)",
                   pointerEvents: "none",
+                  aspectRatio: "auto",
                 }}
               />
             </Card>
@@ -361,12 +359,11 @@ const HomeStats: React.FC<StatsProps> = ({
                 src={imageSrc}
                 sx={{
                   position: "absolute",
-                  left: "-8.25rem",
+                  right: "0",
                   top: "0",
-                  width: "100%",
                   height: "100%",
-                  transform: "scale(-1)",
                   pointerEvents: "none",
+                  aspectRatio: "auto",
                 }}
               />
             </Card>
@@ -402,12 +399,11 @@ const HomeStats: React.FC<StatsProps> = ({
                 src={imageSrc}
                 sx={{
                   position: "absolute",
-                  left: "-8.25rem",
+                  right: "0",
                   top: "0",
-                  width: "100%",
                   height: "100%",
-                  transform: "scale(-1)",
                   pointerEvents: "none",
+                  aspectRatio: "auto",
                 }}
               />
             </Card>
@@ -443,12 +439,11 @@ const HomeStats: React.FC<StatsProps> = ({
                 src={imageSrc}
                 sx={{
                   position: "absolute",
-                  left: "-8.25rem",
+                  right: "0",
                   top: "0",
-                  width: "100%",
                   height: "100%",
-                  transform: "scale(-1)",
                   pointerEvents: "none",
+                  aspectRatio: "auto",
                 }}
               />
             </Card>
