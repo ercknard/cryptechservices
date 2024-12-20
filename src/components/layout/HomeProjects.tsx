@@ -11,7 +11,12 @@ import {
   Stack,
 } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectCoverflow, Pagination, Navigation } from "swiper/modules";
+import {
+  EffectCoverflow,
+  Pagination,
+  Navigation,
+  Autoplay,
+} from "swiper/modules";
 import { useThemeContext } from "@/theme/themeProvider";
 
 import "swiper/css";
@@ -115,6 +120,10 @@ const HomeProjects: React.FC = () => {
             centeredSlides={true}
             slidesPerView={"auto"}
             spaceBetween={0}
+            autoplay={{
+              delay: 3000, // 3 seconds per slide
+              disableOnInteraction: false, // Continue autoplay after user interaction
+            }}
             coverflowEffect={{
               rotate: 50,
               stretch: 0,
@@ -127,7 +136,7 @@ const HomeProjects: React.FC = () => {
               prevEl: ".swiper-button-prev",
               nextEl: ".swiper-button-next",
             }}
-            modules={[EffectCoverflow, Pagination, Navigation]}
+            modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
             className="mySwiper"
             style={{ paddingTop: "5rem", paddingBottom: "2.5rem" }}
           >
