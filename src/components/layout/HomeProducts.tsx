@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Button,
@@ -41,6 +41,7 @@ const HomeProducts: React.FC = ({}) => {
   const theme = useTheme();
   const { activeSet } = useThemeContext();
   const [selectedCard, setSelectedCard] = useState<number>(0); // Set default to index 0
+  const [animateOnSelect, setAnimateOnSelect] = useState<boolean>(false);
 
   const colorSetImageMap: { [key: string]: string } = {
     1: "/static/images/blue-upper-right.svg",
@@ -104,6 +105,19 @@ const HomeProducts: React.FC = ({}) => {
     },
   ];
 
+  useEffect(() => {
+    // Trigger animation when a card is selected
+    if (selectedCard !== null) {
+      setAnimateOnSelect(true);
+
+      // Reset the animation after it finishes (using the same duration as your transition time)
+      const timeout = setTimeout(() => {
+        setAnimateOnSelect(false);
+      }, 300); // Match the duration of the transition
+      return () => clearTimeout(timeout);
+    }
+  }, [selectedCard]);
+
   return (
     <Box
       sx={{
@@ -151,6 +165,8 @@ const HomeProducts: React.FC = ({}) => {
             <Box
               sx={{
                 position: "relative",
+                transition: "transform 0.3s ease", // Smooth transition on hover or animation
+                transform: animateOnSelect ? "scale(1.05)" : "scale(1)",
                 "&:hover": {
                   transform: "scale(1.05)", // Scale the entire box on hover
                   transition: "transform 0.3s ease", // Smooth scaling transition
@@ -183,7 +199,9 @@ const HomeProducts: React.FC = ({}) => {
                   marginBottom: 2,
                   clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)",
                   aspectRatio: "1/1",
-                  transition: "transform 0.3s ease",
+                  transition: "opacity .3s ease", // Smooth transition on hover or animation
+                  opacity: animateOnSelect ? ".5" : "1",
+                  // transition: "transform 0.3s ease",
                   "&:hover": {
                     transform: "scale(1.2)", // Slight zoom effect on hover
                   },
@@ -243,7 +261,13 @@ const HomeProducts: React.FC = ({}) => {
           <Grid item xs={12} sm={6} md={7}>
             <Box sx={{ position: "relative" }}>
               {selectedCard !== null && (
-                <Box sx={{ marginTop: "3rem" }}>
+                <Box
+                  sx={{
+                    marginTop: "3rem",
+                    transition: "opacity .3s ease", // Smooth transition on hover or animation
+                    opacity: animateOnSelect ? ".5" : "1",
+                  }}
+                >
                   <Stack direction={"column"} spacing={2}>
                     <Typography variant="h4" gutterBottom>
                       {cardInfo[selectedCard].title}
