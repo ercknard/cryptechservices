@@ -197,7 +197,7 @@ const HomeProducts: React.FC = ({}) => {
                   top: "0",
                   width: "100%",
                   height: "100%",
-                  background: `radial-gradient(at center, transparent, ${theme.palette.custom.secondaryBackground})`,
+                  background: `radial-gradient(at center, transparent, ${theme.palette.custom.primaryBackground})`,
                   transition: "opacity 0.3s ease",
                   "&:hover": {
                     opacity: 0.7, // Fade the background slightly on hover
