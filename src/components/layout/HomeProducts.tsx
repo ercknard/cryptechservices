@@ -110,7 +110,7 @@ const HomeProducts: React.FC = ({}) => {
         position: "relative",
         display: "flex",
         alignItems: "center",
-        backgroundColor: "custom.secondaryBackground",
+        backgroundColor: "custom.primaryBackground",
         textAlign: "left",
         paddingY: "5rem",
       }}
