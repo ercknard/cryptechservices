@@ -55,7 +55,7 @@ const HomeStats: React.FC<StatsProps> = ({
   const CTExperience = currentYear - startYear;
 
   return (
-    <Box position={"relative"} sx={{ paddingY: "2.5rem" }}>
+    <Box position={"relative"} sx={{ paddingY: "5rem" }}>
       <Container>
         <Grid
           container

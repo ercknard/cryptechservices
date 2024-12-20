@@ -13,7 +13,7 @@ import { useThemeContext } from "@/theme/themeProvider";
 import { useTheme } from "@mui/material/styles";
 import { fetchGitHubEvents, Event } from "@/pages/api/CryptechEventsApi";
 import DefaultDialog from "./DefaultDialog";
-import { Alert } from "@mui/material";
+import { Alert, Card } from "@mui/material";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 
 type CustomTheme = {
@@ -27,34 +27,6 @@ const GitFeedsSection: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [openDialog, setOpenDialog] = useState<boolean>(false);
-  const [isFeedsVisible, setIsFeedsVisible] = useState<boolean>(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        if (entry.isIntersecting) {
-          setIsFeedsVisible(true); // "Team" section is in view
-        } else {
-          setIsFeedsVisible(false); // "Team" section is out of view
-        }
-      },
-      {
-        threshold: 0.5, // Trigger when 50% of the section is in view
-      }
-    );
-
-    const gitSection = document.getElementById("git");
-    if (gitSection) {
-      observer.observe(gitSection);
-    }
-
-    return () => {
-      if (gitSection) {
-        observer.unobserve(gitSection);
-      }
-    };
-  }, []);
 
   useEffect(() => {
     const loadEvents = async () => {
@@ -200,7 +172,7 @@ const GitFeedsSection: React.FC = () => {
         alignItems: "center",
         backgroundColor: "custom.secondaryBackground",
         textAlign: "left",
-        paddingY: "2.5rem",
+        paddingY: "5rem",
       }}
     >
       <Container maxWidth="lg" sx={{ position: "relative" }}>
@@ -232,16 +204,18 @@ const GitFeedsSection: React.FC = () => {
         <Grid container spacing={3} marginTop={"2rem"}>
           {limitedEvents.map((event) => (
             <Grid position={"relative"} item xs={12} sm={6} key={event.id}>
-              <Paper
-                elevation={3}
+              <Card
                 sx={{
-                  padding: 2,
-                  textAlign: "center",
-                  transition: "transform 0.2s, background-color 0.3s",
+                  padding: 3,
+                  position: "relative",
+                  height: "100%",
+                  cursor: "pointer",
+                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
                   backgroundColor: "none",
-                  // borderWidth: "10px",
-                  // borderStyle: "solid",
-                  // borderImage: `url('${imageBgBorderSrc}') 30 round`,
+                  "&:hover": {
+                    boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)",
+                    backgroundColor: "custom.primaryComponents",
+                  },
                 }}
               >
                 <Stack
@@ -259,7 +233,7 @@ const GitFeedsSection: React.FC = () => {
                   >
                     <Box
                       component="img"
-                      width={{ xs: 55 }}
+                      width={{ xs: 40 }}
                       alt="Logo"
                       src={event.actor.avatar_url}
                     />
@@ -390,7 +364,7 @@ const GitFeedsSection: React.FC = () => {
                     {new Date(event.created_at).toLocaleString()}
                   </Typography>
                 </Stack>
-              </Paper>
+              </Card>
             </Grid>
           ))}
         </Grid>
@@ -412,15 +386,19 @@ const GitFeedsSection: React.FC = () => {
           <Grid container spacing={4} padding={1} paddingTop={5}>
             {remainingEvents.map((event) => (
               <Grid item xs={12} key={event.id}>
-                <Paper
-                  elevation={3}
+                <Card
                   sx={{
-                    padding: 2,
-                    textAlign: "center",
-                    transition: "transform 0.2s, background-color 0.3s",
-                    backgroundColor: "custom.primaryComponents",
-                    backgroundImage: "unset",
-                    borderRadius: "none !important",
+                    padding: 3,
+                    position: "relative",
+                    height: "100%",
+                    cursor: "pointer",
+                    transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                    backgroundColor: "none",
+                    borderRadius: "5px",
+                    "&:hover": {
+                      boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)",
+                      backgroundColor: "custom.primaryComponents",
+                    },
                   }}
                 >
                   <Stack
@@ -438,7 +416,7 @@ const GitFeedsSection: React.FC = () => {
                     >
                       <Box
                         component="img"
-                        width={{ xs: 55 }}
+                        width={{ xs: 40 }}
                         alt="Logo"
                         src={event.actor.avatar_url}
                       />
@@ -569,7 +547,7 @@ const GitFeedsSection: React.FC = () => {
                       {new Date(event.created_at).toLocaleString()}
                     </Typography>
                   </Stack>
-                </Paper>
+                </Card>
               </Grid>
             ))}
           </Grid>

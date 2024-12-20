@@ -51,12 +51,7 @@ export const fetchGitHubEvents = async (): Promise<Event[]> => {
     );
     const events = response.data; // Get the event data from the API
 
-    // Filter out events from the repository 'CryptechTest/announcement'
-    const filteredEvents = events.filter(
-      (event: Event) => event.repo.name !== "CryptechTest/announcement"
-    );
-
-    return filteredEvents; // Return the filtered event data
+    return events; // Return all the event data without filtering
   } catch (error) {
     console.error("Error fetching events:", error);
     return []; // Return an empty array in case of an error

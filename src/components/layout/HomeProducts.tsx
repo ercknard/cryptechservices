@@ -112,7 +112,7 @@ const HomeProducts: React.FC = ({}) => {
         alignItems: "center",
         backgroundColor: "custom.secondaryBackground",
         textAlign: "left",
-        paddingY: "2.5rem",
+        paddingY: "5rem",
       }}
     >
       <Container maxWidth="lg" sx={{ position: "relative" }}>

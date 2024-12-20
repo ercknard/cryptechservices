@@ -72,7 +72,7 @@ const HomeFAQ = () => {
         display: "flex",
         alignItems: "center",
         textAlign: "left",
-        paddingY: "2.5rem",
+        paddingY: "5rem",
       }}
     >
       <Container maxWidth="lg" sx={{ position: "relative" }}>
@@ -103,7 +103,7 @@ const HomeFAQ = () => {
                     textAlign: "left",
                     fontWeight: "bold",
                     padding: 2.5,
-                    backgroundColor: "custom.secondaryComponents",
+                    backgroundColor: "custom.primaryComponents",
                     display: "flex",
                     justifyContent: "space-between", // Align question and icon
                     alignItems: "center",
@@ -120,8 +120,9 @@ const HomeFAQ = () => {
                 <Collapse in={openIndex === index} timeout="auto" unmountOnExit>
                   <Box
                     sx={{
-                      padding: 2,
-                      backgroundColor: "custom.primaryComponents",
+                      paddingY: 2.5,
+                      paddingX: 2,
+                      backgroundColor: "custom.primaryBackground",
                       borderBottomRightRadius: "8px",
                       borderBottomLeftRadius: "8px",
                     }}

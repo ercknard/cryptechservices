@@ -47,7 +47,7 @@ const HomeSubscribe: React.FC = () => {
         display: "flex",
         alignItems: "center",
         textAlign: "left",
-        paddingY: "2.5rem",
+        paddingY: "5rem",
         paddingBottom: "5rem",
       }}
     >

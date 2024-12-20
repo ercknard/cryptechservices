@@ -10,6 +10,7 @@ import HomeProducts from "@/components/layout/HomeProducts";
 import HomeFAQ from "@/components/layout/HomeFAQ";
 import HomeSubscribe from "@/components/layout/HomeSubscribe";
 import GitFeedsSection from "@/components/layout/GitFeedsSection";
+import HomeProjects from "@/components/layout/HomeProjects";
 
 const HomePage = () => {
   return (
@@ -28,6 +29,7 @@ const HomePage = () => {
           gameServers={3}
         />
         <HomeProducts />
+        <HomeProjects />
         <GitFeedsSection />
         <HomeFAQ />
         <HomeSubscribe />
