@@ -91,7 +91,7 @@ const HomeProjects: React.FC = () => {
               </Typography>
               <Stack direction={"row"} spacing={1}>
                 <Typography variant="h3" paddingBottom={1}>
-                  Introducing our High-end
+                  Featuring our High-end
                 </Typography>
                 <Typography
                   variant="h3"
