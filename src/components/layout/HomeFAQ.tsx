@@ -82,7 +82,15 @@ const HomeFAQ = () => {
           </Typography>
           <Stack direction={"row"} spacing={1}>
             <Typography variant="h3" paddingBottom={1}>
-              Frequently Asked Questions
+              Frequently Asked
+            </Typography>
+            <Typography
+              variant="h3"
+              fontWeight={600}
+              color="custom.primaryText"
+              gutterBottom
+            >
+              Questions
             </Typography>
           </Stack>
           <Typography variant={"h6"} color="custom.primaryTextGrayed">
