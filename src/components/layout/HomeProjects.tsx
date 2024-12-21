@@ -145,7 +145,7 @@ const HomeProjects: React.FC = () => {
               stretch: 0,
               depth: 250,
               modifier: 1,
-              slideShadows: true,
+              slideShadows: false,
             }}
             pagination={false}
             navigation={{
