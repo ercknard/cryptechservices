@@ -170,7 +170,12 @@ export default function Footer() {
                   border: "none",
                 }}
               />
-              <Stack spacing={1} direction={"row"}>
+              <Stack
+                spacing={1}
+                direction={"row"}
+                display={"flex"}
+                flexWrap={"wrap"}
+              >
                 <Typography
                   variant={"body1"}
                   color={"custom.primaryText"}

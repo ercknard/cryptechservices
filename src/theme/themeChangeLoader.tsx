@@ -39,6 +39,16 @@ const ChangeLoader: React.FC<ChangeLoaderProps> = ({ loading, colorSetId }) => {
     5: "/static/images/pink-upper-right.svg",
   };
 
+  const colorLogoImageMap: { [key: string]: string } = {
+    1: "/static/images/blue-ctlogo.png",
+    2: "/static/images/green-ctlogo.png",
+    3: "/static/images/yellow-ctlogo.png",
+    4: "/static/images/orange-ctlogo.png",
+    5: "/static/images/pink-ctlogo.png",
+  };
+
+  const imageLogoSrc = colorLogoImageMap[colorKey] || colorLogoImageMap[1];
+
   const imageSrc = colorSetImageMap[colorKey] || colorSetImageMap[1];
 
   return (
@@ -123,6 +133,7 @@ const ChangeLoader: React.FC<ChangeLoaderProps> = ({ loading, colorSetId }) => {
         flexDirection="column"
         alignItems="center"
       >
+        <Box component="img" width={{ md: 55 }} alt="Logo" src={imageLogoSrc} />
         <Typography
           variant="h2"
           color={"custom.primaryText"}
