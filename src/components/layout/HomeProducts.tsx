@@ -348,6 +348,11 @@ const HomeProducts: React.FC = ({}) => {
                     height: "100%",
                     pointerEvents: "none",
                     aspectRatio: "auto",
+                    opacity: ".1",
+                    transition: "opacity 0.3s ease",
+                    "&:hover": {
+                      opacity: "1",
+                    },
                   }}
                 />
               </Card>

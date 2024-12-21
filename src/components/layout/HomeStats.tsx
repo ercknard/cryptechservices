@@ -266,12 +266,14 @@ const HomeStats: React.FC<StatsProps> = ({
               }}
             >
               <CardContent>
-                <Typography variant="h6" color="text.secondary">
-                  Years of Experience as CT Team
-                </Typography>
-                <Typography variant="h4" color="primary" fontWeight="bold">
-                  {CTExperience}
-                </Typography>
+                <Stack direction={"row"} spacing={2} alignItems={"center"}>
+                  <Typography variant="h4" color="primary" fontWeight="bold">
+                    {CTExperience}
+                  </Typography>
+                  <Typography variant="h6" color="text.secondary">
+                    Years of Experience as CT Team
+                  </Typography>
+                </Stack>
               </CardContent>
 
               <Box
@@ -284,6 +286,7 @@ const HomeStats: React.FC<StatsProps> = ({
                   height: "100%",
                   pointerEvents: "none",
                   aspectRatio: "auto",
+                  opacity: ".1",
                 }}
               />
             </Card>
@@ -307,12 +310,14 @@ const HomeStats: React.FC<StatsProps> = ({
               }}
             >
               <CardContent>
-                <Typography variant="h6" color="text.secondary">
-                  Projects Completed
-                </Typography>
-                <Typography variant="h4" color="primary" fontWeight="bold">
-                  {projectsCompleted}+
-                </Typography>
+                <Stack direction={"row"} spacing={2} alignItems={"center"}>
+                  <Typography variant="h4" color="primary" fontWeight="bold">
+                    {projectsCompleted}+
+                  </Typography>
+                  <Typography variant="h6" color="text.secondary">
+                    Projects Completed
+                  </Typography>
+                </Stack>
               </CardContent>
               <Box
                 component="img"
@@ -324,6 +329,7 @@ const HomeStats: React.FC<StatsProps> = ({
                   height: "100%",
                   pointerEvents: "none",
                   aspectRatio: "auto",
+                  opacity: ".1",
                 }}
               />
             </Card>
@@ -347,12 +353,14 @@ const HomeStats: React.FC<StatsProps> = ({
               }}
             >
               <CardContent>
-                <Typography variant="h6" color="text.secondary">
-                  Happy Clients
-                </Typography>
-                <Typography variant="h4" color="primary" fontWeight="bold">
-                  {happyClients}+
-                </Typography>
+                <Stack direction={"row"} spacing={2} alignItems={"center"}>
+                  <Typography variant="h4" color="primary" fontWeight="bold">
+                    {happyClients}+
+                  </Typography>
+                  <Typography variant="h6" color="text.secondary">
+                    Happy Clients
+                  </Typography>
+                </Stack>
               </CardContent>
               <Box
                 component="img"
@@ -364,6 +372,7 @@ const HomeStats: React.FC<StatsProps> = ({
                   height: "100%",
                   pointerEvents: "none",
                   aspectRatio: "auto",
+                  opacity: ".1",
                 }}
               />
             </Card>
@@ -387,12 +396,14 @@ const HomeStats: React.FC<StatsProps> = ({
               }}
             >
               <CardContent>
-                <Typography variant="h6" color="text.secondary">
-                  Team Members
-                </Typography>
-                <Typography variant="h4" color="primary" fontWeight="bold">
-                  {teamMembers}
-                </Typography>
+                <Stack direction={"row"} spacing={2} alignItems={"center"}>
+                  <Typography variant="h4" color="primary" fontWeight="bold">
+                    {teamMembers}
+                  </Typography>
+                  <Typography variant="h6" color="text.secondary">
+                    Team Members
+                  </Typography>
+                </Stack>
               </CardContent>
               <Box
                 component="img"
@@ -404,6 +415,7 @@ const HomeStats: React.FC<StatsProps> = ({
                   height: "100%",
                   pointerEvents: "none",
                   aspectRatio: "auto",
+                  opacity: ".1",
                 }}
               />
             </Card>
@@ -427,12 +439,14 @@ const HomeStats: React.FC<StatsProps> = ({
               }}
             >
               <CardContent>
-                <Typography variant="h6" color="text.secondary">
-                  Game Servers
-                </Typography>
-                <Typography variant="h4" color="primary" fontWeight="bold">
-                  {gameServers}
-                </Typography>
+                <Stack direction={"row"} spacing={2} alignItems={"center"}>
+                  <Typography variant="h4" color="primary" fontWeight="bold">
+                    {gameServers}
+                  </Typography>
+                  <Typography variant="h6" color="text.secondary">
+                    Game Servers
+                  </Typography>
+                </Stack>
               </CardContent>
               <Box
                 component="img"
@@ -444,6 +458,7 @@ const HomeStats: React.FC<StatsProps> = ({
                   height: "100%",
                   pointerEvents: "none",
                   aspectRatio: "auto",
+                  opacity: ".1",
                 }}
               />
             </Card>

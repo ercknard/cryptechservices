@@ -116,7 +116,7 @@ const HomeProjects: React.FC = () => {
           <Swiper
             loop={true}
             effect={"coverflow"}
-            grabCursor={true}
+            grabCursor={false}
             centeredSlides={true}
             slidesPerView={"auto"}
             spaceBetween={0}
@@ -195,6 +195,34 @@ const HomeProjects: React.FC = () => {
             ))}
           </Swiper>
         </Grid>
+
+        <Box
+          className="swiper-button-prev"
+          sx={{
+            position: "absolute",
+            display: { md: "block", xs: "none" },
+            top: "58.25%",
+            left: "10%",
+            transform: "translate(-50%)",
+            zIndex: 3,
+            cursor: "pointer",
+            color: "custom.primaryText",
+          }}
+        ></Box>
+
+        <Box
+          className="swiper-button-next"
+          sx={{
+            position: "absolute",
+            display: { md: "block", xs: "none" },
+            top: "58.25%",
+            right: "11%",
+            transform: "translate(-50%)",
+            zIndex: 3,
+            cursor: "pointer",
+            color: "custom.primaryText",
+          }}
+        ></Box>
       </Container>
     </Box>
   );

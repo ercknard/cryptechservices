@@ -115,6 +115,7 @@ const HomeFAQ = () => {
                     display: "flex",
                     justifyContent: "space-between", // Align question and icon
                     alignItems: "center",
+                    color: "custom.primaryText",
                   }}
                 >
                   {faq.question}

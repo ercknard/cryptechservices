@@ -161,6 +161,17 @@ const GitFeedsSection: React.FC = () => {
   const imageBgBorderSrc =
     colorSetBgBorderRight[activeSet.toString()] || colorSetBgBorderRight[1];
 
+  const colorSetImageMap: { [key: string]: string } = {
+    1: "/static/images/blue-upper-right.svg",
+    2: "/static/images/green-upper-right.svg",
+    3: "/static/images/yellow-upper-right.svg",
+    4: "/static/images/orange-upper-right.svg",
+    5: "/static/images/pink-upper-right.svg",
+  };
+
+  const imageSrc =
+    colorSetImageMap[activeSet.toString()] || colorSetImageMap[1];
+
   const handleDialogOpen = () => setOpenDialog(true);
   const handleDialogClose = () => setOpenDialog(false);
 
