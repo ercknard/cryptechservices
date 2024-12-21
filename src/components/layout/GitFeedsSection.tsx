@@ -275,7 +275,7 @@ const GitFeedsSection: React.FC = () => {
                     rel="noopener noreferrer"
                     variant="subtitle1"
                     color="custom.mainColor"
-                    sx={{ position: "absolute", right: ".5rem", top: ".5rem" }}
+                    sx={{ position: "absolute", right: "1rem", top: "1rem" }}
                   >
                     <ArrowOutwardIcon />
                   </Link>
@@ -459,6 +459,11 @@ const GitFeedsSection: React.FC = () => {
                       rel="noopener noreferrer"
                       variant="subtitle1"
                       color="custom.mainColor"
+                      sx={{
+                        position: "absolute",
+                        right: "1rem",
+                        top: "1rem",
+                      }}
                     >
                       <ArrowOutwardIcon />
                     </Link>
