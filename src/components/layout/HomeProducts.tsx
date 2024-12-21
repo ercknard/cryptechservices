@@ -177,7 +177,7 @@ const HomeProducts: React.FC = ({}) => {
                   color="custom.primaryText"
                   gutterBottom
                 >
-                  Quality Services
+                  IT Services
                 </Typography>
               </Stack>
               <Typography variant={"h6"} color="custom.primaryTextGrayed">
