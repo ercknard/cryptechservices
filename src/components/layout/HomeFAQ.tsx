@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import { ArrowDownward, ArrowUpward } from "@mui/icons-material"; // Import arrow icons
 import { useThemeContext } from "@/theme/themeProvider";
+import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 
 // FAQ type definition
 type FaqItem = {
@@ -77,9 +78,18 @@ const HomeFAQ = () => {
     >
       <Container maxWidth="lg" sx={{ position: "relative" }}>
         <Stack spacing={1.5}>
-          <Typography fontSize={"1rem"} color="custom.primaryText">
-            FAQ&apos;s
-          </Typography>
+          <Stack
+            direction={"row"}
+            alignItems={"center"}
+            justifyContent={"space-between"}
+          >
+            <Typography fontSize={"1rem"} color="custom.primaryText">
+              FAQ&apos;s
+            </Typography>
+            <Button variant="outlined" color="primary" size="small" href={"#"}>
+              Learn More <ArrowOutwardIcon fontSize="small" />
+            </Button>
+          </Stack>
           <Stack direction={"row"} spacing={1}>
             <Typography variant="h3" paddingBottom={1}>
               Frequently Asked

@@ -17,6 +17,7 @@ import Particlesview from "./Particles";
 import Marquee from "react-fast-marquee";
 import { keyframes } from "@emotion/react";
 import HomeMarquee from "./HomeMarquee";
+import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 
 // Dummy icons for now, replace with actual icons
 import {
@@ -58,7 +59,7 @@ const HomeProducts: React.FC = ({}) => {
     {
       icon: <Home fontSize="large" />,
       title: "Full-Stack Web Development",
-      description: "Professional home services with the best quality.",
+      description: "Professional web building with the best quality.",
       fullDescription:
         "Our full-stack web development approach involves proficiently handling both front-end and back-end aspects to deliver comprehensive and dynamic web solutions.",
       image: "/static/images/Full-Stack Web Development.jpg",
@@ -138,9 +139,23 @@ const HomeProducts: React.FC = ({}) => {
         >
           <Grid item xs={12} sm={12} md={12}>
             <Stack spacing={1.5}>
-              <Typography fontSize={"1rem"} color="custom.primaryText">
-                Our Services
-              </Typography>
+              <Stack
+                direction={"row"}
+                alignItems={"center"}
+                justifyContent={"space-between"}
+              >
+                <Typography fontSize={"1rem"} color="custom.primaryText">
+                  Our Services
+                </Typography>
+                <Button
+                  variant="outlined"
+                  color="primary"
+                  size="small"
+                  href={"#"}
+                >
+                  Learn More <ArrowOutwardIcon fontSize="small" />
+                </Button>
+              </Stack>
               <Stack direction={"row"} spacing={1}>
                 <Typography variant="h3" paddingBottom={1}>
                   Introducing our Top-notch
@@ -311,6 +326,10 @@ const HomeProducts: React.FC = ({}) => {
                     transform: "scale(1.05)",
                     boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)",
                     backgroundColor: "custom.primaryComponents",
+                    "& .image": {
+                      transition: "opacity 0.3s ease",
+                      opacity: 1, // Make the image opacity 1 when the card is hovered
+                    },
                   },
                 }}
                 onClick={() => setSelectedCard(index)} // Set the selected card
@@ -348,12 +367,11 @@ const HomeProducts: React.FC = ({}) => {
                     height: "100%",
                     pointerEvents: "none",
                     aspectRatio: "auto",
-                    opacity: ".1",
                     transition: "opacity 0.3s ease",
-                    "&:hover": {
-                      opacity: "1",
-                    },
+                    opacity: selectedCard === index ? "1" : ".1",
+                    "&.image": {},
                   }}
+                  className="image"
                 />
               </Card>
             </Grid>

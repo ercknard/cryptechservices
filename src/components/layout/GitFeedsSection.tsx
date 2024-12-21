@@ -189,9 +189,23 @@ const GitFeedsSection: React.FC = () => {
       <Container maxWidth="lg" sx={{ position: "relative" }}>
         <Grid item xs={12} sm={12} md={12}>
           <Stack spacing={1.5}>
-            <Typography fontSize={"1rem"} color="custom.primaryText">
-              Cryptech Services Github
-            </Typography>
+            <Stack
+              direction={"row"}
+              alignItems={"center"}
+              justifyContent={"space-between"}
+            >
+              <Typography fontSize={"1rem"} color="custom.primaryText">
+                Cryptech Services Github
+              </Typography>
+              <Button
+                variant="outlined"
+                color="primary"
+                size="small"
+                href={"#"}
+              >
+                Learn More <ArrowOutwardIcon fontSize="small" />
+              </Button>
+            </Stack>
             <Stack direction={"row"} spacing={1}>
               <Typography variant="h3" paddingBottom={1}>
                 Github
@@ -261,6 +275,7 @@ const GitFeedsSection: React.FC = () => {
                     rel="noopener noreferrer"
                     variant="subtitle1"
                     color="custom.mainColor"
+                    sx={{ position: "absolute", right: ".5rem", top: ".5rem" }}
                   >
                     <ArrowOutwardIcon />
                   </Link>

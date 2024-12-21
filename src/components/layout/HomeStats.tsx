@@ -262,6 +262,10 @@ const HomeStats: React.FC<StatsProps> = ({
                   transform: "scale(1.05)",
                   boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)",
                   backgroundColor: "custom.primaryComponents",
+                  "& .image": {
+                    transition: "opacity 0.3s ease",
+                    opacity: 1, // Make the image opacity 1 when the card is hovered
+                  },
                 },
               }}
             >
@@ -287,7 +291,9 @@ const HomeStats: React.FC<StatsProps> = ({
                   pointerEvents: "none",
                   aspectRatio: "auto",
                   opacity: ".1",
+                  "&.image": {},
                 }}
+                className="image"
               />
             </Card>
           </Grid>
@@ -306,6 +312,10 @@ const HomeStats: React.FC<StatsProps> = ({
                   transform: "scale(1.05)",
                   boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)",
                   backgroundColor: "custom.primaryComponents",
+                  "& .image": {
+                    transition: "opacity 0.3s ease",
+                    opacity: 1, // Make the image opacity 1 when the card is hovered
+                  },
                 },
               }}
             >
@@ -330,7 +340,9 @@ const HomeStats: React.FC<StatsProps> = ({
                   pointerEvents: "none",
                   aspectRatio: "auto",
                   opacity: ".1",
+                  "&.image": {},
                 }}
+                className="image"
               />
             </Card>
           </Grid>
@@ -349,6 +361,10 @@ const HomeStats: React.FC<StatsProps> = ({
                   transform: "scale(1.05)",
                   boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)",
                   backgroundColor: "custom.primaryComponents",
+                  "& .image": {
+                    transition: "opacity 0.3s ease",
+                    opacity: 1, // Make the image opacity 1 when the card is hovered
+                  },
                 },
               }}
             >
@@ -373,7 +389,9 @@ const HomeStats: React.FC<StatsProps> = ({
                   pointerEvents: "none",
                   aspectRatio: "auto",
                   opacity: ".1",
+                  "&.image": {},
                 }}
+                className="image"
               />
             </Card>
           </Grid>
@@ -392,6 +410,10 @@ const HomeStats: React.FC<StatsProps> = ({
                   transform: "scale(1.05)",
                   boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)",
                   backgroundColor: "custom.primaryComponents",
+                  "& .image": {
+                    transition: "opacity 0.3s ease",
+                    opacity: 1, // Make the image opacity 1 when the card is hovered
+                  },
                 },
               }}
             >
@@ -416,7 +438,9 @@ const HomeStats: React.FC<StatsProps> = ({
                   pointerEvents: "none",
                   aspectRatio: "auto",
                   opacity: ".1",
+                  "&.image": {},
                 }}
+                className="image"
               />
             </Card>
           </Grid>
@@ -435,6 +459,10 @@ const HomeStats: React.FC<StatsProps> = ({
                   transform: "scale(1.05)",
                   boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)",
                   backgroundColor: "custom.primaryComponents",
+                  "& .image": {
+                    transition: "opacity 0.3s ease",
+                    opacity: 1, // Make the image opacity 1 when the card is hovered
+                  },
                 },
               }}
             >
@@ -459,7 +487,9 @@ const HomeStats: React.FC<StatsProps> = ({
                   pointerEvents: "none",
                   aspectRatio: "auto",
                   opacity: ".1",
+                  "&.image": {},
                 }}
+                className="image"
               />
             </Card>
           </Grid>

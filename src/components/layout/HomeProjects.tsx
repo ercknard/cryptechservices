@@ -9,6 +9,7 @@ import {
   CardMedia,
   Container,
   Stack,
+  Button,
 } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import {
@@ -18,6 +19,7 @@ import {
   Autoplay,
 } from "swiper/modules";
 import { useThemeContext } from "@/theme/themeProvider";
+import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 
 import "swiper/css";
 import "swiper/css/effect-coverflow";
@@ -91,9 +93,23 @@ const HomeProjects: React.FC = () => {
         >
           <Grid item xs={12} sm={12} md={12}>
             <Stack spacing={1.5}>
-              <Typography fontSize={"1rem"} color="custom.primaryText">
-                Cryptech Services Projects
-              </Typography>
+              <Stack
+                direction={"row"}
+                alignItems={"center"}
+                justifyContent={"space-between"}
+              >
+                <Typography fontSize={"1rem"} color="custom.primaryText">
+                  Cryptech Services Projects
+                </Typography>
+                <Button
+                  variant="outlined"
+                  color="primary"
+                  size="small"
+                  href={"#"}
+                >
+                  Learn More <ArrowOutwardIcon fontSize="small" />
+                </Button>
+              </Stack>
               <Stack direction={"row"} spacing={1}>
                 <Typography variant="h3" paddingBottom={1}>
                   Featuring our High-end

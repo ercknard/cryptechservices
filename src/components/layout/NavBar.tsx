@@ -308,35 +308,40 @@ export default function Navbar() {
                 display={"flex"}
                 alignItems={"center"}
               >
-                {["news", "ships", "mods", "team", "gameplay", "donate"].map(
-                  (section) => (
-                    <Button
-                      key={section}
-                      onClick={() => handleScrollTo(section)}
-                      sx={{
-                        textDecoration:
-                          activeSection === section ? "underline" : "none", // Underline active link
-                        textDecorationColor:
-                          activeSection === section
-                            ? "custom.primaryText"
-                            : "transparent", // Set underline
-                        textDecorationThickness:
-                          activeSection === section ? 4 : 0, // Adjust underline thickness (height)
-                        fontWeight: "600",
-                      }}
+                {[
+                  "News",
+                  "IT Services",
+                  "Security Services",
+                  "Projects",
+                  "Team",
+                  "About Us",
+                ].map((section) => (
+                  <Button
+                    key={section}
+                    onClick={() => handleScrollTo(section)}
+                    sx={{
+                      textDecoration:
+                        activeSection === section ? "underline" : "none", // Underline active link
+                      textDecorationColor:
+                        activeSection === section
+                          ? "custom.primaryText"
+                          : "transparent", // Set underline
+                      textDecorationThickness:
+                        activeSection === section ? 4 : 0, // Adjust underline thickness (height)
+                      fontWeight: "600",
+                    }}
+                  >
+                    <Typography
+                      color={
+                        activeSection === section
+                          ? "custom.primaryText"
+                          : "custom.primaryTextGrayed"
+                      }
                     >
-                      <Typography
-                        color={
-                          activeSection === section
-                            ? "custom.primaryText"
-                            : "custom.primaryTextGrayed"
-                        }
-                      >
-                        {section.charAt(0).toUpperCase() + section.slice(1)}
-                      </Typography>
-                    </Button>
-                  )
-                )}
+                      {section.charAt(0).toUpperCase() + section.slice(1)}
+                    </Typography>
+                  </Button>
+                ))}
                 <Button
                   component="a"
                   onClick={() => handleScrollTo("servers")}
