@@ -72,7 +72,7 @@ const HomeSubscribe: React.FC = () => {
             Get the latest updates directly in your inbox. Don&apos;t miss out
             on exclusive content.
           </Typography>
-          <Container sx={{ display: "flex", justifyContent: "center" }}>
+          <Box sx={{ display: "flex", justifyContent: "center" }}>
             <TextField
               variant="outlined"
               label="Enter your email"
@@ -88,7 +88,7 @@ const HomeSubscribe: React.FC = () => {
             >
               Subscribe
             </Button>
-          </Container>
+          </Box>
           {message && (
             <Typography
               variant="body2"
