@@ -106,9 +106,9 @@ const HeroSection: React.FC = ({}) => {
         sx={{
           position: "absolute",
           left: "0",
-          top: "0",
+          top: "4.2rem",
           width: "calc(100vw - 5px)",
-          height: "100vh",
+          height: "85vh",
           backgroundImage: `url(${imageSrc})`,
           backgroundSize: "contained",
           backgroundPosition: "right",
@@ -121,9 +121,9 @@ const HeroSection: React.FC = ({}) => {
         sx={{
           position: "absolute",
           left: "0",
-          top: "0",
+          top: "4.2rem",
           width: "calc(100vw - 5px)",
-          height: "100vh",
+          height: "85vh",
           backgroundImage: `url(${imageSrc})`,
           backgroundSize: "contained",
           backgroundPosition: "right",
