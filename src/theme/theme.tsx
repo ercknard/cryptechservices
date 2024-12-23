@@ -11,6 +11,11 @@ const ka1Mono = localFont({
   variable: "--font-ka1-mono",
   weight: "100 900",
 });
+const ka1MonoTitle = localFont({
+  src: "../fonts/Ethnocentric Rg.otf",
+  variable: "--font-ka1-monotitle",
+  weight: "100 900",
+});
 
 declare module "@mui/material/Typography" {
   interface TypographyPropsVariantOverrides {
@@ -96,7 +101,7 @@ declare module "@mui/material/styles" {
 }
 
 // const FONT = vetregMono.style.fontFamily;
-const SECONDARY_FONT = ka1Mono.style.fontFamily;
+const SECONDARY_FONT = ka1MonoTitle.style.fontFamily;
 const FONT = vetregMono.style.fontFamily;
 
 const breakpoints = {
@@ -350,6 +355,11 @@ const typographyOptions = (palette: PaletteOptions) => {
     fontFamily: FONT,
     fontSize: 12,
     htmlFontSize: 16,
+    title: {
+      fontWeight: 500,
+      color: palette.text?.primary,
+      fontFamily: SECONDARY_FONT,
+    },
     // h1: {
     //   fontFamily: FONT,
     //   // [breakpoints.values.sm]: { fontSize: "2.5rem" },

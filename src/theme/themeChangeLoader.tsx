@@ -135,7 +135,8 @@ const ChangeLoader: React.FC<ChangeLoaderProps> = ({ loading, colorSetId }) => {
       >
         <Box component="img" width={{ md: 55 }} alt="Logo" src={imageLogoSrc} />
         <Typography
-          variant="h2"
+          variant="title"
+          fontSize={"2.5rem"}
           color={"custom.primaryText"}
           sx={{
             marginTop: 2,

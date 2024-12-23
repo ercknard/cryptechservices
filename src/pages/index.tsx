@@ -11,15 +11,13 @@ import HomeFAQ from "@/components/layout/HomeFAQ";
 import HomeSubscribe from "@/components/layout/HomeSubscribe";
 import GitFeedsSection from "@/components/layout/GitFeedsSection";
 import HomeProjects from "@/components/layout/HomeProjects";
+import Wrapper from "@/components/layout/Wrapper";
 
 const HomePage = () => {
   return (
     <>
       <DefaultHead />
-      <Box position={"fixed"} width={1} left={0} zIndex={100}>
-        <Navbar />
-      </Box>
-      <Box>
+      <Wrapper>
         <HeroSection />
         <HomeStats
           yearsOfExperience={5}
@@ -33,7 +31,6 @@ const HomePage = () => {
         <GitFeedsSection />
         <HomeFAQ />
         <HomeSubscribe />
-        <Footer />
         {/* <Typography variant="h1">
           This is the home page of the application.
         </Typography>
@@ -67,7 +64,7 @@ const HomePage = () => {
         <Typography variant="caption">
           This is the home page of the application.
         </Typography> */}
-      </Box>
+      </Wrapper>
     </>
   );
 };

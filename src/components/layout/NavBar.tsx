@@ -1,7 +1,7 @@
-// React
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom"; // For getting the current page URL
 
-//MUI
+// MUI
 import { Button, Typography, useTheme } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -14,24 +14,16 @@ import ClearIcon from "@mui/icons-material/Clear";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useThemeContext } from "@/theme/themeProvider";
 
+// Replace "sections" with "pages"
+const NavItems = ["IT Services", "Security Services", "Projects", "Team"];
+
 export default function Navbar() {
   const theme = useTheme();
   const isMobileView = useMediaQuery(theme.breakpoints.down("md"));
 
-  const handleScrollTo = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      window.scrollTo({
-        top: element.offsetTop - 70, // 2rem offset (32px)
-        behavior: "smooth",
-      });
-      window.history.pushState(null, "", `#${id}`);
-    }
-  };
+  const location = useLocation(); // Get current page URL path
 
-  //Toggle Drawer (Mobile)
   const [selectedDrawer, setSelectedDrawer] = useState<number | null>(null);
-  const [activeSection, setActiveSection] = useState<string | null>(null); // Track the active section
 
   const { activeSet } = useThemeContext();
 
@@ -46,41 +38,24 @@ export default function Navbar() {
   const imageSrc =
     colorSetImageMap[activeSet.toString()] || colorSetImageMap[1];
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = [
-        "news",
-        "servers",
-        "ships",
-        "mods",
-        "team",
-        "gameplay",
-        "donate",
-        "partners",
-        "git",
-      ];
-      let currentSection: string | null = null;
-      for (let i = 0; i < sections.length; i++) {
-        const section = document.getElementById(sections[i]);
-        if (section) {
-          const sectionOffsetTop = section.offsetTop;
-          // Add a 70px offset to check when the section is in view
-          if (window.scrollY + 100 >= sectionOffsetTop) {
-            currentSection = sections[i];
-          }
-        }
-      }
+  const handleScrollTo = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      window.scrollTo({
+        top: element.offsetTop - 70, // 2rem offset (32px)
+        behavior: "smooth",
+      });
+      window.history.pushState(null, "", `#${id}`);
+    }
+  };
 
-      setActiveSection(currentSection); // Update active section based on scroll position
-    };
+  // Function to get the current page (from URL path)
+  const getCurrentPage = () => {
+    const path = location.pathname;
+    return path.substring(1).replace(/-/g, " ") || "home"; // Normalize the URL path
+  };
 
-    // Add event listener for scroll
-    window.addEventListener("scroll", handleScroll);
-
-    // Clean up the event listener on component unmount
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
+  // Mobile view: AppBar with Drawer
   if (isMobileView) {
     return (
       <>
@@ -107,20 +82,18 @@ export default function Navbar() {
             >
               <Box mr={{ xs: 1, sm: 3, md: 5 }} pt={1}>
                 <Stack direction={"row"} spacing={1}>
-                  {/* <Box
-                    component="img"
-                    width={{ xs: 30, sm: 55 }}
-                    height={1}
-                    alt="Logo"
-                    src="/static/images/mug.png"
-                  /> */}
-                  <Typography
-                    variant={"h4"}
-                    fontSize={"1.5rem"}
-                    color={"custom.primaryText"}
+                  <Button
+                    component="a"
+                    href="/" // Home Page link
+                    sx={{
+                      textDecoration: "none",
+                      color: "custom.primaryText",
+                      fontSize: "1.5rem",
+                      fontWeight: 600,
+                    }}
                   >
                     Cryptech Services
-                  </Typography>
+                  </Button>
                 </Stack>
               </Box>
 
@@ -158,20 +131,18 @@ export default function Navbar() {
             >
               <Box mr={{ xs: 1, sm: 3, md: 5 }}>
                 <Stack direction={"row"} spacing={1}>
-                  {/* <Box
-                    component="img"
-                    width={{ xs: 30, sm: 55 }}
-                    height={1}
-                    alt="Logo"
-                    src="/static/images/mug.png"
-                  /> */}
-                  <Typography
-                    variant={"h4"}
-                    fontSize={"1.5rem"}
-                    color={"custom.primaryText"}
+                  <Button
+                    component="a"
+                    href="/" // Home Page link
+                    sx={{
+                      textDecoration: "none",
+                      color: "custom.primaryText",
+                      fontSize: "1.5rem",
+                      fontWeight: 600,
+                    }}
                   >
                     Cryptech Services
-                  </Typography>
+                  </Button>
                 </Stack>
               </Box>
 
@@ -187,51 +158,44 @@ export default function Navbar() {
                 display={"flex"}
                 alignItems={"center"}
               >
-                <Button component="a" href="#news" color="inherit">
-                  <Typography
-                    variant={"h5"}
-                    fontWeight={"600"}
-                    color={"custom.secondaryTextGrayed"}
-                  >
-                    News
-                  </Typography>
-                </Button>
-                <Button component="a" href="#mods" color="inherit">
-                  <Typography
-                    variant={"h5"}
-                    fontWeight={"600"}
-                    color={"custom.secondaryTextGrayed"}
-                  >
-                    Mods
-                  </Typography>
-                </Button>
-                <Button component="a" href="#team" color="inherit">
-                  <Typography
-                    variant={"h5"}
-                    fontWeight={"600"}
-                    color={"custom.secondaryTextGrayed"}
-                  >
-                    Team
-                  </Typography>
-                </Button>
-                <Button component="a" href="#gameplay" color="inherit">
-                  <Typography
-                    variant={"h5"}
-                    fontWeight={"600"}
-                    color={"custom.secondaryTextGrayed"}
-                  >
-                    Gameplay
-                  </Typography>
-                </Button>
-                <Button component="a" href="#donate" color="inherit">
-                  <Typography
-                    variant={"h5"}
-                    fontWeight={"600"}
-                    color={"custom.secondaryTextGrayed"}
-                  >
-                    Donate
-                  </Typography>
-                </Button>
+                {NavItems.map((page) => {
+                  const normalizedPage = page
+                    .toLowerCase()
+                    .replace(/\s+/g, "-");
+                  return (
+                    <Button
+                      key={page}
+                      component="a"
+                      href={`/${normalizedPage}`} // Updated to use page as the href
+                      sx={{
+                        textDecoration:
+                          getCurrentPage() === normalizedPage
+                            ? "underline"
+                            : "none", // Underline active page
+                        textDecorationColor:
+                          getCurrentPage() === normalizedPage
+                            ? "custom.primaryText"
+                            : "transparent", // Set underline color
+                        textDecorationThickness:
+                          getCurrentPage() === normalizedPage ? 4 : 0, // Adjust underline thickness
+                        fontWeight: 600,
+                      }}
+                    >
+                      <Typography
+                        variant={"h5"}
+                        fontWeight={"600"}
+                        color={
+                          getCurrentPage() === normalizedPage
+                            ? "custom.primaryText"
+                            : "custom.secondaryTextGrayed"
+                        }
+                      >
+                        {page}
+                      </Typography>
+                    </Button>
+                  );
+                })}
+
                 <Button
                   component="a"
                   href="#servers"
@@ -249,6 +213,7 @@ export default function Navbar() {
     );
   }
 
+  // Desktop view: AppBar with links
   return (
     <Box display={{ xs: "none", sm: "flex" }}>
       <AppBar
@@ -283,63 +248,86 @@ export default function Navbar() {
           >
             <Box display={"flex"}>
               <Stack direction={"row"} spacing={1} alignItems={"center"}>
-                <Box
-                  component="img"
-                  width={{ md: 35 }}
-                  alt="Logo"
-                  src={imageSrc}
-                />
-
-                <Typography
-                  variant="body1"
-                  fontSize={"1.5rem"}
-                  color={"custom.primaryText"}
+                <Button
+                  component="a"
+                  href="/" // Home Page link
+                  sx={{
+                    textDecoration: "none",
+                    color: "custom.primaryText",
+                    fontWeight: 600,
+                  }}
                 >
-                  Cryptech Services
-                </Typography>
+                  <Typography
+                    variant="title"
+                    fontSize={"1.25rem"}
+                    color={"custom.primaryText"}
+                  >
+                    Cryptech
+                  </Typography>
+                  <Box
+                    component="img"
+                    width={{ md: 35 }}
+                    alt="Logo"
+                    src={imageSrc}
+                    marginX={1}
+                  />
+                  <Typography
+                    variant="title"
+                    fontSize={"1.25rem"}
+                    color={"custom.primaryText"}
+                  >
+                    Services
+                  </Typography>
+                </Button>
               </Stack>
             </Box>
 
             {/* RIGHT MENU */}
             <Box>
               <Stack
-                direction={"row"}
-                spacing={{ xs: 0, sm: 0, md: 4 }}
-                display={"flex"}
-                alignItems={"center"}
+                direction="row"
+                spacing={{ xs: 0, sm: 0, md: 3 }}
+                display="flex"
+                alignItems="center"
+                marginTop={".25rem"}
               >
-                {["IT Services", "Security Services", "Projects", "Team"].map(
-                  (section) => (
+                {NavItems.map((page) => {
+                  const normalizedPage = page.toLowerCase().replace(/\s+/g, "");
+                  return (
                     <Button
-                      key={section}
-                      onClick={() => handleScrollTo(section)}
+                      key={page}
+                      component="a"
+                      href={`/${normalizedPage}`}
                       sx={{
                         textDecoration:
-                          activeSection === section ? "underline" : "none", // Underline active link
+                          getCurrentPage() === normalizedPage
+                            ? "underline"
+                            : "none", // Underline active page
                         textDecorationColor:
-                          activeSection === section
+                          getCurrentPage() === normalizedPage
                             ? "custom.primaryText"
-                            : "transparent", // Set underline
+                            : "transparent", // Set underline color
                         textDecorationThickness:
-                          activeSection === section ? 4 : 0, // Adjust underline thickness (height)
-                        fontWeight: "600",
+                          getCurrentPage() === normalizedPage ? 1 : 0, // Adjust underline thickness
+                        fontWeight: 600,
                       }}
                     >
                       <Typography
                         color={
-                          activeSection === section
+                          getCurrentPage() === normalizedPage
                             ? "custom.primaryText"
                             : "custom.primaryTextGrayed"
                         }
                       >
-                        {section.charAt(0).toUpperCase() + section.slice(1)}
+                        {page}
                       </Typography>
                     </Button>
-                  )
-                )}
+                  );
+                })}
+
                 <Button
                   component="a"
-                  onClick={() => handleScrollTo("servers")}
+                  href="/contactus"
                   variant="contained"
                   color="primary"
                   size="large"
