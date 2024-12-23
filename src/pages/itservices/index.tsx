@@ -11,6 +11,7 @@ import {
 import Wrapper from "@/components/layout/Wrapper";
 import Particlesview from "@/components/layout/Particles";
 import { useThemeContext } from "@/theme/themeProvider";
+import HomeProducts from "@/components/layout/HomeProducts";
 
 const ITServicesPage = () => {
   const theme = useTheme();
@@ -131,7 +132,7 @@ const ITServicesPage = () => {
               <Typography
                 variant="title"
                 fontWeight={600}
-                fontSize={"2.5rem"}
+                fontSize={"3rem"}
                 color="custom.primaryText"
                 gutterBottom
               >
@@ -155,7 +156,11 @@ const ITServicesPage = () => {
           </Box>
         </Box>
 
-        <Box position={"relative"} minHeight={"100vh"}>
+        <Box
+          position={"relative"}
+          paddingBottom={"3rem"}
+          bgcolor={`${theme.palette.custom.primaryBackground}`}
+        >
           <Box
             sx={{
               position: "absolute",
@@ -163,9 +168,10 @@ const ITServicesPage = () => {
               top: "-10%",
               width: "calc(100vw - 5px)",
               minHeight: "10rem",
-              background: `linear-gradient(to top, ${theme.palette.custom.secondaryBackground}, transparent)`,
+              background: `linear-gradient(to top, ${theme.palette.custom.primaryBackground}, transparent)`,
             }}
           />
+          <HomeProducts />
         </Box>
       </Wrapper>
     </>

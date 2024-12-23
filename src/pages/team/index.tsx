@@ -131,7 +131,7 @@ const TeamPage = () => {
               <Typography
                 variant="title"
                 fontWeight={600}
-                fontSize={"2.5rem"}
+                fontSize={"3rem"}
                 color="custom.primaryText"
                 gutterBottom
               >
