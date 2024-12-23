@@ -2,7 +2,7 @@ import { PaletteMode, PaletteOptions, createTheme } from "@mui/material";
 import localFont from "next/font/local";
 
 const vetregMono = localFont({
-  src: "../fonts/Open_Sans/OpenSans-VariableFont_wdth,wght.ttf",
+  src: "../fonts/Ubuntu_Sans/UbuntuSans-VariableFont_wdth,wght.ttf",
   variable: "--font-test-mono",
   weight: "100 900",
 });
