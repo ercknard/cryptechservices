@@ -12,14 +12,19 @@ import {
   Icon,
 } from "@mui/material";
 import { useThemeContext } from "@/theme/themeProvider";
-import SocialLinksList from "./SocialLInksList";
-import Particlesview from "./Particles";
-import Marquee from "react-fast-marquee";
-import { keyframes } from "@emotion/react";
-import HomeMarquee from "./HomeMarquee";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
+import supabase from "@/lib/supabase";
 
-// Dummy icons for now, replace with actual icons
+// Define the structure for IT services
+interface ITServices {
+  service_name: string;
+  service_icon: string;
+  service_initial_desc: string;
+  service_main_desc: string;
+  service_cover: string;
+}
+
+// Import dummy icons for now
 import {
   Home,
   Build,
@@ -29,30 +34,23 @@ import {
   ShoppingCart,
 } from "@mui/icons-material";
 
-const spinAnimation = keyframes`
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-`;
-
-const HomeProducts: React.FC = ({}) => {
+const HomeProducts: React.FC = () => {
   const theme = useTheme();
   const { activeSet } = useThemeContext();
-  const [selectedCard, setSelectedCard] = useState<number>(0); // Set default to index 0
+  const [selectedCard, setSelectedCard] = useState<number>(0); // Default index to 0
   const [animateOnSelect, setAnimateOnSelect] = useState<boolean>(false);
+  const [itServices, setItServices] = useState<ITServices[]>([]);
 
-  const colorSetImageMap: { [key: string]: string } = {
-    1: "/static/images/blue-upper-right.svg",
-    2: "/static/images/green-upper-right.svg",
-    3: "/static/images/yellow-upper-right.svg",
-    4: "/static/images/orange-upper-right.svg",
-    5: "/static/images/pink-upper-right.svg",
+  const iconMap: { [key: string]: React.ElementType } = {
+    Home,
+    Build,
+    Cloud,
+    Code,
+    Security,
+    ShoppingCart,
   };
 
-  const colorBGImageMap: { [key: string]: string } = {
+  const colorSetImageMap: { [key: string]: string } = {
     1: "/static/images/blue-upper-right.svg",
     2: "/static/images/green-upper-right.svg",
     3: "/static/images/yellow-upper-right.svg",
@@ -63,62 +61,24 @@ const HomeProducts: React.FC = ({}) => {
   const imageSrc =
     colorSetImageMap[activeSet.toString()] || colorSetImageMap[1];
 
-  const imageBGSrc =
-    colorBGImageMap[activeSet.toString()] || colorBGImageMap[1];
+  useEffect(() => {
+    // Fetch IT Services data from Supabase
+    const fetchITServices = async () => {
+      const { data, error } = await supabase
+        .from("ztable_itservices")
+        .select("*");
 
-  const cardInfo = [
-    {
-      icon: <Home fontSize="large" />,
-      title: "Full-Stack Web Development",
-      description: "Professional web building with the best quality.",
-      fullDescription:
-        "Our full-stack web development approach involves proficiently handling both front-end and back-end aspects to deliver comprehensive and dynamic web solutions.",
-      image: "/static/images/Full-Stack Web Development.jpg",
-    },
-    {
-      icon: <Build fontSize="large" />,
-      title: "Web3 And DAPP Development",
-      description: "Building robust and scalable web solutions.",
-      fullDescription:
-        "As experts in Web3 and DApp development, we harness the power of decentralized technologies to build immersive and user-friendly applications.",
-      image: "/static/images/Web3 And DAPP Development.jpg",
-    },
-    {
-      icon: <Cloud fontSize="large" />,
-      title: "Solidity Development",
-      description: "Reliable cloud computing services for your business.",
-      fullDescription:
-        "We specialize in Solidity smart contract development, creating secure and efficient blockchain-based solutions tailored to your specific decentralized application needs.",
-      image: "/static/images/Solidity Development.jpg",
-    },
-    {
-      icon: <Code fontSize="large" />,
-      title: "Web Design",
-      description: "Creative websites to take your business online.",
-      fullDescription:
-        "Our web design approach focuses on crafting user-centric and aesthetically pleasing websites that align with your brand identity and business goals.",
-      image: "/static/images/Web Design.jpg",
-    },
-    {
-      icon: <Security fontSize="large" />,
-      title: "Graphic Design",
-      description: "Keeping your data safe with top-notch security measures.",
-      fullDescription:
-        "Our graphic design services involve translating your brand identity and messaging into visually compelling designs.",
-      image: "/static/images/Graphic Design.jpg",
-    },
-    {
-      icon: <ShoppingCart fontSize="large" />,
-      title: "Technical Consultation",
-      description: "Custom e-commerce platforms for your online store.",
-      fullDescription:
-        "We offer technical consultation by deeply understanding your project goals and challenges, and then providing targeted expertise and strategic guidance to optimize your systems, resolve technical issues, and enhance overall project success.",
-      image: "/static/images/stats-cover.jpg",
-    },
-  ];
+      if (error) {
+        console.error("Error fetching data from Supabase:", error);
+      } else {
+        setItServices(data); // Set the fetched IT services data
+      }
+    };
+
+    fetchITServices();
+  }, []);
 
   useEffect(() => {
-    // Trigger animation when a card is selected
     if (selectedCard !== null) {
       setAnimateOnSelect(true);
 
@@ -162,7 +122,7 @@ const HomeProducts: React.FC = ({}) => {
                   variant="outlined"
                   color="primary"
                   size="small"
-                  href={"#"}
+                  href={"/itservices"}
                 >
                   Learn More <ArrowOutwardIcon fontSize="small" />
                 </Button>
@@ -191,11 +151,11 @@ const HomeProducts: React.FC = ({}) => {
             <Box
               sx={{
                 position: "relative",
-                transition: "transform 0.3s ease", // Smooth transition on hover or animation
+                transition: "transform 0.3s ease",
                 transform: animateOnSelect ? "scale(1.05)" : "scale(1)",
                 "&:hover": {
-                  transform: "scale(1.05)", // Scale the entire box on hover
-                  transition: "transform 0.3s ease", // Smooth scaling transition
+                  transform: "scale(1.05)",
+                  transition: "transform 0.3s ease",
                 },
               }}
             >
@@ -214,26 +174,23 @@ const HomeProducts: React.FC = ({}) => {
                   },
                 }}
               />
-
               <Box
                 component="img"
-                src={cardInfo[selectedCard].image}
-                alt={cardInfo[selectedCard].title}
+                src={itServices[selectedCard]?.service_cover}
+                alt={itServices[selectedCard]?.service_name}
                 sx={{
                   width: "100%",
                   maxWidth: 600,
                   marginBottom: 2,
                   clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)",
                   aspectRatio: "1/1",
-                  transition: "opacity .3s ease", // Smooth transition on hover or animation
+                  transition: "opacity .3s ease",
                   opacity: animateOnSelect ? ".5" : "1",
-                  // transition: "transform 0.3s ease",
                   "&:hover": {
-                    transform: "scale(1.2)", // Slight zoom effect on hover
+                    transform: "scale(1.2)",
                   },
                 }}
               />
-
               <Box
                 sx={{
                   position: "absolute",
@@ -277,7 +234,7 @@ const HomeProducts: React.FC = ({}) => {
                   transform: "scale(-1)",
                   transition: "transform 0.3s ease",
                   "&:hover": {
-                    transform: "scale(-1.05)", // Slight zoom effect on hover
+                    transform: "scale(-1.05)", // Slight zoom effect and scale flip
                   },
                 }}
               />
@@ -290,13 +247,13 @@ const HomeProducts: React.FC = ({}) => {
                 <Box
                   sx={{
                     marginTop: "3rem",
-                    transition: "opacity .3s ease", // Smooth transition on hover or animation
+                    transition: "opacity .3s ease",
                     opacity: animateOnSelect ? ".5" : "1",
                   }}
                 >
                   <Stack direction={"column"} spacing={2}>
                     <Typography variant="h4" gutterBottom>
-                      {cardInfo[selectedCard].title}
+                      {itServices[selectedCard]?.service_name}
                     </Typography>
 
                     <Typography
@@ -304,7 +261,7 @@ const HomeProducts: React.FC = ({}) => {
                       color="custom.primaryTextGrayed"
                       sx={{ marginBottom: 2 }}
                     >
-                      {cardInfo[selectedCard].fullDescription}
+                      {itServices[selectedCard]?.service_main_desc}
                     </Typography>
                   </Stack>
                 </Box>
@@ -320,7 +277,7 @@ const HomeProducts: React.FC = ({}) => {
           justifyContent="center"
           sx={{ marginTop: "2.5rem" }}
         >
-          {cardInfo.map((card, index) => (
+          {itServices.map((service, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
               <Card
                 sx={{
@@ -337,10 +294,6 @@ const HomeProducts: React.FC = ({}) => {
                     transform: "scale(1.05)",
                     boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)",
                     backgroundColor: "custom.primaryComponents",
-                    "& .image": {
-                      transition: "opacity 0.3s ease",
-                      opacity: 1, // Make the image opacity 1 when the card is hovered
-                    },
                   },
                 }}
                 onClick={() => setSelectedCard(index)} // Set the selected card
@@ -353,10 +306,13 @@ const HomeProducts: React.FC = ({}) => {
                       color: theme.palette.custom.primaryText,
                     }}
                   >
-                    {card.icon}
+                    {React.createElement(
+                      iconMap[service.service_icon] || Home,
+                      { fontSize: "large" }
+                    )}
                   </Icon>
                   <Typography variant="h6" sx={{ marginTop: 2 }}>
-                    {card.title}
+                    {service.service_name}
                   </Typography>
                   <Typography
                     variant="body1"
@@ -365,7 +321,7 @@ const HomeProducts: React.FC = ({}) => {
                       marginTop: 1,
                     }}
                   >
-                    {card.description}
+                    {service.service_initial_desc}
                   </Typography>
                 </CardContent>
                 <Box
@@ -380,9 +336,7 @@ const HomeProducts: React.FC = ({}) => {
                     aspectRatio: "auto",
                     transition: "opacity 0.3s ease",
                     opacity: selectedCard === index ? "1" : ".1",
-                    "&.image": {},
                   }}
-                  className="image"
                 />
               </Card>
             </Grid>

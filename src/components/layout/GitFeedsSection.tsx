@@ -201,9 +201,11 @@ const GitFeedsSection: React.FC = () => {
                 variant="outlined"
                 color="primary"
                 size="small"
-                href={"#"}
+                href={"https://github.com/Cryptech-Services"}
+                target="_blank" // Open in new tab
+                rel="noopener noreferrer" // For security reasons when using target="_blank"
               >
-                Learn More <ArrowOutwardIcon fontSize="small" />
+                Visit Github <ArrowOutwardIcon fontSize="small" />
               </Button>
             </Stack>
             <Stack direction={"row"} spacing={1}>

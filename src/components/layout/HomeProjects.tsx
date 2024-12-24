@@ -1,5 +1,5 @@
 // components/ProjectsSection.tsx
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Typography,
@@ -25,43 +25,23 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import supabase from "@/lib/supabase";
 
-// Sample project data
-const projects = [
-  {
-    title: "Project 1",
-    description: "This is a description of Project 1",
-    imageUrl: "/static/images/Full-Stack Web Development.jpg",
-    link: "#",
-  },
-  {
-    title: "Project 2",
-    description: "This is a description of Project 2",
-    imageUrl: "/static/images/Full-Stack Web Development.jpg",
-    link: "#",
-  },
-  {
-    title: "Project 3",
-    description: "This is a description of Project 3",
-    imageUrl: "/static/images/Full-Stack Web Development.jpg",
-    link: "#",
-  },
-  {
-    title: "Project 4",
-    description: "This is a description of Project 4",
-    imageUrl: "/static/images/Full-Stack Web Development.jpg",
-    link: "#",
-  },
-  {
-    title: "Project 5",
-    description: "This is a description of Project 5",
-    imageUrl: "/static/images/Full-Stack Web Development.jpg",
-    link: "#",
-  },
-];
+// Define the structure for IT services
+interface FeaturedProjects {
+  project_name: string;
+  project_icon: string;
+  project_initial_desc: string;
+  project_main_desc: string;
+  project_cover: string;
+  project_link: string;
+}
 
 const HomeProjects: React.FC = () => {
   const { activeSet } = useThemeContext();
+  const [featuredProjects, setFeaturedProjects] = useState<FeaturedProjects[]>(
+    []
+  );
 
   const colorSetImageMap: { [key: string]: string } = {
     1: "/static/images/blue-upper-right.svg",
@@ -73,6 +53,25 @@ const HomeProjects: React.FC = () => {
 
   const imageSrc =
     colorSetImageMap[activeSet.toString()] || colorSetImageMap[1];
+
+  useEffect(() => {
+    // Fetch IT Services data from Supabase
+    const fetchFeaturedProjects = async () => {
+      const { data, error } = await supabase
+        .from("ztable_featuredprojects")
+        .select("*");
+
+      if (error) {
+        console.error("Error fetching data from Supabase:", error);
+      } else {
+        setFeaturedProjects(data); // Set the fetched IT services data
+        console.log("Fetched projects:", data); // Log data here to check
+      }
+    };
+
+    fetchFeaturedProjects();
+  }, []);
+
   return (
     <Box
       sx={{
@@ -105,7 +104,7 @@ const HomeProjects: React.FC = () => {
                   variant="outlined"
                   color="primary"
                   size="small"
-                  href={"#"}
+                  href={"/projects"}
                 >
                   Learn More <ArrowOutwardIcon fontSize="small" />
                 </Button>
@@ -156,7 +155,7 @@ const HomeProjects: React.FC = () => {
             className="mySwiper"
             style={{ paddingTop: "5rem", paddingBottom: "2.5rem" }}
           >
-            {projects.map((project, index) => (
+            {featuredProjects.map((project, index) => (
               <SwiperSlide key={index}>
                 <Card
                   sx={{
@@ -169,15 +168,15 @@ const HomeProjects: React.FC = () => {
                   <CardMedia
                     component="img"
                     height="200"
-                    image={project.imageUrl}
-                    alt={project.title}
+                    image={project.project_cover}
+                    alt={project.project_name}
                   />
                   <CardContent>
                     <Typography gutterBottom variant="h6" component="div">
-                      {project.title}
+                      {project.project_name}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                      {project.description}
+                      {project.project_main_desc}
                     </Typography>
                   </CardContent>
                 </Card>

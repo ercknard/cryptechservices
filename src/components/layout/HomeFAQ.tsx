@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Collapse,
   Button,
@@ -12,6 +12,13 @@ import {
 import { ArrowDownward, ArrowUpward } from "@mui/icons-material"; // Import arrow icons
 import { useThemeContext } from "@/theme/themeProvider";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
+import supabase from "@/lib/supabase";
+
+// FAQ type definition
+type FaqsItem = {
+  faqs_question: string;
+  faqs_answer: string;
+};
 
 // FAQ type definition
 type FaqItem = {
@@ -50,6 +57,7 @@ const faqData: FaqItem[] = [
 const HomeFAQ = () => {
   const { activeSet } = useThemeContext();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [faqs, setFaqs] = useState<FaqsItem[]>([]);
 
   const colorSetImageMap: { [key: string]: string } = {
     1: "/static/images/blue-upper-right.svg",
@@ -58,6 +66,22 @@ const HomeFAQ = () => {
     4: "/static/images/orange-upper-right.svg",
     5: "/static/images/pink-upper-right.svg",
   };
+
+  useEffect(() => {
+    // Fetch IT Services data from Supabase
+    const fetchFaqs = async () => {
+      const { data, error } = await supabase.from("ztable_faqs").select("*");
+
+      if (error) {
+        console.error("Error fetching data from Supabase:", error);
+      } else {
+        setFaqs(data); // Set the fetched IT services data
+        console.log("Fetched projects:", data); // Log data here to check
+      }
+    };
+
+    fetchFaqs();
+  }, []);
 
   const imageSrc =
     colorSetImageMap[activeSet.toString()] || colorSetImageMap[1];
@@ -86,8 +110,13 @@ const HomeFAQ = () => {
             <Typography fontSize={"1rem"} color="custom.primaryText">
               FAQ&apos;s
             </Typography>
-            <Button variant="outlined" color="primary" size="small" href={"#"}>
-              Learn More <ArrowOutwardIcon fontSize="small" />
+            <Button
+              variant="outlined"
+              color="primary"
+              size="small"
+              href={"/contactus"}
+            >
+              Contact Us <ArrowOutwardIcon fontSize="small" />
             </Button>
           </Stack>
           <Stack direction={"row"} spacing={1}>
@@ -110,7 +139,7 @@ const HomeFAQ = () => {
           </Typography>
         </Stack>
         <List sx={{ marginTop: "2rem" }}>
-          {faqData.map((faq, index) => (
+          {faqs.map((faq, index) => (
             <ListItem key={index} sx={{ padding: 0 }}>
               <Box sx={{ width: "100%", marginBottom: 2 }}>
                 <Button
@@ -128,7 +157,7 @@ const HomeFAQ = () => {
                     color: "custom.primaryText",
                   }}
                 >
-                  {faq.question}
+                  {faq.faqs_question}
                   {/* Conditionally render the arrow icon */}
                   {openIndex === index ? (
                     <ArrowUpward /> // Show arrow up when FAQ is expanded
@@ -146,7 +175,7 @@ const HomeFAQ = () => {
                       borderBottomLeftRadius: "8px",
                     }}
                   >
-                    <Typography variant="body1">{faq.answer}</Typography>
+                    <Typography variant="body1">{faq.faqs_answer}</Typography>
                   </Box>
                 </Collapse>
                 <Box

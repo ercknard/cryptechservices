@@ -11,6 +11,7 @@ import {
 import Wrapper from "@/components/layout/Wrapper";
 import PagesCover from "@/components/layout/PagesCover";
 import ContactUs from "@/components/layout/ContactUs";
+import EmailIcon from "@mui/icons-material/Email";
 
 const ContactUsPage = () => {
   const theme = useTheme();
@@ -96,6 +97,18 @@ const ContactUsPage = () => {
                     LETS TALK ABOUT YOUR PROJECT, Fill the form and send in your
                     queries. We will respond as soon as we can.
                   </Typography>
+                  <Stack direction={"row"} spacing={1}>
+                    <EmailIcon />
+                    <Typography color="custom.primaryTextGrayed">
+                      Official Email :{" "}
+                      <a
+                        href="mailto:inquiries@cryptech.services"
+                        style={{ color: "#5860af", textDecoration: "none" }}
+                      >
+                        inquiries@cryptech.services
+                      </a>
+                    </Typography>
+                  </Stack>
                 </Stack>
               </Grid>
 
