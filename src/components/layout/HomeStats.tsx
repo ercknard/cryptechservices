@@ -22,7 +22,6 @@ import SupportAgentOutlinedIcon from "@mui/icons-material/SupportAgentOutlined";
 
 // Define the types for the statistics
 interface StatsProps {
-  yearsOfExperience: number;
   projectsCompleted: number;
   happyClients: number;
   teamMembers: number;
@@ -30,7 +29,6 @@ interface StatsProps {
 }
 
 const HomeStats: React.FC<StatsProps> = ({
-  yearsOfExperience,
   projectsCompleted,
   happyClients,
   teamMembers,

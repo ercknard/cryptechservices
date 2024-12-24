@@ -172,9 +172,7 @@ const HeroSection: React.FC = ({}) => {
               {showVision ? "Your Vision" : "Our Expertise"}
             </span>
           </Typography>
-          <Box marginY={2}>
-            <SocialLinksList />
-          </Box>
+          <Box marginY={2}>{/* <SocialLinksList /> */}</Box>
           <Button variant="contained" color="secondary" size="large" href={"#"}>
             Learn More
           </Button>

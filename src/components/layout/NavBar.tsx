@@ -15,7 +15,13 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { useThemeContext } from "@/theme/themeProvider";
 
 // Replace "sections" with "pages"
-const NavItems = ["IT Services", "Security Services", "Projects", "Team"];
+const NavItems = [
+  "IT Services",
+  "Security Services",
+  "Game Servers",
+  "Projects",
+  "Team",
+];
 
 export default function Navbar() {
   const theme = useTheme();

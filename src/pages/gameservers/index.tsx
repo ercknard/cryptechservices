@@ -2,15 +2,15 @@ import React from "react";
 import { DefaultHead } from "@/components/layout/Head";
 import { Box, Stack, Typography, useTheme } from "@mui/material";
 import Wrapper from "@/components/layout/Wrapper";
-import HomeProducts from "@/components/layout/HomeProducts";
+import Particlesview from "@/components/layout/Particles";
 import PagesCover from "@/components/layout/PagesCover";
 
-const ITServicesPage = () => {
+const GamePage = () => {
   const theme = useTheme();
 
   return (
     <>
-      <DefaultHead title="IT Services" />
+      <DefaultHead title="Game Servers" />
       <Wrapper>
         <Box
           paddingTop={"4.25rem"}
@@ -37,7 +37,7 @@ const ITServicesPage = () => {
                 color="custom.primaryText"
                 gutterBottom
               >
-                IT Services
+                Game Servers
               </Typography>
             </Stack>
           </Box>
@@ -45,11 +45,7 @@ const ITServicesPage = () => {
           <PagesCover />
         </Box>
 
-        <Box
-          position={"relative"}
-          paddingBottom={"3rem"}
-          bgcolor={`${theme.palette.custom.primaryBackground}`}
-        >
+        <Box position={"relative"} minHeight={"100vh"}>
           <Box
             sx={{
               position: "absolute",
@@ -57,14 +53,13 @@ const ITServicesPage = () => {
               top: "-10%",
               width: "calc(100vw - 5px)",
               minHeight: "10rem",
-              background: `linear-gradient(to top, ${theme.palette.custom.primaryBackground}, transparent)`,
+              background: `linear-gradient(to top, ${theme.palette.custom.secondaryBackground}, transparent)`,
             }}
           />
-          <HomeProducts />
         </Box>
       </Wrapper>
     </>
   );
 };
 
-export default ITServicesPage;
+export default GamePage;
