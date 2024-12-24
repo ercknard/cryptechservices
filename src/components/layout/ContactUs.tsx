@@ -1,7 +1,15 @@
 "use client";
 import React, { useState } from "react";
 import SendIcon from "@mui/icons-material/Send";
-import { Button, Grid, TextField, Typography, Box } from "@mui/material";
+import {
+  Button,
+  Grid,
+  TextField,
+  Typography,
+  Box,
+  Alert,
+  Snackbar,
+} from "@mui/material";
 
 // Define the shape of the errors object
 interface FormErrors {
@@ -17,17 +25,18 @@ export default function ContactUs() {
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
 
-  // Form validation
   const [errors, setErrors] = useState<FormErrors>({});
-
-  // Setting button text
   const [buttonText, setButtonText] = useState("Send");
 
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-  const [showFailureMessage, setShowFailureMessage] = useState(false);
+  // Snackbars state
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState("");
+  const [snackbarSeverity, setSnackbarSeverity] = useState<"success" | "error">(
+    "success"
+  );
 
   const handleValidation = () => {
-    const tempErrors: FormErrors = {}; // Use the FormErrors type here
+    const tempErrors: FormErrors = {};
     let isValid = true;
 
     if (fullname.length <= 0) {
@@ -74,8 +83,9 @@ export default function ContactUs() {
       const { error } = await res.json();
       if (error) {
         console.log(error);
-        setShowSuccessMessage(false);
-        setShowFailureMessage(true);
+        setSnackbarSeverity("error");
+        setSnackbarMessage("Oops! Something went wrong, please try again.");
+        setOpenSnackbar(true);
         setButtonText("Send");
 
         setFullname("");
@@ -84,8 +94,9 @@ export default function ContactUs() {
         setSubject("");
         return;
       }
-      setShowSuccessMessage(true);
-      setShowFailureMessage(false);
+      setSnackbarSeverity("success");
+      setSnackbarMessage("Thank you! Your message has been delivered.");
+      setOpenSnackbar(true);
       setButtonText("Send");
       setFullname("");
       setEmail("");
@@ -93,6 +104,10 @@ export default function ContactUs() {
       setSubject("");
     }
     console.log(fullname, email, subject, message);
+  };
+
+  const handleCloseSnackbar = () => {
+    setOpenSnackbar(false);
   };
 
   return (
@@ -136,7 +151,7 @@ export default function ContactUs() {
                   style: { color: "white" },
                 }}
                 InputProps={{
-                  style: { color: "white", borderBottom: "1px solid white" },
+                  style: { color: "white" },
                 }}
               />
 
@@ -154,7 +169,7 @@ export default function ContactUs() {
                   style: { color: "white" },
                 }}
                 InputProps={{
-                  style: { color: "white", borderBottom: "1px solid white" },
+                  style: { color: "white" },
                 }}
               />
 
@@ -172,7 +187,7 @@ export default function ContactUs() {
                   style: { color: "white" },
                 }}
                 InputProps={{
-                  style: { color: "white", borderBottom: "1px solid white" },
+                  style: { color: "white" },
                 }}
               />
 
@@ -192,7 +207,7 @@ export default function ContactUs() {
                   style: { color: "white" },
                 }}
                 InputProps={{
-                  style: { color: "white", borderBottom: "1px solid white" },
+                  style: { color: "white" },
                 }}
               />
 
@@ -200,35 +215,32 @@ export default function ContactUs() {
                 type="submit"
                 variant="contained"
                 sx={{
-                  mt: 4,
-                  backgroundColor: "#007BFF",
+                  mt: 3,
                   color: "white",
-                  padding: "10px 20px",
-                  borderRadius: "4px",
-                  display: "flex",
-                  alignItems: "center",
                 }}
               >
                 {buttonText}
                 <SendIcon sx={{ ml: 1 }} />
               </Button>
-
-              <Box sx={{ mt: 2, color: "white" }}>
-                {showSuccessMessage && (
-                  <Typography variant="body2" sx={{ color: "green" }}>
-                    Thank you! Your message has been delivered.
-                  </Typography>
-                )}
-                {showFailureMessage && (
-                  <Typography variant="body2" sx={{ color: "red" }}>
-                    Oops! Something went wrong, please try again.
-                  </Typography>
-                )}
-              </Box>
             </form>
           </Grid>
         </Grid>
       </Box>
+
+      {/* Snackbar component for success and error messages */}
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={5000}
+        onClose={handleCloseSnackbar}
+      >
+        <Alert
+          onClose={handleCloseSnackbar}
+          severity={snackbarSeverity}
+          sx={{ display: "flex", alignItems: "center" }}
+        >
+          {snackbarMessage}
+        </Alert>
+      </Snackbar>
     </Box>
   );
 }

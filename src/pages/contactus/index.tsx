@@ -52,7 +52,11 @@ const ContactUsPage = () => {
           <PagesCover />
         </Box>
 
-        <Box position={"relative"}>
+        <Box
+          position={"relative"}
+          paddingBottom={"3rem"}
+          bgcolor={`${theme.palette.custom.primaryBackground}`}
+        >
           <Box
             sx={{
               position: "absolute",
@@ -68,7 +72,6 @@ const ContactUsPage = () => {
               container
               spacing={5}
               justifyContent="center"
-              marginTop={2}
               alignItems={"center"}
             >
               <Grid item xs={12} sm={6} md={7}>
