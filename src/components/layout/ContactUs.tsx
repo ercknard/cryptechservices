@@ -241,7 +241,7 @@ export default function ContactUs() {
                         ? "white"
                         : "custom.primaryText",
                   },
-                  "& .MuiInputBase-root input": {
+                  "& .MuiOutlinedInput-input": {
                     color:
                       theme.palette.mode === "dark"
                         ? "white"
@@ -278,7 +278,7 @@ export default function ContactUs() {
           severity={snackbarSeverity}
           sx={{ display: "flex", alignItems: "center" }}
         >
-          {snackbarMessage}
+          <Typography color="custom.primaryText">{snackbarMessage}</Typography>
         </Alert>
       </Snackbar>
     </Box>
