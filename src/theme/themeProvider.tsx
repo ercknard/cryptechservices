@@ -183,8 +183,8 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
       "color",
       ["blue", "green", "yellow", "orange", "pink"][finalSet - 1]
     );
-    url.searchParams.set("fancy", finalFancyMode ? "on" : "off");
-    url.searchParams.set("sound", finalSoundMode ? "on" : "off");
+    // url.searchParams.set("fancy", finalFancyMode ? "on" : "off");
+    // url.searchParams.set("sound", finalSoundMode ? "on" : "off");
     window.history.pushState({}, "", url.toString());
   }, []);
 
@@ -450,7 +450,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
                 />
               ))}
             </Box>
-            <Stack
+            {/* <Stack
               direction={"row"}
               marginTop={2.5}
               spacing={2}
@@ -471,9 +471,9 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
                   {fancyMode ? "ON" : "OFF"}
                 </Typography>
               </Button>
-            </Stack>
+            </Stack> */}
 
-            <Stack
+            {/* <Stack
               direction={"row"}
               marginTop={2.5}
               spacing={2}
@@ -504,9 +504,9 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
               >
                 <Typography fontWeight={600}>Reset theme</Typography>
               </Button>
-            </Stack>
+            </Stack> */}
 
-            <Stack
+            {/* <Stack
               direction={"column"}
               marginTop={2.5}
               spacing={2}
@@ -519,7 +519,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
               </Typography>
               <Typography>Fancy mode is {fancyMode ? "ON" : "OFF"}</Typography>
               <Typography>Sound mode is {soundsMode ? "ON" : "OFF"}</Typography>
-            </Stack>
+            </Stack> */}
           </Box>
         </Drawer>
         <Snackbar
