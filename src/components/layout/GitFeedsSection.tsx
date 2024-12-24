@@ -409,7 +409,7 @@ const GitFeedsSection: React.FC = () => {
           maxWidth="md"
           open={openDialog}
           handleOnClose={handleDialogClose}
-          title="CryptechTest Git Events"
+          title="Cryptech Services Git Events"
         >
           <Grid container spacing={4} padding={1} paddingTop={5}>
             {remainingEvents.map((event) => (
