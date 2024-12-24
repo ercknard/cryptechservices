@@ -10,6 +10,7 @@ import {
   Alert,
   Snackbar,
 } from "@mui/material";
+import { useTheme } from "@mui/material/styles"; // Import useTheme
 
 // Define the shape of the errors object
 interface FormErrors {
@@ -34,6 +35,9 @@ export default function ContactUs() {
   const [snackbarSeverity, setSnackbarSeverity] = useState<"success" | "error">(
     "success"
   );
+
+  // Access the theme
+  const theme = useTheme();
 
   const handleValidation = () => {
     const tempErrors: FormErrors = {};
@@ -133,7 +137,10 @@ export default function ContactUs() {
                 maxWidth: "100%",
               }}
             >
-              <Typography variant="h5" sx={{ color: "white", fontWeight: 700 }}>
+              <Typography
+                variant="h5"
+                sx={{ color: "custom.primaryText", fontWeight: 700 }}
+              >
                 Send us a message.
               </Typography>
 
@@ -147,11 +154,19 @@ export default function ContactUs() {
                 margin="normal"
                 error={!!errors?.fullname}
                 helperText={errors?.fullname && "Full name cannot be empty"}
-                InputLabelProps={{
-                  style: { color: "white" },
-                }}
-                InputProps={{
-                  style: { color: "white" },
+                sx={{
+                  "& .MuiInputLabel-root": {
+                    color:
+                      theme.palette.mode === "dark"
+                        ? "white"
+                        : "custom.primaryText",
+                  },
+                  "& .MuiInputBase-root input": {
+                    color:
+                      theme.palette.mode === "dark"
+                        ? "white"
+                        : "custom.primaryText",
+                  },
                 }}
               />
 
@@ -165,11 +180,19 @@ export default function ContactUs() {
                 margin="normal"
                 error={!!errors?.email}
                 helperText={errors?.email && "Email cannot be empty"}
-                InputLabelProps={{
-                  style: { color: "white" },
-                }}
-                InputProps={{
-                  style: { color: "white" },
+                sx={{
+                  "& .MuiInputLabel-root": {
+                    color:
+                      theme.palette.mode === "dark"
+                        ? "white"
+                        : "custom.primaryText",
+                  },
+                  "& .MuiInputBase-root input": {
+                    color:
+                      theme.palette.mode === "dark"
+                        ? "white"
+                        : "custom.primaryText",
+                  },
                 }}
               />
 
@@ -183,11 +206,19 @@ export default function ContactUs() {
                 margin="normal"
                 error={!!errors?.subject}
                 helperText={errors?.subject && "Subject cannot be empty"}
-                InputLabelProps={{
-                  style: { color: "white" },
-                }}
-                InputProps={{
-                  style: { color: "white" },
+                sx={{
+                  "& .MuiInputLabel-root": {
+                    color:
+                      theme.palette.mode === "dark"
+                        ? "white"
+                        : "custom.primaryText",
+                  },
+                  "& .MuiInputBase-root input": {
+                    color:
+                      theme.palette.mode === "dark"
+                        ? "white"
+                        : "custom.primaryText",
+                  },
                 }}
               />
 
@@ -203,17 +234,26 @@ export default function ContactUs() {
                 margin="normal"
                 error={!!errors?.message}
                 helperText={errors?.message && "Message body cannot be empty"}
-                InputLabelProps={{
-                  style: { color: "white" },
-                }}
-                InputProps={{
-                  style: { color: "white" },
+                sx={{
+                  "& .MuiInputLabel-root": {
+                    color:
+                      theme.palette.mode === "dark"
+                        ? "white"
+                        : "custom.primaryText",
+                  },
+                  "& .MuiInputBase-root input": {
+                    color:
+                      theme.palette.mode === "dark"
+                        ? "white"
+                        : "custom.primaryText",
+                  },
                 }}
               />
 
               <Button
                 type="submit"
                 variant="contained"
+                size="large"
                 sx={{
                   mt: 3,
                   color: "white",
