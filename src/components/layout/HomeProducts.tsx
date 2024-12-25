@@ -71,11 +71,14 @@ const HomeProducts: React.FC = () => {
       if (error) {
         console.error("Error fetching data from Supabase:", error);
       } else {
-        setItServices(data); // Set the fetched IT services data
+        // Sort the fetched data by ID (ascending order)
+        const sortedData = data.sort((a, b) => a.id - b.id);
+
+        setItServices(sortedData); // Set the sorted IT services data
 
         // Automatically select the first service if it hasn't been selected already
-        if (data.length > 0 && selectedCard === 0) {
-          setSelectedCard(1); // Set first card as selected if no card is selected
+        if (sortedData.length > 0 && selectedCard === 0) {
+          setSelectedCard(0); // Set first card as selected if no card is selected
         }
       }
     };
