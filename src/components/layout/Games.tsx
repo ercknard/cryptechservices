@@ -1,5 +1,3 @@
-// components/Stats.tsx
-
 import {
   Grid,
   Card,
@@ -8,24 +6,34 @@ import {
   Box,
   Container,
   Stack,
-  Tooltip,
 } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import React from "react";
 import { useTheme } from "@mui/material";
 import { useThemeContext } from "@/theme/themeProvider";
+import supabase from "@/lib/supabase";
 
 // Define the types for the statistics
-interface StatsProps {
-  projectsCompleted: number;
-  happyClients: number;
-  teamMembers: number;
-  gameServers: number;
+interface Games {
+  game_name: string;
+  game_mode: string;
+  game_info: string;
+  game_cover: string;
+  game_icon: string;
+  game_link: string;
+  game_isdown: string;
+  game_gallery1: string;
+  game_gallery2: string;
+  game_gallery3: string;
+  game_gallery4: string;
+  game_gallery5: string;
 }
 
 const Games: React.FC = () => {
   const theme = useTheme();
   const { activeSet } = useThemeContext();
+  const [games, setGames] = useState<Games[]>([]);
+  const [selectedCard, setSelectedCard] = useState<number | null>(null); // State for tracking selected card
 
   const colorSetImageMap: { [key: string]: string } = {
     1: "/static/images/blue-upper-right.svg",
@@ -42,6 +50,22 @@ const Games: React.FC = () => {
   const currentYear = new Date().getFullYear();
   const CTExperience = currentYear - startYear;
 
+  useEffect(() => {
+    // Fetch IT Services data from Supabase
+    const fetchGames = async () => {
+      const { data, error } = await supabase.from("ztable_games").select("*");
+
+      if (error) {
+        console.error("Error fetching data from Supabase:", error);
+      } else {
+        setGames(data); // Set the fetched IT services data
+        console.log("Fetched projects:", data); // Log data here to check
+      }
+    };
+
+    fetchGames();
+  }, []);
+
   return (
     <Box
       position={"relative"}
@@ -55,14 +79,20 @@ const Games: React.FC = () => {
           marginTop={2}
           alignItems={"center"}
         >
-          <Grid item xs={12} sm={6} md={7}>
+          <Grid item xs={12} sm={12} md={12}>
             <Stack spacing={1.5}>
-              <Typography fontSize={"1rem"} color="custom.primaryText">
-                Welcome to Cryptech Services
-              </Typography>
+              <Stack
+                direction={"row"}
+                alignItems={"center"}
+                justifyContent={"space-between"}
+              >
+                <Typography fontSize={"1rem"} color="custom.primaryText">
+                  Cryptech Services Servers
+                </Typography>
+              </Stack>
               <Stack direction={"row"} spacing={1}>
                 <Typography variant="h3" paddingBottom={1}>
-                  Let us be Your
+                  Have all the things in the world with our
                 </Typography>
                 <Typography
                   variant="h3"
@@ -70,421 +100,206 @@ const Games: React.FC = () => {
                   color="custom.primaryText"
                   gutterBottom
                 >
-                  Partner
+                  Game Servers
                 </Typography>
               </Stack>
               <Typography variant={"h6"} color="custom.primaryTextGrayed">
-                We specialize in providing robust web3 and fullstack development
-                services, with a primary focus on cryptocurrency, blockchain
-                technology, and web design. Additionally, we offer expert
-                services in the realms of cybersecurity , as well as technical
-                support and consultation.
+                Come play with us and join the fun!
               </Typography>
-
-              {/* <Stack
-                direction={"row"}
-                justifyContent={"space-evenly"}
-                paddingTop={"2.5rem"}
-              >
-                <Tooltip title="Bitcoin" arrow>
-                  <CurrencyBitcoinOutlinedIcon
-                    sx={{
-                      color: `${theme.palette.custom.mainColor}`,
-                      fontSize: 40,
-                      "&:hover": {
-                        cursor: "pointer",
-                      },
-                    }}
-                  />
-                </Tooltip>
-
-                <Tooltip title="Manufacturing" arrow>
-                  <PrecisionManufacturingOutlinedIcon
-                    sx={{
-                      color: `${theme.palette.custom.mainColor}`,
-                      fontSize: 40,
-                      "&:hover": {
-                        cursor: "pointer",
-                      },
-                    }}
-                  />
-                </Tooltip>
-
-                <Tooltip title="Security" arrow>
-                  <ShieldOutlinedIcon
-                    sx={{
-                      color: `${theme.palette.custom.mainColor}`,
-                      fontSize: 40,
-                      "&:hover": {
-                        cursor: "pointer",
-                      },
-                    }}
-                  />
-                </Tooltip>
-
-                <Tooltip title="Design Services" arrow>
-                  <DesignServicesOutlinedIcon
-                    sx={{
-                      color: `${theme.palette.custom.mainColor}`,
-                      fontSize: 40,
-                      "&:hover": {
-                        cursor: "pointer",
-                      },
-                    }}
-                  />
-                </Tooltip>
-
-                <Tooltip title="Support" arrow>
-                  <SupportAgentOutlinedIcon
-                    sx={{
-                      color: `${theme.palette.custom.mainColor}`,
-                      fontSize: 40,
-                      "&:hover": {
-                        cursor: "pointer",
-                      },
-                    }}
-                  />
-                </Tooltip>
-              </Stack> */}
             </Stack>
           </Grid>
 
-          <Grid item xs={12} sm={6} md={5}>
-            <Box
-              sx={{
-                position: "relative",
-                "&:hover": {
-                  transform: "scale(1.05)", // Scale the entire box on hover
-                  transition: "transform 0.3s ease", // Smooth scaling transition
-                },
-              }}
+          {/* Conditionally render the selected game's details */}
+          {selectedCard !== null && games[selectedCard] && (
+            <Grid
+              container
+              xs={12}
+              justifyContent={"center"}
+              marginTop={5}
+              marginBottom={5}
             >
-              <Box
-                sx={{
-                  position: "absolute",
-                  top: "50%",
-                  left: "50%",
-                  width: "75%",
-                  height: "75%",
-                  transform: "translate(-50%, -50%)",
-                  background: `${theme.palette.custom.mainColor}`,
-                  transition: "background 0.3s ease", // Transition background color on hover
-                  "&:hover": {
-                    background: `${theme.palette.custom.secondaryComponents}`, // Change background on hover
-                  },
-                }}
-              />
-              <Box
-                component={"img"}
-                src="/static/images/stats-cover.jpg"
-                sx={{
-                  width: "100%",
-                  clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)",
-                  transition: "transform 0.3s ease",
-                  "&:hover": {
-                    transform: "scale(1.2)", // Slight zoom effect on hover
-                  },
-                }}
-              />
+              {/* Display the selected game */}
+              <Grid item xs={12} sm={6} md={4}>
+                <Box
+                  sx={{
+                    position: "relative",
+                    marginTop: "2.5rem",
+                    "&:hover": {
+                      transform: "scale(1.05)", // Scale the entire box on hover
+                      transition: "transform 0.3s ease", // Smooth scaling transition
+                    },
+                  }}
+                >
+                  <Box
+                    sx={{
+                      position: "absolute",
+                      top: "50%",
+                      left: "50%",
+                      width: "75%",
+                      height: "75%",
+                      transform: "translate(-50%, -50%)",
+                      background: `${theme.palette.custom.mainColor}`,
+                      transition: "background 0.3s ease", // Transition background color on hover
+                      "&:hover": {
+                        background: `${theme.palette.custom.secondaryComponents}`, // Change background on hover
+                      },
+                    }}
+                  />
+                  <Box
+                    component={"img"}
+                    src={games[selectedCard].game_cover}
+                    sx={{
+                      width: "100%",
+                      clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)",
+                      transition: "transform 0.3s ease",
+                      "&:hover": {
+                        transform: "scale(1.2)", // Slight zoom effect on hover
+                      },
+                    }}
+                  />
 
-              <Box
-                sx={{
-                  position: "absolute",
-                  left: "0",
-                  top: "0",
-                  width: "100%",
-                  height: "100%",
-                  background: `radial-gradient(at center, transparent, ${theme.palette.custom.secondaryBackground})`,
-                  transition: "opacity 0.3s ease",
-                  "&:hover": {
-                    opacity: 0.7, // Fade the background slightly on hover
-                  },
-                }}
-              />
+                  <Box
+                    sx={{
+                      position: "absolute",
+                      left: "0",
+                      top: "0",
+                      width: "100%",
+                      height: "100%",
+                      background: `radial-gradient(at center, transparent, ${theme.palette.custom.primaryBackground})`,
+                      transition: "opacity 0.3s ease",
+                      "&:hover": {
+                        opacity: 0.7, // Fade the background slightly on hover
+                      },
+                    }}
+                  />
 
-              <Box
-                component={"img"}
-                src={imageSrc}
-                sx={{
-                  position: "absolute",
-                  left: "-10%",
-                  top: "10%",
-                  width: "100%",
-                  height: "100%",
-                  transition: "transform 0.3s ease",
-                  "&:hover": {
-                    transform: "scale(1.05)", // Slight zoom effect on hover
-                  },
-                }}
-              />
+                  <Box
+                    component={"img"}
+                    src={imageSrc}
+                    sx={{
+                      position: "absolute",
+                      left: "-10%",
+                      top: "10%",
+                      width: "100%",
+                      height: "100%",
+                      transition: "transform 0.3s ease",
+                      "&:hover": {
+                        transform: "scale(1.05)", // Slight zoom effect on hover
+                      },
+                    }}
+                  />
 
-              <Box
-                component={"img"}
-                src={imageSrc}
-                sx={{
-                  position: "absolute",
-                  left: "10%",
-                  top: "-10%",
-                  width: "100%",
-                  height: "100%",
-                  transform: "scale(-1)",
-                  transition: "transform 0.3s ease",
-                  "&:hover": {
-                    transform: "scale(-1.05)", // Slight zoom effect and scale flip
-                  },
-                }}
-              />
-            </Box>
-          </Grid>
+                  <Box
+                    component={"img"}
+                    src={imageSrc}
+                    sx={{
+                      position: "absolute",
+                      left: "10%",
+                      top: "-10%",
+                      width: "100%",
+                      height: "100%",
+                      transform: "scale(-1)",
+                      transition: "transform 0.3s ease",
+                      "&:hover": {
+                        transform: "scale(-1.05)", // Slight zoom effect and scale flip
+                      },
+                    }}
+                  />
+                </Box>
+              </Grid>
+
+              <Grid item xs={12} sm={12} md={12} marginTop={3}>
+                <Stack spacing={1.5}>
+                  <Typography
+                    fontSize={"1rem"}
+                    color="custom.primaryText"
+                    textAlign={"center"}
+                  >
+                    {games[selectedCard].game_name}
+                  </Typography>
+                  <Stack
+                    direction={"row"}
+                    spacing={1}
+                    justifyContent={"center"}
+                  >
+                    <Typography
+                      variant="h3"
+                      fontWeight={600}
+                      color="custom.primaryText"
+                      gutterBottom
+                    >
+                      {games[selectedCard].game_mode}
+                    </Typography>
+                  </Stack>
+                  <Typography
+                    variant={"h6"}
+                    color="custom.primaryTextGrayed"
+                    textAlign={"center"}
+                  >
+                    {games[selectedCard].game_info}
+                  </Typography>
+                </Stack>
+              </Grid>
+
+              <Grid item xs={12} sm={12} md={12} marginTop={3}>
+                <Stack direction={"row"} spacing={5} justifyContent={"center"}>
+                  {[
+                    games[selectedCard].game_gallery1,
+                    games[selectedCard].game_gallery2,
+                    games[selectedCard].game_gallery3,
+                    games[selectedCard].game_gallery4,
+                    games[selectedCard].game_gallery5,
+                  ].map((galleryImage, index) => (
+                    <Box key={index} position={"relative"} width={"30%"}>
+                      <Box
+                        component={"img"}
+                        src={galleryImage}
+                        sx={{
+                          width: "100%",
+                          transition: "transform 0.3s ease",
+                          "&:hover": {
+                            transform: "scale(1.05)", // Slight zoom effect on hover
+                          },
+                        }}
+                      />
+                    </Box>
+                  ))}
+                </Stack>
+              </Grid>
+            </Grid>
+          )}
         </Grid>
 
-        {/* <Grid container spacing={3} justifyContent="center" marginTop={2}>
-          <Grid item xs={12} sm={6} md={4}>
-            <Card
-              sx={{
-                padding: 2,
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                cursor: "pointer",
-                transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                position: "relative", // Added to ensure image stays in position
-                "&:hover": {
-                  transform: "scale(1.05)",
-                  boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)",
-                  backgroundColor: "custom.primaryComponents",
-                  "& .image": {
-                    transition: "opacity 0.3s ease",
-                    opacity: 1, // Make the image opacity 1 when the card is hovered
-                  },
-                },
-              }}
-            >
-              <CardContent>
-                <Stack direction={"row"} spacing={2} alignItems={"center"}>
-                  <Typography variant="h4" color="primary" fontWeight="bold">
-                    {CTExperience}
-                  </Typography>
-                  <Typography variant="h6" color="text.secondary">
-                    Years of Experience as CT Team
-                  </Typography>
-                </Stack>
-              </CardContent>
-
-              <Box
-                component="img"
-                src={imageSrc}
+        {/* Cards to Select the Grid View */}
+        <Grid item xs={12} sm={12} md={12} marginTop={5}>
+          <Stack direction={"row"} spacing={5} justifyContent="center">
+            {games.slice(0, 3).map((game, index) => (
+              <Card
+                key={index}
+                onClick={() => setSelectedCard(index)}
                 sx={{
-                  position: "absolute",
-                  right: "0",
-                  top: "0",
-                  height: "100%",
-                  pointerEvents: "none",
-                  aspectRatio: "auto",
-                  opacity: ".1",
-                  "&.image": {},
-                }}
-                className="image"
-              />
-            </Card>
-          </Grid>
-
-          <Grid item xs={12} sm={6} md={4}>
-            <Card
-              sx={{
-                padding: 2,
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                cursor: "pointer",
-                transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                position: "relative", // Added to ensure image stays in position
-                "&:hover": {
-                  transform: "scale(1.05)",
-                  boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)",
-                  backgroundColor: "custom.primaryComponents",
-                  "& .image": {
-                    transition: "opacity 0.3s ease",
-                    opacity: 1, // Make the image opacity 1 when the card is hovered
+                  width: "200px",
+                  padding: "1rem",
+                  cursor: "pointer",
+                  backgroundColor:
+                    selectedCard === index
+                      ? theme.palette.primary.main
+                      : theme.palette.background.paper,
+                  "&:hover": {
+                    backgroundColor: theme.palette.primary.dark,
                   },
-                },
-              }}
-            >
-              <CardContent>
-                <Stack direction={"row"} spacing={2} alignItems={"center"}>
-                  <Typography variant="h4" color="primary" fontWeight="bold">
-                    {projectsCompleted}+
-                  </Typography>
-                  <Typography variant="h6" color="text.secondary">
-                    Projects Completed
-                  </Typography>
-                </Stack>
-              </CardContent>
-              <Box
-                component="img"
-                src={imageSrc}
-                sx={{
-                  position: "absolute",
-                  right: "0",
-                  top: "0",
-                  height: "100%",
-                  pointerEvents: "none",
-                  aspectRatio: "auto",
-                  opacity: ".1",
-                  "&.image": {},
                 }}
-                className="image"
-              />
-            </Card>
-          </Grid>
-
-          <Grid item xs={12} sm={6} md={4}>
-            <Card
-              sx={{
-                padding: 2,
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                cursor: "pointer",
-                transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                position: "relative", // Added to ensure image stays in position
-                "&:hover": {
-                  transform: "scale(1.05)",
-                  boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)",
-                  backgroundColor: "custom.primaryComponents",
-                  "& .image": {
-                    transition: "opacity 0.3s ease",
-                    opacity: 1, // Make the image opacity 1 when the card is hovered
-                  },
-                },
-              }}
-            >
-              <CardContent>
-                <Stack direction={"row"} spacing={2} alignItems={"center"}>
-                  <Typography variant="h4" color="primary" fontWeight="bold">
-                    {happyClients}+
+              >
+                <CardContent>
+                  <Typography variant="h6">{`Card ${index + 1}`}</Typography>
+                  <Typography variant="body2" color="textSecondary">
+                    Select this card to view the game.
                   </Typography>
-                  <Typography variant="h6" color="text.secondary">
-                    Happy Clients
-                  </Typography>
-                </Stack>
-              </CardContent>
-              <Box
-                component="img"
-                src={imageSrc}
-                sx={{
-                  position: "absolute",
-                  right: "0",
-                  top: "0",
-                  height: "100%",
-                  pointerEvents: "none",
-                  aspectRatio: "auto",
-                  opacity: ".1",
-                  "&.image": {},
-                }}
-                className="image"
-              />
-            </Card>
-          </Grid>
-
-          <Grid item xs={12} sm={6} md={4}>
-            <Card
-              sx={{
-                padding: 2,
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                cursor: "pointer",
-                transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                position: "relative", // Added to ensure image stays in position
-                "&:hover": {
-                  transform: "scale(1.05)",
-                  boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)",
-                  backgroundColor: "custom.primaryComponents",
-                  "& .image": {
-                    transition: "opacity 0.3s ease",
-                    opacity: 1, // Make the image opacity 1 when the card is hovered
-                  },
-                },
-              }}
-            >
-              <CardContent>
-                <Stack direction={"row"} spacing={2} alignItems={"center"}>
-                  <Typography variant="h4" color="primary" fontWeight="bold">
-                    {teamMembers}
-                  </Typography>
-                  <Typography variant="h6" color="text.secondary">
-                    Team Members
-                  </Typography>
-                </Stack>
-              </CardContent>
-              <Box
-                component="img"
-                src={imageSrc}
-                sx={{
-                  position: "absolute",
-                  right: "0",
-                  top: "0",
-                  height: "100%",
-                  pointerEvents: "none",
-                  aspectRatio: "auto",
-                  opacity: ".1",
-                  "&.image": {},
-                }}
-                className="image"
-              />
-            </Card>
-          </Grid>
-
-          <Grid item xs={12} sm={6} md={4}>
-            <Card
-              sx={{
-                padding: 2,
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                cursor: "pointer",
-                transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                position: "relative", // Added to ensure image stays in position
-                "&:hover": {
-                  transform: "scale(1.05)",
-                  boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)",
-                  backgroundColor: "custom.primaryComponents",
-                  "& .image": {
-                    transition: "opacity 0.3s ease",
-                    opacity: 1, // Make the image opacity 1 when the card is hovered
-                  },
-                },
-              }}
-            >
-              <CardContent>
-                <Stack direction={"row"} spacing={2} alignItems={"center"}>
-                  <Typography variant="h4" color="primary" fontWeight="bold">
-                    {gameServers}
-                  </Typography>
-                  <Typography variant="h6" color="text.secondary">
-                    Game Servers
-                  </Typography>
-                </Stack>
-              </CardContent>
-              <Box
-                component="img"
-                src={imageSrc}
-                sx={{
-                  position: "absolute",
-                  right: "0",
-                  top: "0",
-                  height: "100%",
-                  pointerEvents: "none",
-                  aspectRatio: "auto",
-                  opacity: ".1",
-                  "&.image": {},
-                }}
-                className="image"
-              />
-            </Card>
-          </Grid>
-        </Grid> */}
+                </CardContent>
+              </Card>
+            ))}
+          </Stack>
+        </Grid>
       </Container>
     </Box>
   );
