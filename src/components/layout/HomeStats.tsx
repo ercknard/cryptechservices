@@ -14,11 +14,6 @@ import { useState } from "react";
 import React from "react";
 import { useTheme } from "@mui/material";
 import { useThemeContext } from "@/theme/themeProvider";
-import CurrencyBitcoinOutlinedIcon from "@mui/icons-material/CurrencyBitcoinOutlined";
-import PrecisionManufacturingOutlinedIcon from "@mui/icons-material/PrecisionManufacturingOutlined";
-import ShieldOutlinedIcon from "@mui/icons-material/ShieldOutlined";
-import DesignServicesOutlinedIcon from "@mui/icons-material/DesignServicesOutlined";
-import SupportAgentOutlinedIcon from "@mui/icons-material/SupportAgentOutlined";
 
 // Define the types for the statistics
 interface StatsProps {

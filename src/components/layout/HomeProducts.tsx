@@ -25,14 +25,14 @@ interface ITServices {
 }
 
 // Import dummy icons for now
-import {
-  Home,
-  Build,
-  Cloud,
-  Code,
-  Security,
-  ShoppingCart,
-} from "@mui/icons-material";
+import CurrencyBitcoinOutlinedIcon from "@mui/icons-material/CurrencyBitcoinOutlined";
+import PrecisionManufacturingOutlinedIcon from "@mui/icons-material/PrecisionManufacturingOutlined";
+import ShieldOutlinedIcon from "@mui/icons-material/ShieldOutlined";
+import DesignServicesOutlinedIcon from "@mui/icons-material/DesignServicesOutlined";
+import SupportAgentOutlinedIcon from "@mui/icons-material/SupportAgentOutlined";
+import LayersIcon from "@mui/icons-material/Layers";
+import PublicIcon from "@mui/icons-material/Public";
+import DrawIcon from "@mui/icons-material/Draw";
 
 const HomeProducts: React.FC = () => {
   const theme = useTheme();
@@ -42,12 +42,12 @@ const HomeProducts: React.FC = () => {
   const [itServices, setItServices] = useState<ITServices[]>([]);
 
   const iconMap: { [key: string]: React.ElementType } = {
-    Home,
-    Build,
-    Cloud,
-    Code,
-    Security,
-    ShoppingCart,
+    LayersIcon,
+    CurrencyBitcoinOutlinedIcon,
+    PublicIcon,
+    DesignServicesOutlinedIcon,
+    DrawIcon,
+    SupportAgentOutlinedIcon,
   };
 
   const colorSetImageMap: { [key: string]: string } = {
@@ -72,11 +72,16 @@ const HomeProducts: React.FC = () => {
         console.error("Error fetching data from Supabase:", error);
       } else {
         setItServices(data); // Set the fetched IT services data
+
+        // Automatically select the first service if it hasn't been selected already
+        if (data.length > 0 && selectedCard === 0) {
+          setSelectedCard(1); // Set first card as selected if no card is selected
+        }
       }
     };
 
     fetchITServices();
-  }, []);
+  }, []); // Empty dependency array to run only once on mount
 
   useEffect(() => {
     if (selectedCard !== null) {
@@ -307,7 +312,7 @@ const HomeProducts: React.FC = () => {
                     }}
                   >
                     {React.createElement(
-                      iconMap[service.service_icon] || Home,
+                      iconMap[service.service_icon] || LayersIcon,
                       { fontSize: "large" }
                     )}
                   </Icon>
