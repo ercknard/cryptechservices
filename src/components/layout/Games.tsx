@@ -43,7 +43,10 @@ const Games: React.FC = () => {
   const CTExperience = currentYear - startYear;
 
   return (
-    <Box position={"relative"} sx={{ paddingY: "5rem" }}>
+    <Box
+      position={"relative"}
+      sx={{ paddingY: "5rem", backgroundColor: "custom.primaryBackground" }}
+    >
       <Container>
         <Grid
           container

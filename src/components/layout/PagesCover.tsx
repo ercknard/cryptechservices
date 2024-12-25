@@ -31,6 +31,7 @@ const PagesCover = () => {
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           transform: "scaleX(-1)",
+          opacity: ".5",
         }}
       />
 
