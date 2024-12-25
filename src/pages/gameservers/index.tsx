@@ -4,6 +4,7 @@ import { Box, Stack, Typography, useTheme } from "@mui/material";
 import Wrapper from "@/components/layout/Wrapper";
 import Particlesview from "@/components/layout/Particles";
 import PagesCover from "@/components/layout/PagesCover";
+import Games from "@/components/layout/Games";
 
 const GamePage = () => {
   const theme = useTheme();
@@ -45,7 +46,11 @@ const GamePage = () => {
           <PagesCover />
         </Box>
 
-        <Box position={"relative"} minHeight={"100vh"}>
+        <Box
+          position={"relative"}
+          paddingBottom={"3rem"}
+          bgcolor={`${theme.palette.custom.primaryBackground}`}
+        >
           <Box
             sx={{
               position: "absolute",
@@ -53,10 +58,11 @@ const GamePage = () => {
               top: "-10%",
               width: "calc(100vw - 5px)",
               minHeight: "10rem",
-              background: `linear-gradient(to top, ${theme.palette.custom.secondaryBackground}, transparent)`,
+              background: `linear-gradient(to top, ${theme.palette.custom.primaryBackground}, transparent)`,
             }}
           />
         </Box>
+        <Games />
       </Wrapper>
     </>
   );
