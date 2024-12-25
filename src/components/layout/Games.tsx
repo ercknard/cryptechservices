@@ -6,6 +6,7 @@ import {
   Box,
   Container,
   Stack,
+  Button,
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import React from "react";
@@ -33,7 +34,8 @@ const Games: React.FC = () => {
   const theme = useTheme();
   const { activeSet } = useThemeContext();
   const [games, setGames] = useState<Games[]>([]);
-  const [selectedCard, setSelectedCard] = useState<number | null>(null); // State for tracking selected card
+  const [selectedCard, setSelectedCard] = useState<number>(0); // Default index to 0
+  const [animateOnSelect, setAnimateOnSelect] = useState<boolean>(false);
 
   const colorSetImageMap: { [key: string]: string } = {
     1: "/static/images/blue-upper-right.svg",
@@ -58,13 +60,32 @@ const Games: React.FC = () => {
       if (error) {
         console.error("Error fetching data from Supabase:", error);
       } else {
-        setGames(data); // Set the fetched IT services data
-        console.log("Fetched projects:", data); // Log data here to check
+        // Sort the fetched data by ID (ascending order)
+        const sortedData = data.sort((a, b) => a.id - b.id);
+
+        setGames(sortedData); // Set the sorted IT services data
+
+        // Automatically select the first service if it hasn't been selected already
+        if (sortedData.length > 0 && selectedCard === 0) {
+          setSelectedCard(0); // Set first card as selected if no card is selected
+        }
       }
     };
 
     fetchGames();
   }, []);
+
+  useEffect(() => {
+    if (selectedCard !== null) {
+      setAnimateOnSelect(true);
+
+      // Reset the animation after it finishes (using the same duration as your transition time)
+      const timeout = setTimeout(() => {
+        setAnimateOnSelect(false);
+      }, 300); // Match the duration of the transition
+      return () => clearTimeout(timeout);
+    }
+  }, [selectedCard]);
 
   return (
     <Box
@@ -124,6 +145,8 @@ const Games: React.FC = () => {
                   sx={{
                     position: "relative",
                     marginTop: "2.5rem",
+                    transition: "transform 0.3s ease",
+                    transform: animateOnSelect ? "scale(1.05)" : "scale(1)",
                     "&:hover": {
                       transform: "scale(1.05)", // Scale the entire box on hover
                       transition: "transform 0.3s ease", // Smooth scaling transition
@@ -209,7 +232,13 @@ const Games: React.FC = () => {
               </Grid>
 
               <Grid item xs={12} sm={12} md={12} marginTop={3}>
-                <Stack spacing={1.5}>
+                <Stack
+                  spacing={1.5}
+                  sx={{
+                    transition: "opacity 0.3s ease",
+                    opacity: animateOnSelect ? ".5" : "1",
+                  }}
+                >
                   <Typography
                     fontSize={"1rem"}
                     color="custom.primaryText"
@@ -265,37 +294,67 @@ const Games: React.FC = () => {
                     </Box>
                   ))}
                 </Stack>
+
+                <Box display="flex" justifyContent="right" marginTop={2}>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    href={`${games[selectedCard].game_link}`} // Replace with your desired URL
+                    target="_blank" // Opens the link in a new tab
+                    rel="noopener noreferrer" // For security reasons when using target="_blank"
+                    size="large"
+                  >
+                    Visit {games[selectedCard].game_mode}
+                  </Button>
+                </Box>
               </Grid>
             </Grid>
           )}
         </Grid>
 
         {/* Cards to Select the Grid View */}
-        <Grid item xs={12} sm={12} md={12} marginTop={5}>
+        <Grid item xs={12} sm={12} md={12} marginTop={3}>
           <Stack direction={"row"} spacing={5} justifyContent="center">
             {games.slice(0, 3).map((game, index) => (
               <Card
                 key={index}
                 onClick={() => setSelectedCard(index)}
                 sx={{
-                  width: "200px",
-                  padding: "1rem",
+                  padding: 1,
+                  position: "relative",
+                  width: "100%",
+                  height: "100%",
                   cursor: "pointer",
+                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
                   backgroundColor:
                     selectedCard === index
-                      ? theme.palette.primary.main
-                      : theme.palette.background.paper,
+                      ? "custom.secondaryComponents"
+                      : "none",
                   "&:hover": {
-                    backgroundColor: theme.palette.primary.dark,
+                    transform: "scale(1.05)",
+                    boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)",
+                    backgroundColor: "custom.primaryComponents",
                   },
                 }}
               >
                 <CardContent>
-                  <Typography variant="h6">{`Card ${index + 1}`}</Typography>
+                  <Typography variant="h6">{game.game_mode}</Typography>
                   <Typography variant="body2" color="textSecondary">
-                    Select this card to view the game.
+                    A {game.game_name} server.
                   </Typography>
                 </CardContent>
+                <Box
+                  component={"img"}
+                  src={imageSrc}
+                  sx={{
+                    position: "absolute",
+                    right: "0",
+                    top: "0",
+                    height: "100%",
+                    transition: "opacity 0.3s ease",
+                    opacity: selectedCard === index ? "1" : ".1",
+                  }}
+                />
               </Card>
             ))}
           </Stack>
