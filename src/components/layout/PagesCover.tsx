@@ -26,22 +26,6 @@ const PagesCover = () => {
           top: "0",
           width: "calc(100vw - 5px)",
           minHeight: "50vh",
-          backgroundImage: `url(/static/images/pages-cover.jpg)`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          transform: "scaleX(-1)",
-          opacity: ".5",
-        }}
-      />
-
-      <Box
-        sx={{
-          position: "absolute",
-          left: "0",
-          top: "0",
-          width: "calc(100vw - 5px)",
-          minHeight: "50vh",
           background: "rgba(43, 43, 43, .5)",
         }}
       />

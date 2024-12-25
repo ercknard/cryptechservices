@@ -25,6 +25,21 @@ const ITServicesPage = () => {
             justifyContent: "center",
           }}
         >
+          <Box
+            sx={{
+              position: "absolute",
+              left: "0",
+              top: "0",
+              width: "calc(100vw - 5px)",
+              minHeight: "50vh",
+              backgroundImage: `url(/static/images/pages-cover.jpg)`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+              transform: "scaleX(-1)",
+            }}
+          />
+
           <Box zIndex={1}>
             <Stack direction={"row"} spacing={1}>
               <Typography variant="title" fontWeight={600} paddingBottom={1}>
@@ -54,13 +69,12 @@ const ITServicesPage = () => {
             sx={{
               position: "absolute",
               left: "0",
-              top: "-10%",
+              top: "-17.5%",
               width: "calc(100vw - 5px)",
               minHeight: "10rem",
               background: `linear-gradient(to top, ${theme.palette.custom.primaryBackground}, transparent)`,
             }}
           />
-          <HomeProducts />
         </Box>
       </Wrapper>
     </>
