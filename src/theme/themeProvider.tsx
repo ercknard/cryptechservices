@@ -381,10 +381,46 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
 
   const iconColor = customPalette.palette.custom.primaryText;
 
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  // Scroll event listener to track scroll progress
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPosition = window.scrollY;
+      setScrollProgress((scrollPosition / totalHeight) * 100);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <ThemeContext.Provider value={customPalette}>
       <MuiThemeProvider theme={customPalette}>
         <CssBaseline />
+        <Box
+          sx={{
+            position: "fixed",
+            bottom: 0,
+            left: 0,
+            right: 0,
+            height: "4px",
+            backgroundColor: "transparent",
+            zIndex: 10,
+          }}
+        >
+          <Box
+            sx={{
+              height: "100%",
+              width: `${scrollProgress}%`,
+              backgroundColor: customPalette.palette.custom.mainColor,
+            }}
+          />
+        </Box>
         <ChangeLoader
           loading={loading}
           key={loaderKey}
