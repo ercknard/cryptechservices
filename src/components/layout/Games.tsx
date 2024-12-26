@@ -13,8 +13,16 @@ import React from "react";
 import { useTheme } from "@mui/material";
 import { useThemeContext } from "@/theme/themeProvider";
 import supabase from "@/lib/supabase";
+import { Swiper, SwiperSlide } from "swiper/react";
+import {
+  Pagination as SwiperPagination, // Renaming Swiper Pagination
+  Autoplay, // Renaming Swiper Navigation
+} from "swiper/modules";
 
-// Define the types for the statistics
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+
 interface Games {
   game_name: string;
   game_mode: string;
@@ -28,14 +36,16 @@ interface Games {
   game_gallery3: string;
   game_gallery4: string;
   game_gallery5: string;
+  game_bg: string;
 }
 
 const Games: React.FC = () => {
   const theme = useTheme();
   const { activeSet } = useThemeContext();
-  const [games, setGames] = useState<Games[]>([]);
+  const [games, setGames] = useState<Games[]>([]); // Assuming 'Games' interface is defined
   const [selectedCard, setSelectedCard] = useState<number>(0); // Default index to 0
   const [animateOnSelect, setAnimateOnSelect] = useState<boolean>(false);
+  const [backgroundImage, setBackgroundImage] = useState<string>(""); // State for dynamic background image
 
   const colorSetImageMap: { [key: string]: string } = {
     1: "/static/images/blue-upper-right.svg",
@@ -53,21 +63,16 @@ const Games: React.FC = () => {
   const CTExperience = currentYear - startYear;
 
   useEffect(() => {
-    // Fetch IT Services data from Supabase
     const fetchGames = async () => {
       const { data, error } = await supabase.from("ztable_games").select("*");
 
       if (error) {
         console.error("Error fetching data from Supabase:", error);
       } else {
-        // Sort the fetched data by ID (ascending order)
-        const sortedData = data.sort((a, b) => a.id - b.id);
+        setGames(data);
 
-        setGames(sortedData); // Set the sorted IT services data
-
-        // Automatically select the first service if it hasn't been selected already
-        if (sortedData.length > 0 && selectedCard === 0) {
-          setSelectedCard(0); // Set first card as selected if no card is selected
+        if (data.length > 0 && selectedCard === 0) {
+          setBackgroundImage(data[0].game_bg); // Set default background image to the first game's cover
         }
       }
     };
@@ -76,13 +81,18 @@ const Games: React.FC = () => {
   }, []);
 
   useEffect(() => {
+    if (games[selectedCard]) {
+      setBackgroundImage(games[selectedCard].game_bg); // Update background image when a game is selected
+    }
+  }, [selectedCard, games]);
+
+  useEffect(() => {
     if (selectedCard !== null) {
       setAnimateOnSelect(true);
 
-      // Reset the animation after it finishes (using the same duration as your transition time)
       const timeout = setTimeout(() => {
         setAnimateOnSelect(false);
-      }, 300); // Match the duration of the transition
+      }, 300);
       return () => clearTimeout(timeout);
     }
   }, [selectedCard]);
@@ -92,6 +102,44 @@ const Games: React.FC = () => {
       position={"relative"}
       sx={{ paddingY: "5rem", backgroundColor: "custom.primaryBackground" }}
     >
+      <Box
+        sx={{
+          position: "absolute",
+          left: "0",
+          top: "0",
+          width: "calc(100vw - 5px)",
+          minHeight: "10rem",
+          background: `linear-gradient(to bottom, ${theme.palette.custom.primaryBackground}, transparent)`,
+          zIndex: "2",
+        }}
+      />
+
+      <Box
+        sx={{
+          position: "absolute",
+          left: "0",
+          top: "0",
+          height: "100%",
+          width: "100%",
+          opacity: "0.1",
+        }}
+      >
+        {/* Dynamically update the background image based on the selected game */}
+        <Box
+          component={"img"}
+          src={backgroundImage}
+          sx={{
+            position: "absolute",
+            left: "0",
+            top: "0",
+            height: "100%",
+            width: "100%",
+            objectFit: "cover",
+            opacity: "1", // Controls the opacity to keep the content visible
+          }}
+        />
+      </Box>
+
       <Container>
         <Grid
           container
@@ -113,7 +161,7 @@ const Games: React.FC = () => {
               </Stack>
               <Stack direction={"row"} spacing={1}>
                 <Typography variant="h3" paddingBottom={1}>
-                  Have all the things in the world with our
+                  Come, play with us and
                 </Typography>
                 <Typography
                   variant="h3"
@@ -121,16 +169,15 @@ const Games: React.FC = () => {
                   color="custom.primaryText"
                   gutterBottom
                 >
-                  Game Servers
+                  Join the fun!
                 </Typography>
               </Stack>
               <Typography variant={"h6"} color="custom.primaryTextGrayed">
-                Come play with us and join the fun!
+                List of game servers that run by Cryptech Services.
               </Typography>
             </Stack>
           </Grid>
 
-          {/* Conditionally render the selected game's details */}
           {selectedCard !== null && games[selectedCard] && (
             <Grid
               container
@@ -139,7 +186,6 @@ const Games: React.FC = () => {
               marginTop={5}
               marginBottom={5}
             >
-              {/* Display the selected game */}
               <Grid item xs={12} sm={6} md={4}>
                 <Box
                   sx={{
@@ -162,10 +208,11 @@ const Games: React.FC = () => {
                       height: "75%",
                       transform: "translate(-50%, -50%)",
                       background: `${theme.palette.custom.mainColor}`,
-                      transition: "background 0.3s ease", // Transition background color on hover
+                      transition: "background 0.3s ease",
                       "&:hover": {
-                        background: `${theme.palette.custom.secondaryComponents}`, // Change background on hover
+                        background: `${theme.palette.custom.secondaryComponents}`,
                       },
+                      opacity: ".5",
                     }}
                   />
                   <Box
@@ -176,26 +223,11 @@ const Games: React.FC = () => {
                       clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)",
                       transition: "transform 0.3s ease",
                       "&:hover": {
-                        transform: "scale(1.2)", // Slight zoom effect on hover
+                        transform: "scale(1.2)",
                       },
+                      opacity: ".9",
                     }}
                   />
-
-                  <Box
-                    sx={{
-                      position: "absolute",
-                      left: "0",
-                      top: "0",
-                      width: "100%",
-                      height: "100%",
-                      background: `radial-gradient(at center, transparent, ${theme.palette.custom.primaryBackground})`,
-                      transition: "opacity 0.3s ease",
-                      "&:hover": {
-                        opacity: 0.5, // Fade the background slightly on hover
-                      },
-                    }}
-                  />
-
                   <Box
                     component={"img"}
                     src={imageSrc}
@@ -207,11 +239,10 @@ const Games: React.FC = () => {
                       height: "100%",
                       transition: "transform 0.3s ease",
                       "&:hover": {
-                        transform: "scale(1.05)", // Slight zoom effect on hover
+                        transform: "scale(1.05)",
                       },
                     }}
                   />
-
                   <Box
                     component={"img"}
                     src={imageSrc}
@@ -224,7 +255,7 @@ const Games: React.FC = () => {
                       transform: "scale(-1)",
                       transition: "transform 0.3s ease",
                       "&:hover": {
-                        transform: "scale(-1.05)", // Slight zoom effect and scale flip
+                        transform: "scale(-1.05)",
                       },
                     }}
                   />
@@ -269,17 +300,80 @@ const Games: React.FC = () => {
                   </Typography>
                 </Stack>
               </Grid>
+            </Grid>
+          )}
+        </Grid>
 
-              <Grid item xs={12} sm={12} md={12} marginTop={3}>
-                <Stack direction={"row"} spacing={5} justifyContent={"center"}>
-                  {[
-                    games[selectedCard].game_gallery1,
-                    games[selectedCard].game_gallery2,
-                    games[selectedCard].game_gallery3,
-                    games[selectedCard].game_gallery4,
-                    games[selectedCard].game_gallery5,
-                  ].map((galleryImage, index) => (
-                    <Box key={index} position={"relative"} width={"30%"}>
+        <Grid container xs={12} sm={12} md={12} spacing={5}>
+          <Grid item xs={12} sm={12} md={4}>
+            <Stack direction={"column"} spacing={4} justifyContent="center">
+              {games.slice(0, 3).map((game, index) => (
+                <Card
+                  key={index}
+                  onClick={() => setSelectedCard(index)}
+                  sx={{
+                    padding: 1,
+                    position: "relative",
+                    width: "100%",
+                    height: "100%",
+                    cursor: "pointer",
+                    transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                    backgroundColor:
+                      selectedCard === index
+                        ? "custom.secondaryComponents"
+                        : "none",
+                    "&:hover": {
+                      transform: "scale(1.05)",
+                      boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)",
+                      backgroundColor: "custom.primaryComponents",
+                    },
+                  }}
+                >
+                  <CardContent>
+                    <Typography variant="h6">{game.game_mode}</Typography>
+                    <Typography variant="body2" color="textSecondary">
+                      {game.game_name} server.
+                    </Typography>
+                  </CardContent>
+                  <Box
+                    component={"img"}
+                    src={imageSrc}
+                    sx={{
+                      position: "absolute",
+                      right: "0",
+                      top: "0",
+                      height: "100%",
+                      transition: "opacity 0.3s ease",
+                      opacity: selectedCard === index ? "1" : ".1",
+                    }}
+                  />
+                </Card>
+              ))}
+            </Stack>
+          </Grid>
+
+          <Grid item xs={12} sm={12} md={8}>
+            {games[selectedCard] && (
+              <Swiper
+                loop={true}
+                autoplay={{
+                  delay: 3000,
+                  disableOnInteraction: false,
+                }}
+                modules={[SwiperPagination, Autoplay]}
+                spaceBetween={10}
+                slidesPerView={1}
+                pagination={{ clickable: true }}
+              >
+                {[
+                  games[selectedCard].game_gallery1,
+                  games[selectedCard].game_gallery2,
+                  games[selectedCard].game_gallery3,
+                  games[selectedCard].game_gallery4,
+                  games[selectedCard].game_gallery5,
+                ].map((galleryImage, index) => (
+                  <SwiperSlide key={index}>
+                    <Box position={"relative"} width={"100%"}>
                       <Box
                         component={"img"}
                         src={galleryImage}
@@ -287,77 +381,62 @@ const Games: React.FC = () => {
                           width: "100%",
                           transition: "transform 0.3s ease",
                           "&:hover": {
-                            transform: "scale(1.05)", // Slight zoom effect on hover
+                            transform: "scale(1.05)",
+                          },
+                          aspectRatio: 16 / 9,
+                        }}
+                      />
+                      <Box
+                        component={"img"}
+                        src={imageSrc}
+                        sx={{
+                          position: "absolute",
+                          right: "0",
+                          top: "0",
+                          height: "100%",
+                          transition: "transform 0.3s ease",
+                          "&:hover": {
+                            transform: "scale(1.05)",
+                          },
+                        }}
+                      />
+                      <Box
+                        component={"img"}
+                        src={imageSrc}
+                        sx={{
+                          position: "absolute",
+                          left: "0",
+                          top: "0",
+                          height: "100%",
+                          transform: "scale(-1)",
+                          transition: "transform 0.3s ease",
+                          "&:hover": {
+                            transform: "scale(1.05)",
                           },
                         }}
                       />
                     </Box>
-                  ))}
-                </Stack>
-
-                <Box display="flex" justifyContent="right" marginTop={2}>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    href={`${games[selectedCard].game_link}`} // Replace with your desired URL
-                    target="_blank" // Opens the link in a new tab
-                    rel="noopener noreferrer" // For security reasons when using target="_blank"
-                    size="large"
-                  >
-                    Visit {games[selectedCard].game_mode}
-                  </Button>
-                </Box>
-              </Grid>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            )}
+          </Grid>
+          {games[selectedCard] && (
+            <Grid item xs={12} sm={12} md={12}>
+              <Box display="flex" justifyContent="right">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  href={`${games[selectedCard].game_link}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  size="large"
+                >
+                  Visit {games[selectedCard].game_mode}
+                </Button>
+              </Box>
             </Grid>
           )}
-        </Grid>
-
-        {/* Cards to Select the Grid View */}
-        <Grid item xs={12} sm={12} md={12} marginTop={3}>
-          <Stack direction={"row"} spacing={5} justifyContent="center">
-            {games.slice(0, 3).map((game, index) => (
-              <Card
-                key={index}
-                onClick={() => setSelectedCard(index)}
-                sx={{
-                  padding: 1,
-                  position: "relative",
-                  width: "100%",
-                  height: "100%",
-                  cursor: "pointer",
-                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                  backgroundColor:
-                    selectedCard === index
-                      ? "custom.secondaryComponents"
-                      : "none",
-                  "&:hover": {
-                    transform: "scale(1.05)",
-                    boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)",
-                    backgroundColor: "custom.primaryComponents",
-                  },
-                }}
-              >
-                <CardContent>
-                  <Typography variant="h6">{game.game_mode}</Typography>
-                  <Typography variant="body2" color="textSecondary">
-                    A {game.game_name} server.
-                  </Typography>
-                </CardContent>
-                <Box
-                  component={"img"}
-                  src={imageSrc}
-                  sx={{
-                    position: "absolute",
-                    right: "0",
-                    top: "0",
-                    height: "100%",
-                    transition: "opacity 0.3s ease",
-                    opacity: selectedCard === index ? "1" : ".1",
-                  }}
-                />
-              </Card>
-            ))}
-          </Stack>
         </Grid>
       </Container>
     </Box>
