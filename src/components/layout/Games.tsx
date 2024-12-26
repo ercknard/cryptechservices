@@ -135,7 +135,7 @@ const Games: React.FC = () => {
             height: "100%",
             width: "100%",
             objectFit: "cover",
-            opacity: "1", // Controls the opacity to keep the content visible
+            opacity: ".75", // Controls the opacity to keep the content visible
           }}
         />
       </Box>
