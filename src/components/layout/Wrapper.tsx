@@ -23,7 +23,7 @@ const Wrapper: React.FC<WrapperProps> = ({ children }) => {
   return (
     <Box>
       <Router>
-        <Box position={"fixed"} width={1} left={0} zIndex={100}>
+        <Box position={"fixed"} width={1} left={0} top={"4px"} zIndex={100}>
           <Navbar />
         </Box>
         {children}
