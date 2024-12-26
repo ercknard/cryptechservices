@@ -411,7 +411,7 @@ const Games: React.FC = () => {
                           transform: "scale(-1)",
                           transition: "transform 0.3s ease",
                           "&:hover": {
-                            transform: "scale(1.05)",
+                            transform: "scale(-1.05)",
                           },
                         }}
                       />
