@@ -4,6 +4,7 @@ import { Box, Stack, Typography, useTheme } from "@mui/material";
 import Wrapper from "@/components/layout/Wrapper";
 import HomeProducts from "@/components/layout/HomeProducts";
 import PagesCover from "@/components/layout/PagesCover";
+import Services from "@/components/layout/Services";
 
 const ITServicesPage = () => {
   const theme = useTheme();
@@ -76,6 +77,7 @@ const ITServicesPage = () => {
             }}
           />
         </Box>
+        <Services />
       </Wrapper>
     </>
   );

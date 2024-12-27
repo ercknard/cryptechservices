@@ -3,6 +3,7 @@ import { DefaultHead } from "@/components/layout/Head";
 import { Box, Stack, Typography, useTheme } from "@mui/material";
 import Wrapper from "@/components/layout/Wrapper";
 import PagesCover from "@/components/layout/PagesCover";
+import SecurityServices from "@/components/layout/SecurityServices";
 
 const SecurityServicesPage = () => {
   const theme = useTheme();
@@ -74,6 +75,7 @@ const SecurityServicesPage = () => {
             }}
           />
         </Box>
+        <SecurityServices />
       </Wrapper>
     </>
   );

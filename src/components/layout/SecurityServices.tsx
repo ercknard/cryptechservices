@@ -39,7 +39,7 @@ interface Games {
   game_bg: string;
 }
 
-const Games: React.FC = () => {
+const SecurityServices: React.FC = () => {
   const theme = useTheme();
   const { activeSet } = useThemeContext();
   const [games, setGames] = useState<Games[]>([]); // Assuming 'Games' interface is defined
@@ -159,12 +159,12 @@ const Games: React.FC = () => {
                 justifyContent={"space-between"}
               >
                 <Typography fontSize={"1rem"} color="custom.primaryText">
-                  Cryptech Services Servers
+                  Cryptech Security Services
                 </Typography>
               </Stack>
               <Stack direction={"row"} spacing={1}>
                 <Typography variant="h3" paddingBottom={1}>
-                  Come, play with us and
+                  Improve IT defense with our
                 </Typography>
                 <Typography
                   variant="h3"
@@ -172,11 +172,11 @@ const Games: React.FC = () => {
                   color="custom.primaryText"
                   gutterBottom
                 >
-                  Join the fun!
+                  Security Services
                 </Typography>
               </Stack>
               <Typography variant={"h6"} color="custom.primaryTextGrayed">
-                List of game servers that run by Cryptech Services.
+                For SECURITY service packages we offer
               </Typography>
             </Stack>
           </Grid>
@@ -285,8 +285,8 @@ const Games: React.FC = () => {
         </Grid>
 
         <Grid container xs={12} sm={12} md={12} spacing={5} mt={2.5}>
-          <Grid item xs={12} sm={12} md={4}>
-            <Stack direction={"column"} spacing={4} justifyContent="center">
+          <Grid item xs={12} sm={12} md={12}>
+            <Stack direction={"row"} spacing={4} justifyContent="center">
               {games.slice(0, 3).map((game, index) => (
                 <Card
                   key={index}
@@ -331,96 +331,10 @@ const Games: React.FC = () => {
               ))}
             </Stack>
           </Grid>
-
-          <Grid item xs={12} sm={12} md={8}>
-            {games[selectedCard] && (
-              <Swiper
-                loop={true}
-                autoplay={{
-                  delay: 3000,
-                  disableOnInteraction: false,
-                }}
-                modules={[SwiperPagination, Autoplay]}
-                spaceBetween={10}
-                slidesPerView={1}
-                pagination={{ clickable: true }}
-              >
-                {[
-                  games[selectedCard].game_gallery1,
-                  games[selectedCard].game_gallery2,
-                  games[selectedCard].game_gallery3,
-                  games[selectedCard].game_gallery4,
-                  games[selectedCard].game_gallery5,
-                ].map((galleryImage, index) => (
-                  <SwiperSlide key={index}>
-                    <Box position={"relative"} width={"100%"}>
-                      <Box
-                        component={"img"}
-                        src={galleryImage}
-                        sx={{
-                          width: "100%",
-                          transition: "transform 0.3s ease",
-                          "&:hover": {
-                            transform: "scale(1.05)",
-                          },
-                          aspectRatio: 16 / 9,
-                        }}
-                      />
-                      <Box
-                        component={"img"}
-                        src={imageSrc}
-                        sx={{
-                          position: "absolute",
-                          right: "0",
-                          top: "0",
-                          height: "100%",
-                          transition: "transform 0.3s ease",
-                          "&:hover": {
-                            transform: "scale(1.05)",
-                          },
-                        }}
-                      />
-                      <Box
-                        component={"img"}
-                        src={imageSrc}
-                        sx={{
-                          position: "absolute",
-                          left: "0",
-                          top: "0",
-                          height: "100%",
-                          transform: "scale(-1)",
-                          transition: "transform 0.3s ease",
-                          "&:hover": {
-                            transform: "scale(-1.05)",
-                          },
-                        }}
-                      />
-                    </Box>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            )}
-          </Grid>
-          {games[selectedCard] && (
-            <Grid item xs={12} sm={12} md={12}>
-              <Box display="flex" justifyContent="right">
-                <Button
-                  variant="contained"
-                  color="primary"
-                  href={`${games[selectedCard].game_link}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  size="large"
-                >
-                  Visit {games[selectedCard].game_mode}
-                </Button>
-              </Box>
-            </Grid>
-          )}
         </Grid>
       </Container>
     </Box>
   );
 };
 
-export default Games;
+export default SecurityServices;
