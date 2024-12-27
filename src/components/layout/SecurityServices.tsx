@@ -31,6 +31,7 @@ interface Security {
   security_feature4?: string;
   security_bg1: string;
   security_bg2: string;
+  security_packagenum: string;
   security_type: "standard" | "deluxe" | "deluxe_lts"; // Add this field
 }
 
@@ -148,7 +149,7 @@ const SecurityServices: React.FC = () => {
           height: "100%",
           transform: "scaleY(-1)",
           objectFit: "cover",
-          opacity: ".05",
+          opacity: ".025",
         }}
       />
 
@@ -162,7 +163,7 @@ const SecurityServices: React.FC = () => {
           height: "100%",
           transform: "scale(-1)",
           objectFit: "cover",
-          opacity: ".05",
+          opacity: ".025",
         }}
       />
 
@@ -317,10 +318,35 @@ const SecurityServices: React.FC = () => {
                   }}
                 >
                   <CardContent>
-                    <Typography variant="h6">{game.security_name}</Typography>
-                    <Typography variant="body2" color="textSecondary">
-                      {game.security_desc}
-                    </Typography>
+                    <Box position={"absolute"} top={".5rem"} left={".5rem"}>
+                      <Typography variant="h6" color="custom.primaryText">
+                        {game.security_packagenum}
+                      </Typography>
+                    </Box>
+                    <Box
+                      component={"img"}
+                      src={game.security_cover}
+                      sx={{
+                        marginLeft: "auto",
+                        marginRight: "auto",
+                        marginTop: "1rem",
+                        marginBottom: "1rem",
+                        width: "50%",
+                        transition: "transform 0.3s ease",
+                        "&:hover": {
+                          transform: "scale(1.1)",
+                        },
+                        opacity: ".9",
+                      }}
+                    />
+                    <Box>
+                      <Typography variant="h4" marginTop={3}>
+                        {game.security_name}
+                      </Typography>
+                      <Typography variant="body2" color="textSecondary">
+                        {game.security_desc}
+                      </Typography>
+                    </Box>
                   </CardContent>
                   <Box
                     component={"img"}
