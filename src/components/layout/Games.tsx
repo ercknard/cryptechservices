@@ -310,10 +310,34 @@ const Games: React.FC = () => {
                   }}
                 >
                   <CardContent>
-                    <Typography variant="h6">{game.game_mode}</Typography>
-                    <Typography variant="body2" color="textSecondary">
-                      {game.game_name} server.
-                    </Typography>
+                    <Stack
+                      direction={"row"}
+                      spacing={2.5}
+                      alignItems={"center"}
+                    >
+                      <Box
+                        component={"img"}
+                        src={game.game_cover}
+                        sx={{
+                          width: "20%",
+                          height: "200%",
+                          aspectRatio: "1/1",
+                          clipPath:
+                            "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)",
+                          transition: "transform 0.3s ease",
+                          "&:hover": {
+                            transform: "scale(1.2)",
+                          },
+                          opacity: ".9",
+                        }}
+                      />
+                      <Box>
+                        <Typography variant="h6">{game.game_mode}</Typography>
+                        <Typography variant="body2" color="textSecondary">
+                          {game.game_name} server.
+                        </Typography>
+                      </Box>
+                    </Stack>
                   </CardContent>
                   <Box
                     component={"img"}
