@@ -262,7 +262,7 @@ const SecurityServices: React.FC = () => {
                   }}
                 >
                   <Typography fontSize={"2rem"} color="custom.primaryText">
-                    {security[selectedCard].security_name}
+                    {security[selectedCard].security_name} Plan
                   </Typography>
                   <Typography variant="h5" gutterBottom>
                     {security[selectedCard].security_price}
@@ -294,7 +294,7 @@ const SecurityServices: React.FC = () => {
         <Grid container xs={12} sm={12} md={12} spacing={5} mt={2.5}>
           <Grid item xs={12} sm={12} md={12}>
             <Stack direction={"row"} spacing={4} justifyContent="center">
-              {security.slice(0, 3).map((game, index) => (
+              {security.map((game, index) => (
                 <Card
                   key={index}
                   onClick={() => setSelectedCard(index)}
