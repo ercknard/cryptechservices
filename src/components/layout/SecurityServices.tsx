@@ -13,40 +13,35 @@ import React from "react";
 import { useTheme } from "@mui/material";
 import { useThemeContext } from "@/theme/themeProvider";
 import supabase from "@/lib/supabase";
-import { Swiper, SwiperSlide } from "swiper/react";
-import {
-  Pagination as SwiperPagination, // Renaming Swiper Pagination
-  Autoplay, // Renaming Swiper Navigation
-} from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 
-interface Games {
-  game_name: string;
-  game_mode: string;
-  game_info: string;
-  game_cover: string;
-  game_icon: string;
+interface Security {
+  security_name: string;
+  security_desc: string;
+  security_cover: string;
+  security_price: string;
   game_link: string;
-  game_isdown: string;
-  game_gallery1: string;
-  game_gallery2: string;
-  game_gallery3: string;
-  game_gallery4: string;
-  game_gallery5: string;
-  game_bg: string;
+  security_feature1?: string;
+  security_feature2?: string;
+  security_feature3?: string;
+  security_feature4?: string;
+  security_bg1: string;
+  security_bg2: string;
+  security_type: "standard" | "deluxe" | "deluxe_lts"; // Add this field
 }
 
 const SecurityServices: React.FC = () => {
   const theme = useTheme();
-  const { activeSet } = useThemeContext();
-  const [games, setGames] = useState<Games[]>([]); // Assuming 'Games' interface is defined
-  const [selectedCard, setSelectedCard] = useState<number>(0); // Default index to 0
+  const { activeSet } = useThemeContext(); // activeSet will determine the theme's background
+  const [security, setSecurity] = useState<Security[]>([]);
+  const [selectedCard, setSelectedCard] = useState<number>(0);
   const [animateOnSelect, setAnimateOnSelect] = useState<boolean>(false);
-  const [backgroundImage, setBackgroundImage] = useState<string>(""); // State for dynamic background image
+  const [backgroundImage, setBackgroundImage] = useState<string>("");
 
+  // Map to get background images based on activeSet (theme)
   const colorSetImageMap: { [key: string]: string } = {
     1: "/static/images/blue-upper-right.svg",
     2: "/static/images/green-upper-right.svg",
@@ -54,41 +49,65 @@ const SecurityServices: React.FC = () => {
     4: "/static/images/orange-upper-right.svg",
     5: "/static/images/pink-upper-right.svg",
   };
-
   const imageSrc =
     colorSetImageMap[activeSet.toString()] || colorSetImageMap[1];
 
-  const startYear = 2019;
-  const currentYear = new Date().getFullYear();
-  const CTExperience = currentYear - startYear;
+  const colorSetmidImageMap: { [key: string]: string } = {
+    1: "/static/images/blue-mid.svg",
+    2: "/static/images/green-mid.svg",
+    3: "/static/images/yellow-mid.svg",
+    4: "/static/images/orange-mid.svg",
+    5: "/static/images/pink-mid.svg",
+  };
+  const imagemidSrc =
+    colorSetmidImageMap[activeSet.toString()] || colorSetmidImageMap[1];
 
+  const colorSetfullImageMap: { [key: string]: string } = {
+    1: "/static/images/blue-full.svg",
+    2: "/static/images/green-full.svg",
+    3: "/static/images/yellow-full.svg",
+    4: "/static/images/orange-full.svg",
+    5: "/static/images/pink-full.svg",
+  };
+  const imagefullSrc =
+    colorSetfullImageMap[activeSet.toString()] || colorSetfullImageMap[1];
+
+  // Fetch security services data
   useEffect(() => {
-    const fetchGames = async () => {
-      const { data, error } = await supabase.from("ztable_games").select("*");
+    const fetchSecurity = async () => {
+      const { data, error } = await supabase
+        .from("ztable_securityservices")
+        .select("*");
 
       if (error) {
         console.error("Error fetching data from Supabase:", error);
       } else {
         // Sort the data by id (assuming 'id' is the name of the field to sort by)
         const sortedData = data.sort((a, b) => a.id - b.id);
-
-        setGames(sortedData);
-
-        if (sortedData.length > 0 && selectedCard === 0) {
-          setBackgroundImage(sortedData[0].game_bg); // Set default background image to the first game's cover
-        }
+        setSecurity(sortedData);
       }
     };
 
-    fetchGames();
+    fetchSecurity();
   }, []);
 
+  // Update background when a security card is selected
   useEffect(() => {
-    if (games[selectedCard]) {
-      setBackgroundImage(games[selectedCard].game_bg); // Update background image when a game is selected
-    }
-  }, [selectedCard, games]);
+    if (security[selectedCard]) {
+      const selectedService = security[selectedCard];
 
+      // Set background image based on security type
+      if (selectedService.security_type === "standard") {
+        setBackgroundImage(imageSrc);
+      } else if (selectedService.security_type === "deluxe") {
+        setBackgroundImage(imagefullSrc);
+      } else if (selectedService.security_type === "deluxe_lts") {
+        setBackgroundImage(imagemidSrc);
+      }
+    }
+  }, [selectedCard, security, imageSrc, imagefullSrc, imagemidSrc]);
+
+  // Handle animation on select card
   useEffect(() => {
     if (selectedCard !== null) {
       setAnimateOnSelect(true);
@@ -117,31 +136,34 @@ const SecurityServices: React.FC = () => {
         }}
       />
 
+      {/* Dynamically update the background image based on the selected game */}
       <Box
+        component={"img"}
+        src={backgroundImage}
+        sx={{
+          position: "absolute",
+          right: "0",
+          top: "0",
+          height: "100%",
+          transform: "scaleY(-1)",
+          objectFit: "cover",
+          opacity: ".05",
+        }}
+      />
+
+      <Box
+        component={"img"}
+        src={backgroundImage}
         sx={{
           position: "absolute",
           left: "0",
           top: "0",
           height: "100%",
-          width: "100%",
-          opacity: "0.1",
+          transform: "scale(-1)",
+          objectFit: "cover",
+          opacity: ".05",
         }}
-      >
-        {/* Dynamically update the background image based on the selected game */}
-        <Box
-          component={"img"}
-          src={backgroundImage}
-          sx={{
-            position: "absolute",
-            left: "0",
-            top: "0",
-            height: "100%",
-            width: "100%",
-            objectFit: "cover",
-            opacity: ".75", // Controls the opacity to keep the content visible
-          }}
-        />
-      </Box>
+      />
 
       <Container>
         <Grid
@@ -181,9 +203,10 @@ const SecurityServices: React.FC = () => {
             </Stack>
           </Grid>
 
-          {selectedCard !== null && games[selectedCard] && (
+          {/* Selected Card Content */}
+          {selectedCard !== null && security[selectedCard] && (
             <>
-              <Grid item xs={12} sm={6} md={5}>
+              <Grid item xs={12} sm={6} md={4}>
                 <Box
                   sx={{
                     position: "relative",
@@ -191,8 +214,8 @@ const SecurityServices: React.FC = () => {
                     transition: "transform 0.3s ease",
                     transform: animateOnSelect ? "scale(1.05)" : "scale(1)",
                     "&:hover": {
-                      transform: "scale(1.05)", // Scale the entire box on hover
-                      transition: "transform 0.3s ease", // Smooth scaling transition
+                      transform: "scale(1.05)",
+                      transition: "transform 0.3s ease",
                     },
                   }}
                 >
@@ -214,46 +237,16 @@ const SecurityServices: React.FC = () => {
                   />
                   <Box
                     component={"img"}
-                    src={games[selectedCard].game_cover}
+                    src={security[selectedCard].security_cover}
                     sx={{
-                      width: "100%",
-                      clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)",
+                      marginLeft: "auto",
+                      marginRight: "auto",
+                      width: "90%",
                       transition: "transform 0.3s ease",
                       "&:hover": {
                         transform: "scale(1.2)",
                       },
                       opacity: ".9",
-                    }}
-                  />
-                  <Box
-                    component={"img"}
-                    src={imageSrc}
-                    sx={{
-                      position: "absolute",
-                      left: "-10%",
-                      top: "10%",
-                      width: "100%",
-                      height: "100%",
-                      transition: "transform 0.3s ease",
-                      "&:hover": {
-                        transform: "scale(1.05)",
-                      },
-                    }}
-                  />
-                  <Box
-                    component={"img"}
-                    src={imageSrc}
-                    sx={{
-                      position: "absolute",
-                      left: "10%",
-                      top: "-10%",
-                      width: "100%",
-                      height: "100%",
-                      transform: "scale(-1)",
-                      transition: "transform 0.3s ease",
-                      "&:hover": {
-                        transform: "scale(-1.05)",
-                      },
                     }}
                   />
                 </Box>
@@ -267,27 +260,40 @@ const SecurityServices: React.FC = () => {
                     opacity: animateOnSelect ? ".5" : "1",
                   }}
                 >
-                  <Typography fontSize={"1rem"} color="custom.primaryText">
-                    {games[selectedCard].game_name}
+                  <Typography fontSize={"2rem"} color="custom.primaryText">
+                    {security[selectedCard].security_name}
                   </Typography>
-                  <Stack direction={"row"} spacing={1}>
-                    <Typography variant="h4" gutterBottom>
-                      {games[selectedCard].game_mode}
+                  <Typography variant="h5" gutterBottom>
+                    {security[selectedCard].security_price}
+                  </Typography>
+                  <Typography variant={"h6"} color="custom.primaryTextGrayed">
+                    {security[selectedCard].security_desc}
+                  </Typography>
+                  <Stack direction={"column"} spacing={1} paddingLeft={2}>
+                    <Typography variant="h6" gutterBottom>
+                      ❖ {security[selectedCard].security_feature1}
+                    </Typography>
+                    <Typography variant="h6" gutterBottom>
+                      ❖ {security[selectedCard].security_feature2}
+                    </Typography>
+                    <Typography variant="h6" gutterBottom>
+                      ❖ {security[selectedCard].security_feature3}
+                    </Typography>
+                    <Typography variant="h6" gutterBottom>
+                      ❖ {security[selectedCard].security_feature4}
                     </Typography>
                   </Stack>
-                  <Typography variant={"h6"} color="custom.primaryTextGrayed">
-                    {games[selectedCard].game_info}
-                  </Typography>
                 </Stack>
               </Grid>
             </>
           )}
         </Grid>
 
+        {/* Card List */}
         <Grid container xs={12} sm={12} md={12} spacing={5} mt={2.5}>
           <Grid item xs={12} sm={12} md={12}>
             <Stack direction={"row"} spacing={4} justifyContent="center">
-              {games.slice(0, 3).map((game, index) => (
+              {security.slice(0, 3).map((game, index) => (
                 <Card
                   key={index}
                   onClick={() => setSelectedCard(index)}
@@ -310,9 +316,9 @@ const SecurityServices: React.FC = () => {
                   }}
                 >
                   <CardContent>
-                    <Typography variant="h6">{game.game_mode}</Typography>
+                    <Typography variant="h6">{game.security_name}</Typography>
                     <Typography variant="body2" color="textSecondary">
-                      {game.game_name} server.
+                      {game.security_desc}
                     </Typography>
                   </CardContent>
                   <Box
@@ -330,6 +336,36 @@ const SecurityServices: React.FC = () => {
                 </Card>
               ))}
             </Stack>
+          </Grid>
+        </Grid>
+
+        <Grid container xs={12} sm={12} md={12} spacing={5} mt={2} zIndex={1}>
+          <Grid item xs={12} sm={12} md={12}>
+            <Box
+              sx={{
+                backgroundColor: "custom.primaryComponents",
+                padding: "2rem",
+                borderRadius: "0.5rem",
+              }}
+            >
+              <Stack direction={"column"} spacing={1}>
+                <Typography variant="display1" gutterBottom>
+                  ❖ ¹Final price may be adjusted or negotiated after review of
+                  report(s).
+                </Typography>
+                <Typography variant="display1" gutterBottom>
+                  ❖ ²Additional Time may be arranged and allotted when
+                  expiration time nears.
+                </Typography>
+                <Typography variant="display1" gutterBottom>
+                  ❖ ³Final price may be adjusted if hours of support exceed 8
+                  hours.
+                </Typography>
+                <Typography variant="display1" gutterBottom>
+                  ❖ ⁴Currency denomination may be negotiated.
+                </Typography>
+              </Stack>
+            </Box>
           </Grid>
         </Grid>
       </Container>
