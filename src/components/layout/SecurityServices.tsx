@@ -17,6 +17,7 @@ import supabase from "@/lib/supabase";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
+import { relative } from "path";
 
 interface Security {
   security_name: string;
@@ -244,7 +245,7 @@ const SecurityServices: React.FC = () => {
                       width: "90%",
                       transition: "transform 0.3s ease",
                       "&:hover": {
-                        transform: "scale(1.2)",
+                        transform: "scale(1.1)",
                       },
                       opacity: ".9",
                     }}
@@ -339,10 +340,20 @@ const SecurityServices: React.FC = () => {
           </Grid>
         </Grid>
 
-        <Grid container xs={12} sm={12} md={12} spacing={5} mt={2} zIndex={1}>
+        <Grid
+          container
+          xs={12}
+          sm={12}
+          md={12}
+          spacing={5}
+          mt={2}
+          position={"relative"}
+          zIndex={10}
+        >
           <Grid item xs={12} sm={12} md={12}>
             <Box
               sx={{
+                position: "relative",
                 backgroundColor: "custom.primaryComponents",
                 padding: "2rem",
                 borderRadius: "0.5rem",
@@ -365,6 +376,17 @@ const SecurityServices: React.FC = () => {
                   ❖ ⁴Currency denomination may be negotiated.
                 </Typography>
               </Stack>
+              <Box
+                component={"img"}
+                src={imageSrc}
+                sx={{
+                  position: "absolute",
+                  right: "0",
+                  top: "0",
+                  height: "100%",
+                  transition: "opacity 0.3s ease",
+                }}
+              />
             </Box>
           </Grid>
         </Grid>
