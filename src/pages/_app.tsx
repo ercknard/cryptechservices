@@ -35,6 +35,8 @@ export default function App({ Component, pageProps }: AppProps) {
           id="og:image"
           content="/static/images/ctlogo.png"
         />
+
+        <meta property="og:type" content="website" />
       </Head>
       <ThemeProvider>
         <Component {...pageProps} />
