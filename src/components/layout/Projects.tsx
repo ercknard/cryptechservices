@@ -19,7 +19,7 @@ import {
   Autoplay,
 } from "swiper/modules";
 import { useThemeContext } from "@/theme/themeProvider";
-import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
+import { useTheme } from "@mui/material";
 
 import "swiper/css";
 import "swiper/css/effect-coverflow";
@@ -44,12 +44,16 @@ interface Projects {
 }
 
 const Projects: React.FC = () => {
+  const theme = useTheme();
   const { activeSet } = useThemeContext();
   const [featuredProjects, setFeaturedProjects] = useState<FeaturedProjects[]>(
     []
   );
 
   const [projects, setProjects] = useState<Projects[]>([]);
+  const [selectedCard, setSelectedCard] = useState<number>(0); // Default index to 0
+  const [animateOnSelect, setAnimateOnSelect] = useState<boolean>(false);
+  const [backgroundImage, setBackgroundImage] = useState<string>(""); // State for dynamic background image
 
   const colorSetImageMap: { [key: string]: string } = {
     1: "/static/images/blue-upper-right.svg",
@@ -101,6 +105,23 @@ const Projects: React.FC = () => {
     fetchProjects();
   }, []);
 
+  useEffect(() => {
+    if (featuredProjects[selectedCard]) {
+      setBackgroundImage(featuredProjects[selectedCard].project_cover); // Update background image when a game is selected
+    }
+  }, [selectedCard, featuredProjects]);
+
+  useEffect(() => {
+    if (selectedCard !== null) {
+      setAnimateOnSelect(true);
+
+      const timeout = setTimeout(() => {
+        setAnimateOnSelect(false);
+      }, 300);
+      return () => clearTimeout(timeout);
+    }
+  }, [selectedCard]);
+
   return (
     <Box
       sx={{
@@ -112,6 +133,43 @@ const Projects: React.FC = () => {
         paddingY: "5rem",
       }}
     >
+      <Box
+        sx={{
+          position: "absolute",
+          left: "0",
+          top: "0",
+          width: "calc(100vw - 5px)",
+          minHeight: "10rem",
+          background: `linear-gradient(to bottom, ${theme.palette.custom.primaryBackground}, transparent)`,
+          zIndex: "2",
+        }}
+      />
+
+      <Box
+        sx={{
+          position: "absolute",
+          left: "0",
+          top: "0",
+          height: "100%",
+          width: "100%",
+          opacity: "0.05",
+        }}
+      >
+        {/* Dynamically update the background image based on the selected game */}
+        <Box
+          component={"img"}
+          src={backgroundImage}
+          sx={{
+            position: "absolute",
+            left: "0",
+            top: "0",
+            height: "100%",
+            width: "100%",
+            objectFit: "cover",
+            opacity: ".05", // Controls the opacity to keep the content visible
+          }}
+        />
+      </Box>
       <Container maxWidth="lg" sx={{ position: "relative" }}>
         <Grid
           container
@@ -231,6 +289,67 @@ const Projects: React.FC = () => {
             ))}
           </Swiper>
         </Grid>
+
+        {/* <Grid container xs={12} sm={12} md={12} mt={2.5}>
+          {featuredProjects.map((game, index) => (
+            <Grid item xs={12} sm={12} md={4} spacing={1} key={index}>
+              <Card
+                onClick={() => setSelectedCard(index)}
+                sx={{
+                  padding: 1,
+                  position: "relative",
+                  width: "100%",
+                  height: "100%",
+                  cursor: "pointer",
+                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                  backgroundColor:
+                    selectedCard === index
+                      ? "custom.secondaryComponents"
+                      : "none",
+                  "&:hover": {
+                    transform: "scale(1.05)",
+                    boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)",
+                    backgroundColor: "custom.primaryComponents",
+                  },
+                }}
+              >
+                <CardContent>
+                  <Stack direction={"row"} spacing={2.5} alignItems={"center"}>
+                    <Box
+                      component={"img"}
+                      src={game.project_cover}
+                      sx={{
+                        width: "20%",
+                        height: "200%",
+                        aspectRatio: "1/1",
+                        transition: "transform 0.3s ease",
+                        "&:hover": {
+                          transform: "scale(1.2)",
+                        },
+                        opacity: ".9",
+                      }}
+                    />
+                    <Box>
+                      <Typography variant="h6">{game.project_name}</Typography>
+                    </Box>
+                  </Stack>
+                </CardContent>
+                <Box
+                  component={"img"}
+                  src={imageSrc}
+                  sx={{
+                    position: "absolute",
+                    right: "0",
+                    top: "0",
+                    height: "100%",
+                    transition: "opacity 0.3s ease",
+                    opacity: selectedCard === index ? "1" : ".1",
+                  }}
+                />
+              </Card>
+            </Grid>
+          ))}
+        </Grid> */}
 
         <Grid container spacing={2} marginTop={4}>
           <Grid item xs={12} marginBottom={1}>
