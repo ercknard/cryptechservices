@@ -134,7 +134,7 @@ const Team: React.FC = () => {
             </Stack>
           </Grid>
 
-          <Box width={1} marginTop={10} marginLeft={{ xs: "2.5rem", md: "0" }}>
+          <Grid item xs={12} marginTop={10}>
             <Typography variant="h4" fontWeight={"700"} textAlign={"center"}>
               Admins
             </Typography>
@@ -142,7 +142,7 @@ const Team: React.FC = () => {
               Please contact an Admin team member if you have an urgent request,
               Thank you.
             </Typography>
-          </Box>
+          </Grid>
 
           {teamAdmin.map((member, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
@@ -241,11 +241,11 @@ const Team: React.FC = () => {
             </Grid>
           ))}
 
-          <Box width={1} marginTop={5} marginLeft={{ xs: "2.5rem", md: "0" }}>
+          <Grid item xs={12}>
             <Typography variant="h4" fontWeight={"700"} textAlign={"center"}>
               Team
             </Typography>
-          </Box>
+          </Grid>
 
           {teamMember.map((member, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
@@ -335,11 +335,11 @@ const Team: React.FC = () => {
             </Grid>
           ))}
 
-          <Box width={1} marginTop={5}>
-            {/* <Typography variant="h4" fontWeight={"700"} textAlign={"center"}>
-              Team
-            </Typography> */}
-          </Box>
+          <Grid item xs={12}>
+            <Typography variant="h4" fontWeight={"700"} textAlign={"center"}>
+              Moderators
+            </Typography>
+          </Grid>
 
           {teamMods.map((member, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
