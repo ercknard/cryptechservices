@@ -32,6 +32,7 @@ const Team: React.FC = () => {
   const { activeSet } = useThemeContext(); // activeSet will determine the theme's background
   const [teamMember, setTeamMember] = useState<TeamMember[]>([]);
   const [teamAdmin, setTeamAdmin] = useState<TeamMember[]>([]);
+  const [teamMods, setTeamMods] = useState<TeamMember[]>([]);
 
   useEffect(() => {
     const fetchTeamMember = async () => {
@@ -63,6 +64,22 @@ const Team: React.FC = () => {
     };
 
     fetchTeamAdmin();
+  }, []);
+
+  useEffect(() => {
+    const fetchTeamMods = async () => {
+      const { data, error } = await supabase.from("ztable_mods").select("*");
+
+      if (error) {
+        console.error("Error fetching data from Supabase:", error);
+      } else {
+        // Sort the data by id (assuming 'id' is the name of the field to sort by)
+        const sortedData = data.sort((a, b) => a.id - b.id);
+        setTeamMods(sortedData);
+      }
+    };
+
+    fetchTeamMods();
   }, []);
 
   // Map to get background images based on activeSet (theme)
@@ -232,6 +249,100 @@ const Team: React.FC = () => {
           </Box>
 
           {teamMember.map((member, index) => (
+            <Grid item xs={12} sm={6} md={4} key={index}>
+              <Card
+                sx={{
+                  padding: 1,
+                  position: "relative",
+                  width: "100%",
+                  height: "100%",
+                  cursor: "pointer",
+                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                  backgroundColor: "none",
+                  "&:hover": {
+                    transform: "scale(1.05)",
+                    boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)",
+                    backgroundColor: "custom.primaryComponents",
+                  },
+                }}
+              >
+                <CardMedia>
+                  <Avatar
+                    sx={{ width: 150, height: 150, margin: "auto", mt: 2 }}
+                    src={member.team_image}
+                    alt={member.team_name}
+                  />
+                </CardMedia>
+                <CardContent sx={{ textAlign: "center", marginTop: ".5rem" }}>
+                  <Box position={"absolute"} top={".5rem"} left={".5rem"}>
+                    <Typography variant="h6" color="custom.primaryText">
+                      {member.team_mainrole}
+                    </Typography>
+                  </Box>
+                  <Typography variant="h5">{member.team_name}</Typography>
+                  <Stack
+                    direction="row"
+                    spacing={2}
+                    justifyContent="center"
+                    marginTop={2}
+                  >
+                    <Typography
+                      variant="body1"
+                      color="custom.primaryTextGrayed"
+                    >
+                      {member.team_role1}
+                    </Typography>
+                    <Typography
+                      variant="body1"
+                      color="custom.primaryTextGrayed"
+                    >
+                      {member.team_role2}
+                    </Typography>
+                    <Typography
+                      variant="body1"
+                      color="custom.primaryTextGrayed"
+                    >
+                      {member.team_role3}
+                    </Typography>
+                  </Stack>
+                  <Stack
+                    direction="column"
+                    spacing={2}
+                    justifyContent="center"
+                    marginTop={1}
+                  >
+                    <Typography
+                      variant="body1"
+                      color="custom.primaryTextGrayed"
+                    >
+                      {member.team_email}
+                    </Typography>
+                  </Stack>
+                </CardContent>
+                <Box
+                  component={"img"}
+                  src={imageSrc}
+                  sx={{
+                    position: "absolute",
+                    right: "0",
+                    top: "0",
+                    height: "100%",
+                    transition: "opacity 0.3s ease",
+                    pointerEvents: "none",
+                    opacity: 0.15,
+                  }}
+                />
+              </Card>
+            </Grid>
+          ))}
+
+          <Box width={1} marginTop={5}>
+            {/* <Typography variant="h4" fontWeight={"700"} textAlign={"center"}>
+              Team
+            </Typography> */}
+          </Box>
+
+          {teamMods.map((member, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
               <Card
                 sx={{

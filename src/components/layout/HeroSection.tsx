@@ -173,7 +173,12 @@ const HeroSection: React.FC = ({}) => {
             </span>
           </Typography>
           <Box marginY={2}>{/* <SocialLinksList /> */}</Box>
-          <Button variant="contained" color="secondary" size="large" href={"#"}>
+          <Button
+            variant="contained"
+            color="secondary"
+            size="large"
+            href={"#stats"}
+          >
             Learn More
           </Button>
         </Box>
