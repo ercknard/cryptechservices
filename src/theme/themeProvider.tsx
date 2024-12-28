@@ -173,8 +173,10 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     // Color Set - Use URL parameter if valid, otherwise fall back to localStorage
     const finalSet =
       urlColor &&
-      ["blue", "green", "yellow", "orange", "pink", "white"].includes(urlColor)
-        ? ["blue", "green", "yellow", "orange", "pink", "white"].indexOf(
+      ["blue", "green", "yellow", "orange", "pink", "monochrome"].includes(
+        urlColor
+      )
+        ? ["blue", "green", "yellow", "orange", "pink", "monochrome"].indexOf(
             urlColor
           ) + 1
         : storedSet;
@@ -204,7 +206,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     url.searchParams.set("theme", finalTheme);
     url.searchParams.set(
       "color",
-      ["blue", "green", "yellow", "orange", "pink", "white"][finalSet - 1]
+      ["blue", "green", "yellow", "orange", "pink", "monochrome"][finalSet - 1]
     );
     // url.searchParams.set("fancy", finalFancyMode ? "on" : "off");
     // url.searchParams.set("sound", finalSoundMode ? "on" : "off");
@@ -263,7 +265,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
         color = "pink";
         break;
       case 6:
-        color = "white";
+        color = "monochrome";
         break;
       default:
         color = "blue"; // If setId is anything else, just use it as a string
