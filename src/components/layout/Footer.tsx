@@ -10,44 +10,21 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { useThemeContext } from "@/theme/themeProvider";
 
-const services = [
-  {
-    text: "Fees / Rates",
-    url: "/public/rates",
-    isExternal: false,
-  },
-  {
-    text: "Blog",
-    url: "https://stakecube.info",
-    isExternal: true,
-  },
-  {
-    text: "SCP Explorer",
-    url: "https://scpscan.net",
-    isExternal: true,
-  },
-  {
-    text: "Discord Bot",
-    url: "https://discord.com/oauth2/authorize?client_id=816420836226629632&scope=bot",
-    isExternal: true,
-  },
-];
-
 const support = [
   {
     text: "MetrixLGP",
     url: "https://metrixlgp.finance/",
-    isExternal: false,
+    isExternal: true,
   },
   {
     text: "metrix.place",
     url: "https://metrix.place/",
-    isExternal: false,
+    isExternal: true,
   },
   {
     text: "MetriMask",
     url: "https://play.google.com/store/apps/details?id=com.metrimask_mobile",
-    isExternal: false,
+    isExternal: true,
   },
 ];
 
@@ -55,17 +32,17 @@ const legal = [
   {
     text: "CryptechTest",
     url: "https://cryptechtest.xyz/",
-    isExternal: false,
+    isExternal: true,
   },
   {
     text: "CryptechCraft",
     url: "https://cryptechcraft.xyz/",
-    isExternal: false,
+    isExternal: true,
   },
   {
     text: "PZ on SCC.tips",
     url: "https://pz.scc.tips/",
-    isExternal: false,
+    isExternal: true,
   },
 ];
 
