@@ -149,7 +149,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     // Retrieve values from localStorage
     const storedTheme =
       (localStorage.getItem("theme") as PaletteMode) || "dark"; // Default to dark mode
-    const storedSet = Number(localStorage.getItem("colorSet")) || 1; // Default to color set 1
+    const storedSet = Number(localStorage.getItem("colorSet")) || 6; // Default to color set 1
     const storedFancyMode =
       localStorage.getItem("fancyMode") === "true" ? true : true; // Default to true
     const storedSoundsMode =
@@ -565,9 +565,9 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
                   {soundsMode ? "ON" : "OFF"}
                 </Typography>
               </Button>
-            </Stack>
+            </Stack> */}
 
-            <Stack marginTop={2.5} spacing={2} alignItems={"center"}>
+            {/* <Stack marginTop={2.5} spacing={2} alignItems={"center"}>
               <Button
                 variant="contained"
                 onClick={clearLocalStorageAndRefresh}
