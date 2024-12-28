@@ -45,7 +45,12 @@ const HomePage = (props: { title?: string }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         <meta
-          id="og:description"
+          id="meta-description"
+          name="description"
+          content="We provide web3 and fullstack development services and support, primarily focusing on cryptocurrency, blockchain technology, cyber security, web designing and technical support / consultation."
+        />
+
+        <meta
           property="og:description"
           content="We provide web3 and fullstack development services and support, primarily focusing on cryptocurrency , blockchain technology , cyber security , web designing and technical support / consultation."
         />
