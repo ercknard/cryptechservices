@@ -35,26 +35,36 @@ const services = [
 
 const support = [
   {
-    text: "Guides & FAQs",
-    url: "/support/faq",
+    text: "MetrixLGP",
+    url: "https://metrixlgp.finance/",
     isExternal: false,
   },
   {
-    text: "24/7 Support",
-    url: "/#help",
+    text: "metrix.place",
+    url: "https://metrix.place/",
+    isExternal: false,
+  },
+  {
+    text: "MetriMask",
+    url: "https://play.google.com/store/apps/details?id=com.metrimask_mobile",
     isExternal: false,
   },
 ];
 
 const legal = [
   {
-    text: "Cryptech Services",
-    url: "/public/legal/terms",
+    text: "CryptechTest",
+    url: "https://cryptechtest.xyz/",
     isExternal: false,
   },
   {
-    text: "StakeCube",
-    url: "/public/legal/privacy",
+    text: "CryptechCraft",
+    url: "https://cryptechcraft.xyz/",
+    isExternal: false,
+  },
+  {
+    text: "PZ on SCC.tips",
+    url: "https://pz.scc.tips/",
     isExternal: false,
   },
 ];
@@ -230,16 +240,18 @@ export default function Footer() {
             </Stack>
           </Grid> */}
 
-          {/* <Grid
+          <Grid
             item
             lg={1}
-            sm={3}
+            sm={4}
             xs={4}
             display={"flex"}
             sx={{ justifyContent: { lg: "center", xs: "left" } }}
           >
             <Stack spacing={1}>
-              <Typography fontWeight={600}>Support</Typography>
+              <Typography fontWeight={600} color={"custom.primaryText"}>
+                Projects
+              </Typography>
               <Box>
                 {support.map((val, index) => (
                   <ListItem key={index} disablePadding>
@@ -252,19 +264,19 @@ export default function Footer() {
                 ))}
               </Box>
             </Stack>
-          </Grid> */}
+          </Grid>
 
           <Grid
             item
-            lg={1.5}
-            sm={6}
-            xs={6}
+            lg={1}
+            sm={4}
+            xs={4}
             display={"flex"}
             sx={{ justifyContent: { lg: "center", xs: "left" } }}
           >
             <Stack spacing={1}>
               <Typography fontWeight={600} color={"custom.primaryText"}>
-                Links
+                Games
               </Typography>
               <Box>
                 {legal.map((val, index) => (
@@ -282,9 +294,9 @@ export default function Footer() {
 
           <Grid
             item
-            lg={1.5}
-            sm={6}
-            xs={6}
+            lg={1}
+            sm={4}
+            xs={4}
             display={"flex"}
             sx={{ justifyContent: { lg: "center", xs: "left" } }}
           >
