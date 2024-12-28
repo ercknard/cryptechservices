@@ -118,7 +118,7 @@ const Team: React.FC = () => {
             </Stack>
           </Grid>
 
-          <Box width={1} marginTop={4}>
+          <Box width={1} marginTop={10}>
             <Typography variant="h4" fontWeight={"700"} textAlign={"center"}>
               Admins
             </Typography>
