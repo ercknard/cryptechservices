@@ -192,7 +192,7 @@ const Team: React.FC = () => {
                     direction="row"
                     spacing={2}
                     justifyContent="center"
-                    marginTop={2}
+                    marginTop={1}
                   >
                     <Typography
                       variant="body1"
@@ -292,7 +292,7 @@ const Team: React.FC = () => {
                     direction="column"
                     spacing={2}
                     justifyContent="center"
-                    marginTop={2}
+                    marginTop={1}
                   >
                     <Typography
                       variant="body1"
