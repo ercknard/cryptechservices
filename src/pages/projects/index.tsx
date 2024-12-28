@@ -3,6 +3,7 @@ import { DefaultHead } from "@/components/layout/Head";
 import { Box, Stack, Typography, useTheme } from "@mui/material";
 import Wrapper from "@/components/layout/Wrapper";
 import PagesCover from "@/components/layout/PagesCover";
+import Projects from "@/components/layout/Projects";
 
 const ProjectsPage = () => {
   const theme = useTheme();
@@ -72,6 +73,7 @@ const ProjectsPage = () => {
             }}
           />
         </Box>
+        <Projects />
       </Wrapper>
     </>
   );

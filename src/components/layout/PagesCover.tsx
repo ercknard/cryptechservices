@@ -37,7 +37,7 @@ const PagesCover = () => {
           top: "0",
           width: "calc(100vw - 5px)",
           minHeight: "50vh",
-          background: `radial-gradient(at center, transparent, ${theme.palette.custom.secondaryBackground})`,
+          background: `radial-gradient(at top, transparent, ${theme.palette.custom.primaryBackground})`,
         }}
       />
 

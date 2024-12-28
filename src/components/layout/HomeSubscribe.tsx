@@ -1,4 +1,3 @@
-// components/SubscribeBanner.tsx
 import React, { useState } from "react";
 import {
   Box,
@@ -7,15 +6,58 @@ import {
   Typography,
   Container,
   useTheme,
+  Snackbar,
+  Alert,
 } from "@mui/material";
 import { useThemeContext } from "@/theme/themeProvider";
+import supabase from "@/lib/supabase";
 
 const HomeSubscribe: React.FC = () => {
   const [email, setEmail] = useState("");
   const { activeSet } = useThemeContext();
   const [message, setMessage] = useState<string | null>(null);
+  const [openSnackbar, setOpenSnackbar] = useState(false); // State to control Snackbar visibility
 
   const theme = useTheme();
+
+  const handleSubscribe = async () => {
+    if (email) {
+      try {
+        // Insert email into Supabase
+        const { data, error } = await supabase
+          .from("ztable_subscriptions") // Replace with your table name
+          .insert([{ email }]);
+
+        if (error) {
+          setMessage("There was an error subscribing. Please try again.");
+          setOpenSnackbar(true);
+          setTimeout(() => {
+            setOpenSnackbar(false); // Close the drawer after the Snackbar has time to show
+          }, 5000); // Wait 500ms before closing the drawer
+        } else {
+          setMessage(`Thanks for subscribing with ${email}`);
+          setEmail(""); // Clear the email field
+          setOpenSnackbar(true); // Open Snackbar with success message
+          setTimeout(() => {
+            setOpenSnackbar(false); // Close the drawer after the Snackbar has time to show
+          }, 5000); // Wait 500ms before closing the drawer
+        }
+      } catch (error) {
+        setMessage("There was an error subscribing. Please try again.");
+        setOpenSnackbar(true);
+        setTimeout(() => {
+          setOpenSnackbar(false); // Close the drawer after the Snackbar has time to show
+        }, 5000); // Wait 500ms before closing the drawer
+      }
+    } else {
+      setMessage("Please enter a valid email address.");
+      setOpenSnackbar(true); // Open Snackbar with error message
+      setTimeout(() => {
+        setOpenSnackbar(false); // Close the drawer after the Snackbar has time to show
+      }, 5000); // Wait 500ms before closing the drawer
+    }
+  };
+
   const colorSetImageMap: { [key: string]: string } = {
     1: "/static/images/blue-upper-right.svg",
     2: "/static/images/green-upper-right.svg",
@@ -31,13 +73,14 @@ const HomeSubscribe: React.FC = () => {
     setEmail(event.target.value);
   };
 
-  const handleSubscribe = () => {
-    if (email) {
-      setMessage(`Thanks for subscribing with ${email}`);
-      setEmail("");
-    } else {
-      setMessage("Please enter a valid email address.");
+  const handleSnackbarClose = (
+    event?: React.SyntheticEvent,
+    reason?: string
+  ) => {
+    if (reason === "clickaway") {
+      return;
     }
+    setOpenSnackbar(false); // Close the Snackbar
   };
 
   return (
@@ -89,14 +132,6 @@ const HomeSubscribe: React.FC = () => {
               Subscribe
             </Button>
           </Box>
-          {message && (
-            <Typography
-              variant="body2"
-              sx={{ marginTop: 2, textAlign: "center" }}
-            >
-              {message}
-            </Typography>
-          )}
 
           <Box
             component="img"
@@ -113,6 +148,20 @@ const HomeSubscribe: React.FC = () => {
           />
         </Box>
       </Container>
+
+      {/* Snackbar for message */}
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={5000} // Hide after 6 seconds
+      >
+        <Alert
+          onClose={handleSnackbarClose}
+          severity={message?.includes("valid") ? "error" : "success"}
+          sx={{ display: "flex", alignItems: "center" }}
+        >
+          <Typography color="custom.primaryText">{message}</Typography>
+        </Alert>
+      </Snackbar>
     </Box>
   );
 };
