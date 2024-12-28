@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { DefaultHead } from "@/components/layout/Head";
+import Head from "next/head";
 import HeroSection from "@/components/layout/HeroSection";
 import HomeStats from "@/components/layout/HomeStats";
 import HomeProducts from "@/components/layout/HomeProducts";
@@ -10,7 +10,7 @@ import HomeProjects from "@/components/layout/HomeProjects";
 import Wrapper from "@/components/layout/Wrapper";
 import supabase from "@/lib/supabase";
 
-const HomePage = () => {
+const HomePage = (props: { title?: string }) => {
   const [stats, setStats] = useState({
     projects_completed: 0,
     happy_clients: 0,
@@ -36,9 +36,43 @@ const HomePage = () => {
     fetchStats();
   }, []);
 
+  const { title = " HOME " } = props;
+
   return (
     <>
-      <DefaultHead />
+      <Head>
+        <title>{`Cryptech Services | ${title}`}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <meta
+          name="description"
+          id="og:description"
+          property="og:description"
+          content="We provide web3 and fullstack development services and support, primarily focusing on cryptocurrency , blockchain technology , cyber security , web designing and technical support / consultation."
+        />
+        <meta
+          name="keywords"
+          id="og:keywords"
+          property="og:keywords"
+          content="Full-Stack Web Development, Web3 And DAPP Development, Solidity Development, Web Design, Graphic Design, Technical Consultation"
+        />
+
+        <meta id="og-title" property="og:title" content="Cryptech.Services" />
+
+        <meta
+          property="og:url"
+          id="og:url"
+          content="https://cryptech.services"
+        />
+
+        <meta
+          property="og:image"
+          id="og:image"
+          content="/static/images/ctlogo.png"
+        />
+
+        <meta property="og:type" content="website" />
+      </Head>
       <Wrapper>
         <HeroSection />
         <HomeStats
