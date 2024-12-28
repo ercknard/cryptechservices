@@ -37,11 +37,19 @@ interface FeaturedProjects {
   project_link: string;
 }
 
+interface Projects {
+  project_name: string;
+  project_desc: string;
+  project_link: string;
+}
+
 const Projects: React.FC = () => {
   const { activeSet } = useThemeContext();
   const [featuredProjects, setFeaturedProjects] = useState<FeaturedProjects[]>(
     []
   );
+
+  const [projects, setProjects] = useState<Projects[]>([]);
 
   const colorSetImageMap: { [key: string]: string } = {
     1: "/static/images/blue-upper-right.svg",
@@ -64,12 +72,33 @@ const Projects: React.FC = () => {
       if (error) {
         console.error("Error fetching data from Supabase:", error);
       } else {
-        setFeaturedProjects(data); // Set the fetched IT services data
+        const sortedData = data.sort((a, b) => a.id - b.id);
+        setFeaturedProjects(sortedData); // Set the fetched IT services data
         console.log("Fetched projects:", data); // Log data here to check
       }
     };
 
     fetchFeaturedProjects();
+  }, []);
+
+  useEffect(() => {
+    // Fetch IT Services data from Supabase
+    const fetchProjects = async () => {
+      const { data, error } = await supabase
+        .from("ztable_otherprojects")
+        .select("*");
+
+      if (error) {
+        console.error("Error fetching data from Supabase:", error);
+      } else {
+        const sortedData = data.sort((a, b) => a.id - b.id);
+
+        setProjects(sortedData); // Set the fetched IT services data
+        console.log("Fetched projects:", data); // Log data here to check
+      }
+    };
+
+    fetchProjects();
   }, []);
 
   return (
@@ -203,33 +232,51 @@ const Projects: React.FC = () => {
           </Swiper>
         </Grid>
 
-        <Box
-          className="swiper-button-prev"
-          sx={{
-            position: "absolute",
-            display: { md: "block", xs: "none" },
-            top: "58.25%",
-            left: "10%",
-            transform: "translate(-50%)",
-            zIndex: 3,
-            cursor: "pointer",
-            color: "custom.primaryText",
-          }}
-        ></Box>
+        <Grid container spacing={2} marginTop={4}>
+          <Grid item xs={12} marginBottom={1}>
+            <Typography variant="h4" color="text.secondary">
+              Other Projects :
+            </Typography>
+          </Grid>
 
-        <Box
-          className="swiper-button-next"
-          sx={{
-            position: "absolute",
-            display: { md: "block", xs: "none" },
-            top: "58.25%",
-            right: "11%",
-            transform: "translate(-50%)",
-            zIndex: 3,
-            cursor: "pointer",
-            color: "custom.primaryText",
-          }}
-        ></Box>
+          {projects.map((project, index) => (
+            <Grid item xs={12} sm={6} md={4} key={index}>
+              <Card
+                sx={{
+                  padding: 1,
+                  position: "relative",
+                  width: "100%",
+                  height: "100%",
+                  cursor: "pointer",
+                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                  backgroundColor: "none",
+                }}
+              >
+                <CardContent sx={{ textAlign: "center" }}>
+                  <Typography variant="h6" color="text.secondary">
+                    {project.project_name}
+                  </Typography>
+                  <Typography variant="body1" color="custom.primaryTextGrayed">
+                    {project.project_desc}
+                  </Typography>
+                </CardContent>
+                <Box
+                  component={"img"}
+                  src={imageSrc}
+                  sx={{
+                    position: "absolute",
+                    right: "0",
+                    top: "0",
+                    height: "100%",
+                    transition: "opacity 0.3s ease",
+                    pointerEvents: "none",
+                    opacity: 0.15,
+                  }}
+                />
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
       </Container>
     </Box>
   );
