@@ -276,7 +276,7 @@ const colorPalette = (mode: PaletteMode, setId: number) => {
       mainColor: getColor("#b4b4b4", "#b4b4b4"),
       //colored
       primaryBackground: getColor("#121212", "#121212"),
-      secondaryBackground: getColor("#121212", "#121212"),
+      secondaryBackground: getColor("#151515", "#151515"),
       primaryComponents: getColor("#1f1f1f", "#1f1f1f"),
       secondaryComponents: getColor("#282828", "#282828"),
       tertiaryComponents: getColor("#303030", "#303030"),
