@@ -72,7 +72,7 @@ const legal = [
 const community = [
   {
     text: "Discord",
-    url: "https://discord.gg/stakecube",
+    url: "https://discord.gg/SuJta8WXuQ",
     isExternal: true,
   },
 ];
