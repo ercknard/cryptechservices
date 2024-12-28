@@ -18,7 +18,7 @@ import { useThemeContext } from "@/theme/themeProvider";
 const NavItems = [
   "IT Services",
   "Security Services",
-  "Game Servers",
+  "Games",
   "Projects",
   "Team",
 ];
@@ -235,6 +235,7 @@ export default function Navbar() {
           backgroundImage: "none",
           justifyContent: "center",
           width: "100%",
+          paddingBottom: 0.5,
         }}
       >
         <Toolbar
@@ -266,21 +267,21 @@ export default function Navbar() {
                 >
                   <Typography
                     variant="title"
-                    fontSize={"1.25rem"}
+                    fontSize={{ lg: "1.1rem", xl: "1.25rem" }}
                     color={"custom.primaryText"}
                   >
                     Cryptech
                   </Typography>
                   <Box
                     component="img"
-                    width={{ md: 35 }}
+                    width={{ md: 25, lg: 35 }}
                     alt="Logo"
                     src={imageSrc}
                     marginX={1}
                   />
                   <Typography
                     variant="title"
-                    fontSize={"1.25rem"}
+                    fontSize={{ lg: "1.1rem", xl: "1.25rem" }}
                     color={"custom.primaryText"}
                   >
                     Services

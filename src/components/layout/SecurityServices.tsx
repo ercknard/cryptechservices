@@ -252,7 +252,14 @@ const SecurityServices: React.FC = () => {
                 </Box>
               </Grid>
 
-              <Grid item xs={12} sm={12} md={12} marginTop={2.5}>
+              <Grid
+                item
+                xs={12}
+                sm={12}
+                md={12}
+                marginTop={2.5}
+                marginBottom={5}
+              >
                 <Stack
                   spacing={1.5}
                   sx={{
@@ -297,6 +304,7 @@ const SecurityServices: React.FC = () => {
           md={12}
           spacing={{ xs: 0, md: 5 }}
           mt={2.5}
+          marginBottom={5}
         >
           <Grid item xs={12} sm={12} md={12}>
             <Stack

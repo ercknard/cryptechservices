@@ -237,8 +237,8 @@ const Projects: React.FC = () => {
               <SwiperSlide key={index}>
                 <Card
                   sx={{
-                    maxWidth: "35%",
-                    marginLeft: "auto",
+                    maxWidth: { xs: "90", md: "35%" },
+                    marginLeft: { xs: "2.5rem", md: "auto" },
                     marginRight: "auto",
                     backgroundColor: "custom.primaryComponents",
                   }}
@@ -268,6 +268,7 @@ const Projects: React.FC = () => {
                     height: "100%",
                     pointerEvents: "none",
                     aspectRatio: "auto",
+                    display: { xs: "none", md: "block" },
                   }}
                 />
 
@@ -282,6 +283,7 @@ const Projects: React.FC = () => {
                     pointerEvents: "none",
                     aspectRatio: "auto",
                     transform: "scaleX(-1)",
+                    display: { xs: "none", md: "block" },
                   }}
                 />
               </SwiperSlide>

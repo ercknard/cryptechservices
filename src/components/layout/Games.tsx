@@ -286,7 +286,7 @@ const Games: React.FC = () => {
           sm={12}
           md={12}
           spacing={{ xs: 0, md: 5 }}
-          mt={2.5}
+          paddingTop={5}
         >
           <Grid item xs={12} sm={12} md={4}>
             <Stack direction={"column"} spacing={4} justifyContent="center">
