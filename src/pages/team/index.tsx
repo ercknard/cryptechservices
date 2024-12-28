@@ -4,6 +4,7 @@ import { Box, Stack, Typography, useTheme } from "@mui/material";
 import Wrapper from "@/components/layout/Wrapper";
 import Particlesview from "@/components/layout/Particles";
 import PagesCover from "@/components/layout/PagesCover";
+import Team from "@/components/layout/Team";
 
 const TeamPage = () => {
   const theme = useTheme();
@@ -75,6 +76,7 @@ const TeamPage = () => {
             }}
           />
         </Box>
+        <Team />
       </Wrapper>
     </>
   );
