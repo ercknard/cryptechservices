@@ -273,21 +273,40 @@ const SecurityServices: React.FC = () => {
                   <Typography variant="h5" gutterBottom>
                     {security[selectedCard].security_price}
                   </Typography>
-                  <Typography variant={"h6"} color="custom.primaryTextGrayed">
+                  <Typography
+                    fontSize={"1rem"}
+                    color="custom.primaryTextGrayed"
+                  >
                     {security[selectedCard].security_desc}
                   </Typography>
-                  <Stack direction={"column"} spacing={1} paddingLeft={2}>
-                    <Typography variant="h6" gutterBottom>
-                      ❖ {security[selectedCard].security_feature1}
+                  <Stack direction={"column"} spacing={1} paddingLeft={3}>
+                    <Typography
+                      variant="h6"
+                      gutterBottom
+                      color="custom.primaryTextGrayed"
+                    >
+                      {security[selectedCard].security_feature1}
                     </Typography>
-                    <Typography variant="h6" gutterBottom>
-                      ❖ {security[selectedCard].security_feature2}
+                    <Typography
+                      variant="h6"
+                      gutterBottom
+                      color="custom.primaryTextGrayed"
+                    >
+                      {security[selectedCard].security_feature2}
                     </Typography>
-                    <Typography variant="h6" gutterBottom>
-                      ❖ {security[selectedCard].security_feature3}
+                    <Typography
+                      variant="h6"
+                      gutterBottom
+                      color="custom.primaryTextGrayed"
+                    >
+                      {security[selectedCard].security_feature3}
                     </Typography>
-                    <Typography variant="h6" gutterBottom>
-                      ❖ {security[selectedCard].security_feature4}
+                    <Typography
+                      variant="h6"
+                      gutterBottom
+                      color="custom.primaryTextGrayed"
+                    >
+                      {security[selectedCard].security_feature4}
                     </Typography>
                   </Stack>
                 </Stack>
@@ -351,7 +370,7 @@ const SecurityServices: React.FC = () => {
                         width: "50%",
                         transition: "transform 0.3s ease",
                         "&:hover": {
-                          transform: "scale(1.1)",
+                          transform: "scale(1.2)",
                         },
                         opacity: ".9",
                       }}
@@ -403,19 +422,35 @@ const SecurityServices: React.FC = () => {
               }}
             >
               <Stack direction={"column"} spacing={1}>
-                <Typography variant="display1" gutterBottom>
+                <Typography
+                  variant="subtitle1"
+                  gutterBottom
+                  color="custom.primaryTextGrayed"
+                >
                   ❖ ¹Final price may be adjusted or negotiated after review of
                   report(s).
                 </Typography>
-                <Typography variant="display1" gutterBottom>
+                <Typography
+                  variant="subtitle1"
+                  gutterBottom
+                  color="custom.primaryTextGrayed"
+                >
                   ❖ ²Additional Time may be arranged and allotted when
                   expiration time nears.
                 </Typography>
-                <Typography variant="display1" gutterBottom>
+                <Typography
+                  variant="subtitle1"
+                  gutterBottom
+                  color="custom.primaryTextGrayed"
+                >
                   ❖ ³Final price may be adjusted if hours of support exceed 8
                   hours.
                 </Typography>
-                <Typography variant="display1" gutterBottom>
+                <Typography
+                  variant="subtitle1"
+                  gutterBottom
+                  color="custom.primaryTextGrayed"
+                >
                   ❖ ⁴Currency denomination may be negotiated.
                 </Typography>
               </Stack>
