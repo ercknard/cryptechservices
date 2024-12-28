@@ -169,11 +169,11 @@ const Team: React.FC = () => {
                   />
                 </CardMedia>
                 <CardContent sx={{ textAlign: "center", marginTop: "1rem" }}>
-                  <Box position={"absolute"} top={".5rem"} left={".5rem"}>
+                  {/* <Box position={"absolute"} top={".5rem"} left={".5rem"}>
                     <Typography variant="h6" color="custom.primaryText">
                       {member.team_role1}
                     </Typography>
-                  </Box>
+                  </Box> */}
                   <Typography variant="h4" fontWeight={"600"}>
                     {member.team_name}
                   </Typography>
@@ -272,11 +272,11 @@ const Team: React.FC = () => {
                   />
                 </CardMedia>
                 <CardContent sx={{ textAlign: "center", marginTop: ".5rem" }}>
-                  <Box position={"absolute"} top={".5rem"} left={".5rem"}>
+                  {/* <Box position={"absolute"} top={".5rem"} left={".5rem"}>
                     <Typography variant="h6" color="custom.primaryText">
                       {member.team_mainrole}
                     </Typography>
-                  </Box>
+                  </Box> */}
                   <Typography variant="h5">{member.team_name}</Typography>
                   <Stack
                     direction="row"
@@ -366,11 +366,11 @@ const Team: React.FC = () => {
                   />
                 </CardMedia>
                 <CardContent sx={{ textAlign: "center", marginTop: ".5rem" }}>
-                  <Box position={"absolute"} top={".5rem"} left={".5rem"}>
+                  {/* <Box position={"absolute"} top={".5rem"} left={".5rem"}>
                     <Typography variant="h6" color="custom.primaryText">
                       {member.team_mainrole}
                     </Typography>
-                  </Box>
+                  </Box> */}
                   <Typography variant="h5">{member.team_name}</Typography>
                   <Stack
                     direction="row"
