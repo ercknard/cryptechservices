@@ -16,9 +16,16 @@ interface PageProps {
   description: string;
   imageUrl: string;
   url: string;
+  keywords: string;
 }
 
-export default function Home({ title, description, imageUrl, url }: PageProps) {
+export default function Home({
+  title,
+  description,
+  imageUrl,
+  url,
+  keywords,
+}: PageProps) {
   const [stats, setStats] = useState({
     projects_completed: 0,
     happy_clients: 0,
@@ -57,12 +64,14 @@ export default function Home({ title, description, imageUrl, url }: PageProps) {
         <meta property="og:image" content={imageUrl} />
         <meta property="og:url" content={url} />
         <meta property="og:type" content="website" />
+        <meta property="og:keywords" content={keywords} />
 
         {/* Dynamic Twitter Card Meta Tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={imageUrl} />
+        <meta name="twitter:keywords" content={keywords} />
       </Head>
 
       <Wrapper>
@@ -91,6 +100,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
       "We provide web3 and fullstack development services and support, primarily focusing on cryptocurrency , blockchain technology , cyber security , web designing and technical support / consultation.",
     imageUrl: "/static/images/ctlogo.png",
     url: "https://cryptech.services",
+    keywords:
+      "Full-Stack Web Development, Web3 And DAPP Development, Solidity Development, Web Design, Graphic Design, Technical Consultation",
   };
 
   return {
