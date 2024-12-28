@@ -13,6 +13,7 @@ const PagesCover = () => {
     3: "/static/images/yellow-upper-right.svg",
     4: "/static/images/orange-upper-right.svg",
     5: "/static/images/pink-upper-right.svg",
+    6: "/static/images/white-upper-right.svg",
   };
 
   const imageSrc =

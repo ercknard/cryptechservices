@@ -87,6 +87,7 @@ export default function Footer() {
     3: "/static/images/yellow-ctlogo.png",
     4: "/static/images/orange-ctlogo.png",
     5: "/static/images/pink-ctlogo.png",
+    6: "/static/images/white-ctlogo.png",
   };
 
   const imageSrc =

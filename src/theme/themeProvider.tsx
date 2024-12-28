@@ -91,7 +91,26 @@ const ColorSetButton: React.FC<{
   currentSet: number;
   onClick: (setId: number) => void;
 }> = ({ setId, currentSet, onClick }) => {
-  const colors = ["#6169cf", "#456545", "#868645", "#a16c4f", "#b770ad"];
+  const colors = [
+    "#6169cf",
+    "#456545",
+    "#868645",
+    "#a16c4f",
+    "#b770ad",
+    "#ffffff",
+  ];
+
+  // Conditionally set the label text
+  const label = setId === 6 ? "Monochrome" : setId.toString();
+
+  // Conditional color for Monochrome button
+  const textColor =
+    currentSet === setId
+      ? setId === 6
+        ? "#000000"
+        : "#ffffff"
+      : colors[setId - 1];
+
   return (
     <Button
       variant={currentSet === setId ? "contained" : "outlined"}
@@ -99,11 +118,13 @@ const ColorSetButton: React.FC<{
       sx={{
         backgroundColor:
           currentSet === setId ? colors[setId - 1] : `${colors[setId - 1]}15`,
-        color: currentSet === setId ? "#ffffff" : colors[setId - 1],
+        color: textColor, // Conditional text color
         borderColor: colors[setId - 1],
+        marginTop: "1rem",
+        width: setId === 6 ? "100%" : "auto", // Make Monochrome button full width
       }}
     >
-      <Typography fontWeight={600}>{setId}</Typography>
+      <Typography fontWeight={600}>{label}</Typography>
     </Button>
   );
 };
@@ -152,8 +173,10 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     // Color Set - Use URL parameter if valid, otherwise fall back to localStorage
     const finalSet =
       urlColor &&
-      ["blue", "green", "yellow", "orange", "pink"].includes(urlColor)
-        ? ["blue", "green", "yellow", "orange", "pink"].indexOf(urlColor) + 1
+      ["blue", "green", "yellow", "orange", "pink", "white"].includes(urlColor)
+        ? ["blue", "green", "yellow", "orange", "pink", "white"].indexOf(
+            urlColor
+          ) + 1
         : storedSet;
 
     // Fancy Mode - Use URL parameter if present and valid, otherwise fall back to localStorage
@@ -181,7 +204,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     url.searchParams.set("theme", finalTheme);
     url.searchParams.set(
       "color",
-      ["blue", "green", "yellow", "orange", "pink"][finalSet - 1]
+      ["blue", "green", "yellow", "orange", "pink", "white"][finalSet - 1]
     );
     // url.searchParams.set("fancy", finalFancyMode ? "on" : "off");
     // url.searchParams.set("sound", finalSoundMode ? "on" : "off");
@@ -238,6 +261,9 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
         break;
       case 5:
         color = "pink";
+        break;
+      case 6:
+        color = "white";
         break;
       default:
         color = "blue"; // If setId is anything else, just use it as a string
@@ -440,8 +466,12 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
             },
           }}
         >
-          <Typography color="#ffffff">
-            <SettingsIcon />
+          <Typography
+            color={activeSet === 6 ? "#000000" : "#ffffff"} // Color changes based on activeSet
+          >
+            <SettingsIcon
+              sx={{ color: activeSet === 6 ? "#000000" : "#ffffff" }}
+            />
           </Typography>
         </Fab>
         <Drawer
@@ -449,7 +479,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
           open={drawerOpen}
           onClose={() => setDrawerOpen(false)}
         >
-          <Box sx={{ minWidth: "400px", padding: 2 }}>
+          <Box sx={{ maxWidth: "400px", padding: 2 }}>
             <Stack
               direction="row"
               justifyContent="space-between"
@@ -476,8 +506,13 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
               currentTheme={activeTheme}
               toggleTheme={toggleTheme}
             />
-            <Box display="flex" justifyContent="space-between" marginTop={2.5}>
-              {[1, 2, 3, 4, 5].map((setId) => (
+            <Stack
+              direction={"row"}
+              display="flex"
+              flexWrap={"wrap"}
+              justifyContent="space-between"
+            >
+              {[1, 2, 3, 4, 5, 6].map((setId) => (
                 <ColorSetButton
                   key={setId}
                   setId={setId}
@@ -485,7 +520,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
                   onClick={changeColorSet}
                 />
               ))}
-            </Box>
+            </Stack>
             {/* <Stack
               direction={"row"}
               marginTop={2.5}

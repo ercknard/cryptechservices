@@ -48,6 +48,7 @@ const SecurityServices: React.FC = () => {
     3: "/static/images/yellow-upper-right.svg",
     4: "/static/images/orange-upper-right.svg",
     5: "/static/images/pink-upper-right.svg",
+    6: "/static/images/white-upper-right.svg",
   };
   const imageSrc =
     colorSetImageMap[activeSet.toString()] || colorSetImageMap[1];
@@ -58,6 +59,7 @@ const SecurityServices: React.FC = () => {
     3: "/static/images/yellow-mid.svg",
     4: "/static/images/orange-mid.svg",
     5: "/static/images/pink-mid.svg",
+    6: "/static/images/white-mid.svg",
   };
   const imagemidSrc =
     colorSetmidImageMap[activeSet.toString()] || colorSetmidImageMap[1];
@@ -68,6 +70,7 @@ const SecurityServices: React.FC = () => {
     3: "/static/images/yellow-full.svg",
     4: "/static/images/orange-full.svg",
     5: "/static/images/pink-full.svg",
+    6: "/static/images/white-full.svg",
   };
   const imagefullSrc =
     colorSetfullImageMap[activeSet.toString()] || colorSetfullImageMap[1];

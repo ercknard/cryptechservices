@@ -37,6 +37,7 @@ const ChangeLoader: React.FC<ChangeLoaderProps> = ({ loading, colorSetId }) => {
     3: "/static/images/yellow-upper-right.svg",
     4: "/static/images/orange-upper-right.svg",
     5: "/static/images/pink-upper-right.svg",
+    6: "/static/images/white-upper-right.svg",
   };
 
   const colorLogoImageMap: { [key: string]: string } = {
@@ -45,6 +46,7 @@ const ChangeLoader: React.FC<ChangeLoaderProps> = ({ loading, colorSetId }) => {
     3: "/static/images/yellow-ctlogo.png",
     4: "/static/images/orange-ctlogo.png",
     5: "/static/images/pink-ctlogo.png",
+    6: "/static/images/white-ctlogo.png",
   };
 
   const imageLogoSrc = colorLogoImageMap[colorKey] || colorLogoImageMap[1];

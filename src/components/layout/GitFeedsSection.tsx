@@ -9,7 +9,6 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import DialogActions from "@mui/material/DialogActions";
 import { useThemeContext } from "@/theme/themeProvider";
-import { useTheme } from "@mui/material/styles";
 import { fetchGitHubEvents, Event } from "@/pages/api/CryptechEventsApi";
 import DefaultDialog from "./DefaultDialog";
 import { Alert, Card } from "@mui/material";
@@ -150,6 +149,7 @@ const GitFeedsSection: React.FC = () => {
     3: "/static/images/yellow-border.png",
     4: "/static/images/orange-border.png",
     5: "/static/images/pink-border.png",
+    6: "/static/images/white-border.png",
   };
 
   const imageBgBorderSrc =
@@ -161,6 +161,7 @@ const GitFeedsSection: React.FC = () => {
     3: "/static/images/yellow-upper-right.svg",
     4: "/static/images/orange-upper-right.svg",
     5: "/static/images/pink-upper-right.svg",
+    6: "/static/images/white-upper-right.svg",
   };
 
   const imageSrc =

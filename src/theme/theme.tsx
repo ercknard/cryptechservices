@@ -271,6 +271,36 @@ const colorPalette = (mode: PaletteMode, setId: number) => {
       primaryTextGrayed: getColor("#646464", "#b4b4b4"),
       secondaryTextGrayed: getColor("#202020", "#eeeeee"),
     },
+    set6: {
+      //monochrome
+      mainColor: getColor("#ffffff", "#ffffff"),
+      //colored
+      primaryBackground: getColor("#000000", "#000000"),
+      secondaryBackground: getColor("#121212", "#121212"),
+      primaryComponents: getColor("#1f1f1f", "#1f1f1f"),
+      secondaryComponents: getColor("#282828", "#282828"),
+      tertiaryComponents: getColor("#303030", "#303030"),
+      primaryBorders: getColor("#3a3a3a", "#3a3a3a"),
+      secondaryBorders: getColor("#484848", "#484848"),
+      tertiaryBorders: getColor("#5f5f5f", "#5f5f5f"),
+      primarySolidColors: getColor("#eeeeee", "#eeeeee"),
+      secondarySolidColors: getColor("#e5e5e5", "#e5e5e5"),
+      primaryText: getColor("#b4b4b4", "#b4b4b4"),
+      secondaryText: getColor("#eeeeee", "#eeeeee"),
+      //gray
+      primaryBackgroundGrayed: getColor("#121212", "#121212"),
+      secondaryBackgroundGrayed: getColor("#191919", "#191919"),
+      primaryComponentsGrayed: getColor("#232323", "#232323"),
+      secondaryComponentsGrayed: getColor("#2a2a2a", "#2a2a2a"),
+      tertiaryComponentsGrayed: getColor("#313131", "#313131"),
+      primaryBordersGrayed: getColor("#3a3a3a", "#3a3a3a"),
+      secondaryBordersGrayed: getColor("#c484848", "#484848"),
+      tertiaryBordersGrayed: getColor("#606060", "#606060"),
+      primarySolidColorsGrayed: getColor("#6e6e6e", "#6e6e6e"),
+      secondarySolidColorsGrayed: getColor("#7c7c7c", "#7c7c7c"),
+      primaryTextGrayed: getColor("#b4b4b4", "#b4b4b4"),
+      secondaryTextGrayed: getColor("#eeeeee", "#eeeeee"),
+    },
   };
 
   // Assert the key as one of the valid keys
