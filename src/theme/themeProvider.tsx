@@ -97,7 +97,7 @@ const ColorSetButton: React.FC<{
     "#868645",
     "#a16c4f",
     "#b770ad",
-    "#ffffff",
+    "#b4b4b4",
   ];
 
   // Conditionally set the label text
@@ -108,7 +108,7 @@ const ColorSetButton: React.FC<{
     currentSet === setId
       ? setId === 6
         ? "#000000"
-        : "#ffffff"
+        : "#b4b4b4"
       : colors[setId - 1];
 
   return (

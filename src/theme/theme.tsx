@@ -273,7 +273,7 @@ const colorPalette = (mode: PaletteMode, setId: number) => {
     },
     set6: {
       //monochrome
-      mainColor: getColor("#ffffff", "#ffffff"),
+      mainColor: getColor("#b4b4b4", "#b4b4b4"),
       //colored
       primaryBackground: getColor("#000000", "#000000"),
       secondaryBackground: getColor("#121212", "#121212"),
