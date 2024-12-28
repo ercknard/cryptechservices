@@ -1,3 +1,4 @@
+import { GetServerSideProps } from "next";
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import HeroSection from "@/components/layout/HeroSection";
@@ -10,7 +11,14 @@ import HomeProjects from "@/components/layout/HomeProjects";
 import Wrapper from "@/components/layout/Wrapper";
 import supabase from "@/lib/supabase";
 
-const HomePage = (props: { title?: string }) => {
+interface PageProps {
+  title: string;
+  description: string;
+  imageUrl: string;
+  url: string;
+}
+
+export default function Home({ title, description, imageUrl, url }: PageProps) {
   const [stats, setStats] = useState({
     projects_completed: 0,
     happy_clients: 0,
@@ -36,46 +44,27 @@ const HomePage = (props: { title?: string }) => {
     fetchStats();
   }, []);
 
-  const { title = " HOME " } = props;
-
   return (
     <>
       <Head>
-        <title>{`Cryptech Services | ${title}`}</title>
+        <title>{`Cryptech Services`}</title>
+
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <meta
-          id="meta-description"
-          name="description"
-          content="We provide web3 and fullstack development services and support, primarily focusing on cryptocurrency, blockchain technology, cyber security, web designing and technical support / consultation."
-        />
+        {/* Dynamic Open Graph Meta Tags */}
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={imageUrl} />
+        <meta property="og:url" content={url} />
+        <meta property="og:type" content="website" />
 
-        <meta
-          property="og:description"
-          content="We provide web3 and fullstack development services and support, primarily focusing on cryptocurrency , blockchain technology , cyber security , web designing and technical support / consultation."
-        />
-        <meta
-          id="og:keywords"
-          property="og:keywords"
-          content="Full-Stack Web Development, Web3 And DAPP Development, Solidity Development, Web Design, Graphic Design, Technical Consultation"
-        />
-
-        <meta id="og-title" property="og:title" content="Cryptech.Services" />
-
-        <meta
-          property="og:url"
-          id="og:url"
-          content="https://cryptech.services"
-        />
-
-        <meta
-          property="og:image"
-          id="og:image"
-          content="/static/images/ctlogo.png"
-        />
-
-        <meta id="og:type" property="og:type" content="website" />
+        {/* Dynamic Twitter Card Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={imageUrl} />
       </Head>
+
       <Wrapper>
         <HeroSection />
         <HomeStats
@@ -92,6 +81,19 @@ const HomePage = (props: { title?: string }) => {
       </Wrapper>
     </>
   );
-};
+}
 
-export default HomePage;
+export const getServerSideProps: GetServerSideProps = async () => {
+  // Fetch metadata dynamically here (e.g., from a database or an API)
+  const metadata = {
+    title: "Cryptech.Services",
+    description:
+      "We provide web3 and fullstack development services and support, primarily focusing on cryptocurrency , blockchain technology , cyber security , web designing and technical support / consultation.",
+    imageUrl: "/static/images/ctlogo.png",
+    url: "https://cryptech.services",
+  };
+
+  return {
+    props: metadata,
+  };
+};
