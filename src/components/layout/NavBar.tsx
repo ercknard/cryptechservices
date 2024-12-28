@@ -66,13 +66,12 @@ export default function Navbar() {
     return (
       <>
         <AppBar
-          position="fixed"
           sx={{
             height: 60,
             zIndex: 10,
-            px: 3,
+            px: 2,
             mb: { xs: 2.5, sm: 8 },
-            paddingBottom: { xs: 9, md: 0 },
+            paddingBottom: { xs: 5, md: 0 },
             boxShadow: 1,
             bgcolor: "custom.a1",
             backgroundImage: "none",
@@ -94,7 +93,7 @@ export default function Navbar() {
                     sx={{
                       textDecoration: "none",
                       color: "custom.primaryText",
-                      fontSize: "1.5rem",
+                      fontSize: "1.25rem",
                       fontWeight: 600,
                     }}
                   >
@@ -103,7 +102,7 @@ export default function Navbar() {
                 </Stack>
               </Box>
 
-              <Stack marginTop={1}>
+              <Stack marginTop={0.75}>
                 <IconButton onClick={() => setSelectedDrawer(0)}>
                   <MenuIcon sx={{ fontSize: "2rem" }} />
                 </IconButton>
@@ -120,7 +119,7 @@ export default function Navbar() {
           onClose={() => setSelectedDrawer(null)}
           PaperProps={{
             sx: {
-              p: 3,
+              p: 1,
               height: "100vh",
               bgcolor: "custom.a1",
               backgroundImage: "none",
@@ -143,7 +142,7 @@ export default function Navbar() {
                     sx={{
                       textDecoration: "none",
                       color: "custom.primaryText",
-                      fontSize: "1.5rem",
+                      fontSize: "1.25rem",
                       fontWeight: 600,
                     }}
                   >
@@ -157,23 +156,26 @@ export default function Navbar() {
               </IconButton>
             </Stack>
 
-            <Box>
+            <Box justifyItems={"left"}>
               <Stack
+                position={"relative"}
                 direction={"column"}
-                spacing={{ xs: 1, sm: 0, md: 5 }}
+                spacing={{ xs: 3, sm: 0, md: 5 }}
                 display={"flex"}
-                alignItems={"center"}
+                width={1}
+                paddingX={1}
               >
                 {NavItems.map((page) => {
-                  const normalizedPage = page
-                    .toLowerCase()
-                    .replace(/\s+/g, "-");
+                  const normalizedPage = page.toLowerCase().replace(/\s+/g, "");
                   return (
                     <Button
                       key={page}
                       component="a"
                       href={`/${normalizedPage}`} // Updated to use page as the href
+                      fullWidth
                       sx={{
+                        justifyContent: "left",
+                        textTransform: "capitalize",
                         textDecoration:
                           getCurrentPage() === normalizedPage
                             ? "underline"
@@ -184,12 +186,11 @@ export default function Navbar() {
                             : "transparent", // Set underline color
                         textDecorationThickness:
                           getCurrentPage() === normalizedPage ? 4 : 0, // Adjust underline thickness
-                        fontWeight: 600,
                       }}
                     >
                       <Typography
-                        variant={"h5"}
-                        fontWeight={"600"}
+                        variant={"h6"}
+                        textAlign={"left"}
                         color={
                           getCurrentPage() === normalizedPage
                             ? "custom.primaryText"
@@ -204,7 +205,7 @@ export default function Navbar() {
 
                 <Button
                   component="a"
-                  href="#servers"
+                  href="/contactus"
                   variant="contained"
                   color="primary"
                   size="large"

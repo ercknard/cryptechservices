@@ -187,7 +187,7 @@ const Projects: React.FC = () => {
                   Cryptech Services Projects
                 </Typography>
               </Stack>
-              <Stack direction={"row"} spacing={1}>
+              <Stack direction={{ xs: "column", md: "row" }} spacing={1}>
                 <Typography variant="h3" paddingBottom={1}>
                   Featuring our High-end
                 </Typography>

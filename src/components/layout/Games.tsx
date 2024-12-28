@@ -158,7 +158,7 @@ const Games: React.FC = () => {
                   Cryptech Services Servers
                 </Typography>
               </Stack>
-              <Stack direction={"row"} spacing={1}>
+              <Stack direction={{ xs: "column", md: "row" }} spacing={1}>
                 <Typography variant="h3" paddingBottom={1}>
                   Come, play with us and
                 </Typography>
@@ -280,7 +280,14 @@ const Games: React.FC = () => {
           )}
         </Grid>
 
-        <Grid container xs={12} sm={12} md={12} spacing={5} mt={2.5}>
+        <Grid
+          container
+          xs={12}
+          sm={12}
+          md={12}
+          spacing={{ xs: 0, md: 5 }}
+          mt={2.5}
+        >
           <Grid item xs={12} sm={12} md={4}>
             <Stack direction={"column"} spacing={4} justifyContent="center">
               {games.slice(0, 3).map((game, index) => (
@@ -352,7 +359,7 @@ const Games: React.FC = () => {
             </Stack>
           </Grid>
 
-          <Grid item xs={12} sm={12} md={8}>
+          <Grid item xs={12} sm={12} md={8} mt={{ xs: 5, md: 0 }}>
             {games[selectedCard] && (
               <Swiper
                 loop={true}
@@ -422,7 +429,7 @@ const Games: React.FC = () => {
             )}
           </Grid>
           {games[selectedCard] && (
-            <Grid item xs={12} sm={12} md={12}>
+            <Grid item xs={12} sm={12} md={12} mt={{ xs: 2.5, md: 0 }}>
               <Box display="flex" justifyContent="right">
                 <Button
                   variant="contained"

@@ -184,7 +184,7 @@ const SecurityServices: React.FC = () => {
                   Cryptech Security Services
                 </Typography>
               </Stack>
-              <Stack direction={"row"} spacing={1}>
+              <Stack direction={{ xs: "column", md: "row" }} spacing={1}>
                 <Typography variant="h3" paddingBottom={1}>
                   Improve IT defense with our
                 </Typography>
@@ -290,9 +290,20 @@ const SecurityServices: React.FC = () => {
         </Grid>
 
         {/* Card List */}
-        <Grid container xs={12} sm={12} md={12} spacing={5} mt={2.5}>
+        <Grid
+          container
+          xs={12}
+          sm={12}
+          md={12}
+          spacing={{ xs: 0, md: 5 }}
+          mt={2.5}
+        >
           <Grid item xs={12} sm={12} md={12}>
-            <Stack direction={"row"} spacing={4} justifyContent="center">
+            <Stack
+              direction={{ xs: "column", md: "row" }}
+              spacing={4}
+              justifyContent="center"
+            >
               {security.map((game, index) => (
                 <Card
                   key={index}
@@ -369,7 +380,7 @@ const SecurityServices: React.FC = () => {
           xs={12}
           sm={12}
           md={12}
-          spacing={5}
+          spacing={{ xs: 0, md: 5 }}
           mt={2}
           position={"relative"}
           zIndex={10}

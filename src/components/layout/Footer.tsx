@@ -138,7 +138,7 @@ export default function Footer() {
               >
                 <Box
                   component="img"
-                  width={{ md: 35 }}
+                  width={{ xs: 35, md: 35 }}
                   alt="Logo"
                   src={imageSrc}
                 />
@@ -160,7 +160,7 @@ export default function Footer() {
               <Stack
                 spacing={1}
                 direction={"row"}
-                display={"flex"}
+                display={{ xs: "none", md: "flex" }}
                 flexWrap={"wrap"}
               >
                 <Typography

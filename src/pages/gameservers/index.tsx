@@ -40,7 +40,7 @@ const GamePage = () => {
             }}
           />
           <Box zIndex={1}>
-            <Stack direction={"row"} spacing={1}>
+            <Stack direction={{ xs: "column", md: "row" }} spacing={1}>
               <Typography variant="title" fontWeight={600} paddingBottom={1}>
                 Cryptech Services&apos;
               </Typography>

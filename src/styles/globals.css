@@ -18,3 +18,15 @@ body {
   opacity: 100%;
   pointer-events: none !important;
 }
+
+/* Global or Component-level CSS */
+form {
+  min-width: 90vw !important; /* Default for mobile */
+  padding: "32px" !important;
+}
+
+@media (min-width: 600px) {
+  form {
+    min-width: 500px !important; /* Adjusted for larger screens */
+  }
+}

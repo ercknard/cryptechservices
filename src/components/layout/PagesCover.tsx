@@ -53,6 +53,7 @@ const PagesCover = () => {
           backgroundPosition: "right",
           backgroundRepeat: "no-repeat",
           pointerEvents: "none",
+          display: { xs: "none", md: "block" },
         }}
       />
 
@@ -69,6 +70,7 @@ const PagesCover = () => {
           backgroundRepeat: "no-repeat",
           transform: "scaleX(-1)",
           pointerEvents: "none",
+          display: { xs: "none", md: "block" },
         }}
       />
 

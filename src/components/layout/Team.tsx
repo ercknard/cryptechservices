@@ -114,7 +114,7 @@ const Team: React.FC = () => {
                   CS Team
                 </Typography>
               </Stack>
-              <Stack direction={"row"} spacing={1}>
+              <Stack direction={{ xs: "column", md: "row" }} spacing={1}>
                 <Typography variant="h3" paddingBottom={1}>
                   Cryptech Services
                 </Typography>
@@ -133,7 +133,7 @@ const Team: React.FC = () => {
             </Stack>
           </Grid>
 
-          <Box width={1} marginTop={10}>
+          <Box width={1} marginTop={10} marginLeft={{ xs: "2.5rem", md: "0" }}>
             <Typography variant="h4" fontWeight={"700"} textAlign={"center"}>
               Admins
             </Typography>
@@ -240,7 +240,7 @@ const Team: React.FC = () => {
             </Grid>
           ))}
 
-          <Box width={1} marginTop={5}>
+          <Box width={1} marginTop={5} marginLeft={{ xs: "2.5rem", md: "0" }}>
             <Typography variant="h4" fontWeight={"700"} textAlign={"center"}>
               Team
             </Typography>

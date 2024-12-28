@@ -125,15 +125,13 @@ export default function ContactUs() {
       }}
     >
       <Box sx={{ maxWidth: "lg", position: "relative", zIndex: 10 }}>
-        <Grid container spacing={4}>
+        <Grid container spacing={4} xs={12}>
           <Grid item xs={12}>
             <form
               onSubmit={handleSubmit}
               style={{
                 display: "flex",
                 flexDirection: "column",
-                padding: "32px",
-                minWidth: "500px",
                 maxWidth: "100%",
               }}
             >
