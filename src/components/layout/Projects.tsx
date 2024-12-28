@@ -133,7 +133,7 @@ const Projects: React.FC = () => {
         paddingY: "5rem",
       }}
     >
-      <Box
+      {/* <Box
         sx={{
           position: "absolute",
           left: "0",
@@ -155,7 +155,7 @@ const Projects: React.FC = () => {
           opacity: "0.05",
         }}
       >
-        {/* Dynamically update the background image based on the selected game */}
+
         <Box
           component={"img"}
           src={backgroundImage}
@@ -166,10 +166,10 @@ const Projects: React.FC = () => {
             height: "100%",
             width: "100%",
             objectFit: "cover",
-            opacity: ".05", // Controls the opacity to keep the content visible
+            opacity: ".05",
           }}
         />
-      </Box>
+      </Box> */}
       <Container maxWidth="lg" sx={{ position: "relative" }}>
         <Grid
           container
@@ -366,7 +366,6 @@ const Projects: React.FC = () => {
                   position: "relative",
                   width: "100%",
                   height: "100%",
-                  cursor: "pointer",
                   transition: "transform 0.3s ease, box-shadow 0.3s ease",
                   backgroundColor: "none",
                 }}
