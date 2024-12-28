@@ -98,7 +98,7 @@ const HomeSubscribe: React.FC = () => {
           sx={{
             background: `linear-gradient(to right, ${theme.palette.custom.primaryComponents}, ${theme.palette.custom.mainColor})`,
             color: "white",
-            padding: 5,
+            padding: { xs: 3, md: 5 },
             display: "flex",
             justifyContent: "center",
             alignItems: "center",

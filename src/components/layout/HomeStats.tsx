@@ -46,7 +46,11 @@ const HomeStats: React.FC<StatsProps> = ({
   const CTExperience = currentYear - startYear;
 
   return (
-    <Box position={"relative"} sx={{ paddingY: "5rem" }} id={"stats"}>
+    <Box
+      position={"relative"}
+      sx={{ paddingY: { xs: "2rem", md: "5rem" } }}
+      id={"stats"}
+    >
       <Container>
         <Grid
           container
@@ -56,12 +60,12 @@ const HomeStats: React.FC<StatsProps> = ({
           alignItems={"center"}
         >
           <Grid item xs={12} sm={6} md={7}>
-            <Stack spacing={1.5}>
+            <Stack spacing={{ xs: 2.5, md: 1.5 }}>
               <Typography fontSize={"1rem"} color="custom.primaryText">
                 Welcome to Cryptech Services
               </Typography>
-              <Stack direction={"row"} spacing={1}>
-                <Typography variant="h3" paddingBottom={1}>
+              <Stack direction={{ xs: "column", md: "row" }} spacing={1}>
+                <Typography variant="h3" paddingBottom={{ xs: 0, md: 1 }}>
                   Let us be Your
                 </Typography>
                 <Typography

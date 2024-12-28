@@ -177,12 +177,12 @@ const GitFeedsSection: React.FC = () => {
         alignItems: "center",
         backgroundColor: "custom.primaryBackground",
         textAlign: "left",
-        paddingY: "5rem",
+        paddingY: { xs: "2rem", md: "5rem" },
       }}
     >
       <Container maxWidth="lg" sx={{ position: "relative" }}>
         <Grid item xs={12} sm={12} md={12}>
-          <Stack spacing={1.5}>
+          <Stack spacing={{ xs: 2.5, md: 1.5 }}>
             <Stack
               direction={"row"}
               alignItems={"center"}
@@ -203,7 +203,7 @@ const GitFeedsSection: React.FC = () => {
               </Button>
             </Stack>
             <Stack direction={"row"} spacing={1}>
-              <Typography variant="h3" paddingBottom={1}>
+              <Typography variant="h3" paddingBottom={{ xs: 0, md: 1 }}>
                 Github
               </Typography>
               <Typography

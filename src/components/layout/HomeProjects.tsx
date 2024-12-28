@@ -80,7 +80,7 @@ const HomeProjects: React.FC = () => {
         alignItems: "center",
         backgroundColor: "custom.secondaryBackground",
         textAlign: "left",
-        paddingY: "5rem",
+        paddingY: { xs: "2rem", md: "5rem" },
       }}
     >
       <Container maxWidth="lg" sx={{ position: "relative" }}>
@@ -91,7 +91,7 @@ const HomeProjects: React.FC = () => {
           alignItems={"center"}
         >
           <Grid item xs={12} sm={12} md={12}>
-            <Stack spacing={1.5}>
+            <Stack spacing={{ xs: 2.5, md: 1.5 }}>
               <Stack
                 direction={"row"}
                 alignItems={"center"}
@@ -109,8 +109,8 @@ const HomeProjects: React.FC = () => {
                   Learn More <ArrowOutwardIcon fontSize="small" />
                 </Button>
               </Stack>
-              <Stack direction={"row"} spacing={1}>
-                <Typography variant="h3" paddingBottom={1}>
+              <Stack direction={{ xs: "column", md: "row" }} spacing={1}>
+                <Typography variant="h3" paddingBottom={{ xs: 0, md: 1 }}>
                   Featuring our High-end
                 </Typography>
                 <Typography
@@ -159,8 +159,8 @@ const HomeProjects: React.FC = () => {
               <SwiperSlide key={index}>
                 <Card
                   sx={{
-                    maxWidth: "35%",
-                    marginLeft: "auto",
+                    maxWidth: { xs: "100%", md: "35%" },
+                    marginLeft: { xs: "2.5rem", md: "auto" },
                     marginRight: "auto",
                     backgroundColor: "custom.primaryComponents",
                   }}
@@ -190,6 +190,7 @@ const HomeProjects: React.FC = () => {
                     height: "100%",
                     pointerEvents: "none",
                     aspectRatio: "auto",
+                    display: { xs: "none", md: "block" },
                   }}
                 />
 
@@ -204,6 +205,7 @@ const HomeProjects: React.FC = () => {
                     pointerEvents: "none",
                     aspectRatio: "auto",
                     transform: "scaleX(-1)",
+                    display: { xs: "none", md: "block" },
                   }}
                 />
               </SwiperSlide>

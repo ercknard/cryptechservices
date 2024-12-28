@@ -89,6 +89,7 @@ const HeroSection: React.FC = ({}) => {
 
       <Box
         sx={{
+          display: { xs: "none", md: "block" },
           position: "absolute",
           left: "0",
           top: "4.2rem",
@@ -104,6 +105,7 @@ const HeroSection: React.FC = ({}) => {
 
       <Box
         sx={{
+          display: { xs: "none", md: "block" },
           position: "absolute",
           left: "0",
           top: "4.2rem",
@@ -132,8 +134,12 @@ const HeroSection: React.FC = ({}) => {
 
       <Container maxWidth="lg" sx={{ position: "relative" }}>
         <Box position="relative" zIndex={1}>
-          <Stack direction={"row"} spacing={1}>
-            <Typography variant="h2" fontWeight={600} paddingBottom={1}>
+          <Stack direction={{ xs: "column", md: "row" }} spacing={1}>
+            <Typography
+              variant="h2"
+              fontWeight={600}
+              paddingBottom={{ xs: 0, md: 1 }}
+            >
               Creating a Better
             </Typography>
             <Typography
@@ -145,7 +151,11 @@ const HeroSection: React.FC = ({}) => {
               IT Solutions,
             </Typography>
           </Stack>
-          <Typography variant="h5" color="custom.secondaryText">
+          <Typography
+            variant="h5"
+            color="custom.secondaryText"
+            marginTop={{ xs: 1, md: 0 }}
+          >
             Unlocking Tomorrow&apos;s Digital Frontier with{" "}
             <span style={{ fontWeight: "bold" }}>Cryptech Services: </span>
             <span

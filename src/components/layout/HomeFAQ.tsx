@@ -69,11 +69,11 @@ const HomeFAQ = () => {
         display: "flex",
         alignItems: "center",
         textAlign: "left",
-        paddingY: "5rem",
+        paddingY: { xs: "2rem", md: "5rem" },
       }}
     >
       <Container maxWidth="lg" sx={{ position: "relative" }}>
-        <Stack spacing={1.5}>
+        <Stack spacing={{ xs: 2.5, md: 1.5 }}>
           <Stack
             direction={"row"}
             alignItems={"center"}
@@ -91,8 +91,8 @@ const HomeFAQ = () => {
               Contact Us <ArrowOutwardIcon fontSize="small" />
             </Button>
           </Stack>
-          <Stack direction={"row"} spacing={1}>
-            <Typography variant="h3" paddingBottom={1}>
+          <Stack direction={{ xs: "column", md: "row" }} spacing={1}>
+            <Typography variant="h3" paddingBottom={{ xs: 0, md: 1 }}>
               Frequently Asked
             </Typography>
             <Typography
