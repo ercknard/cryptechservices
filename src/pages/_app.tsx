@@ -12,7 +12,8 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta
           id="meta-description"
           name="description"
-          content="CryptechTest SMP Server: Community-driven Minetest Game with endless possibilities. Join us and embark on a journey of creativity, collaboration, and adventure in our immersive world."
+          property="og:description"
+          content="We provide web3 and fullstack development services and support, primarily focusing on cryptocurrency , blockchain technology , cyber security , web designing and technical support / consultation."
         />
         <meta
           name="keywords"
@@ -20,6 +21,10 @@ export default function App({ Component, pageProps }: AppProps) {
         />
 
         <meta id="og-title" property="og:title" content="CryptechTest" />
+
+        <meta property="og:url" content="https://cryptech.services" />
+
+        <meta property="og:image" content="/static/images/ctlogo.png" />
       </Head>
       <ThemeProvider>
         <Component {...pageProps} />
