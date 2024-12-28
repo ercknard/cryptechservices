@@ -45,13 +45,11 @@ const HomePage = (props: { title?: string }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         <meta
-          name="description"
           id="og:description"
           property="og:description"
           content="We provide web3 and fullstack development services and support, primarily focusing on cryptocurrency , blockchain technology , cyber security , web designing and technical support / consultation."
         />
         <meta
-          name="keywords"
           id="og:keywords"
           property="og:keywords"
           content="Full-Stack Web Development, Web3 And DAPP Development, Solidity Development, Web Design, Graphic Design, Technical Consultation"
@@ -71,7 +69,7 @@ const HomePage = (props: { title?: string }) => {
           content="/static/images/ctlogo.png"
         />
 
-        <meta property="og:type" content="website" />
+        <meta id="og:type" property="og:type" content="website" />
       </Head>
       <Wrapper>
         <HeroSection />
