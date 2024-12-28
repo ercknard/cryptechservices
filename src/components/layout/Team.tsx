@@ -218,7 +218,7 @@ const Team: React.FC = () => {
                     height: "100%",
                     transition: "opacity 0.3s ease",
                     pointerEvents: "none",
-                    opacity: 0.25,
+                    opacity: 0.15,
                   }}
                 />
               </Card>
@@ -312,7 +312,7 @@ const Team: React.FC = () => {
                     height: "100%",
                     transition: "opacity 0.3s ease",
                     pointerEvents: "none",
-                    opacity: 0.25,
+                    opacity: 0.15,
                   }}
                 />
               </Card>
