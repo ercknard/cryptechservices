@@ -7,7 +7,6 @@ import { Box } from "@mui/material"; // Import Box from Material-UI
 
 const Particlesview: React.FC = ({}) => {
   const { palette } = useThemeContext(); // Access the theme context
-  const [isInView, setIsInView] = useState(true); // Track whether the section is in view
 
   const particlesInit = useCallback(async (engine: Engine) => {
     console.log(engine);
@@ -20,30 +19,6 @@ const Particlesview: React.FC = ({}) => {
     },
     []
   );
-
-  // Intersection Observer callback
-  const handleIntersection = (entries: IntersectionObserverEntry[]) => {
-    const entry = entries[0]; // We only need the first entry since we're observing a single element
-    setIsInView(entry.isIntersecting); // Update the state when the element is in view or out of view
-  };
-
-  // useEffect(() => {
-  //   const containerElement = document.getElementById(containerId);
-
-  //   if (!containerElement) return;
-
-  //   const observer = new IntersectionObserver(handleIntersection, {
-  //     root: null, // Observe relative to the viewport
-  //     rootMargin: "0px", // No margin around the root
-  //     threshold: 0.1, // Trigger when at least 10% of the element is visible
-  //   });
-
-  //   observer.observe(containerElement); // Observe the element by containerId
-
-  //   return () => {
-  //     observer.unobserve(containerElement); // Clean up observer when component unmounts
-  //   };
-  // }, [containerId]); // Re-run if containerId changes
 
   return (
     <Box
@@ -61,7 +36,6 @@ const Particlesview: React.FC = ({}) => {
         init={particlesInit}
         loaded={particlesLoaded}
         options={{
-          autoPlay: isInView, // Start or stop particles based on visibility
           fpsLimit: 30,
           delay: 0,
           backgroundMask: {

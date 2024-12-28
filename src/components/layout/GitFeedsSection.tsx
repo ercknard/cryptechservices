@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Link from "@mui/material/Link";
@@ -16,12 +15,7 @@ import DefaultDialog from "./DefaultDialog";
 import { Alert, Card } from "@mui/material";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 
-type CustomTheme = {
-  activeSet: number;
-};
-
 const GitFeedsSection: React.FC = () => {
-  const theme = useTheme();
   const { activeSet } = useThemeContext();
   const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState<boolean>(true);

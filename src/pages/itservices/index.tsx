@@ -2,7 +2,6 @@ import React from "react";
 import { DefaultHead } from "@/components/layout/Head";
 import { Box, Stack, Typography, useTheme } from "@mui/material";
 import Wrapper from "@/components/layout/Wrapper";
-import HomeProducts from "@/components/layout/HomeProducts";
 import PagesCover from "@/components/layout/PagesCover";
 import Services from "@/components/layout/Services";
 

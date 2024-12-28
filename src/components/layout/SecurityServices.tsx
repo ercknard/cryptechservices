@@ -6,7 +6,6 @@ import {
   Box,
   Container,
   Stack,
-  Button,
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import React from "react";
@@ -17,7 +16,6 @@ import supabase from "@/lib/supabase";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
-import { relative } from "path";
 
 interface Security {
   security_name: string;

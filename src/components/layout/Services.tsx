@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {
   Box,
-  Button,
   Typography,
   Container,
   useTheme,
@@ -12,7 +11,6 @@ import {
   Icon,
 } from "@mui/material";
 import { useThemeContext } from "@/theme/themeProvider";
-import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import supabase from "@/lib/supabase";
 
 // Define the structure for IT services
@@ -26,8 +24,6 @@ interface ITServices {
 
 // Import dummy icons for now
 import CurrencyBitcoinOutlinedIcon from "@mui/icons-material/CurrencyBitcoinOutlined";
-import PrecisionManufacturingOutlinedIcon from "@mui/icons-material/PrecisionManufacturingOutlined";
-import ShieldOutlinedIcon from "@mui/icons-material/ShieldOutlined";
 import DesignServicesOutlinedIcon from "@mui/icons-material/DesignServicesOutlined";
 import SupportAgentOutlinedIcon from "@mui/icons-material/SupportAgentOutlined";
 import LayersIcon from "@mui/icons-material/Layers";

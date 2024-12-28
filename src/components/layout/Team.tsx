@@ -12,7 +12,6 @@ import {
   Container,
   Stack,
 } from "@mui/material";
-import { useTheme } from "@mui/material";
 import { useThemeContext } from "@/theme/themeProvider";
 import supabase from "@/lib/supabase";
 
@@ -28,7 +27,6 @@ interface TeamMember {
 }
 
 const Team: React.FC = () => {
-  const theme = useTheme();
   const { activeSet } = useThemeContext(); // activeSet will determine the theme's background
   const [teamMember, setTeamMember] = useState<TeamMember[]>([]);
   const [teamAdmin, setTeamAdmin] = useState<TeamMember[]>([]);

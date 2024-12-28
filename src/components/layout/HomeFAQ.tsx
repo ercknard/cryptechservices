@@ -26,34 +26,6 @@ type FaqItem = {
   answer: string;
 };
 
-const faqData: FaqItem[] = [
-  {
-    question: "What is Next.js?",
-    answer:
-      "Next.js is a React framework that enables functionality such as server-side rendering and generating static websites.",
-  },
-  {
-    question: "What is Material-UI?",
-    answer:
-      "Material-UI is a popular React UI framework that follows Google's Material Design guidelines.",
-  },
-  {
-    question: "How do I install Material-UI?",
-    answer:
-      "You can install Material-UI using npm or yarn: npm install @mui/material @emotion/react @emotion/styled.",
-  },
-  {
-    question: "How can I use Collapse in Material-UI?",
-    answer:
-      "You can use Collapse to show and hide content smoothly. It is usually used with buttons or other UI elements to toggle visibility.",
-  },
-  {
-    question: "What is TypeScript?",
-    answer:
-      "TypeScript is a statically typed superset of JavaScript that adds optional types, interfaces, and other features to JavaScript.",
-  },
-];
-
 const HomeFAQ = () => {
   const { activeSet } = useThemeContext();
   const [openIndex, setOpenIndex] = useState<number | null>(null);

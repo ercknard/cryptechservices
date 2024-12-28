@@ -26,8 +26,6 @@ interface ITServices {
 
 // Import dummy icons for now
 import CurrencyBitcoinOutlinedIcon from "@mui/icons-material/CurrencyBitcoinOutlined";
-import PrecisionManufacturingOutlinedIcon from "@mui/icons-material/PrecisionManufacturingOutlined";
-import ShieldOutlinedIcon from "@mui/icons-material/ShieldOutlined";
 import DesignServicesOutlinedIcon from "@mui/icons-material/DesignServicesOutlined";
 import SupportAgentOutlinedIcon from "@mui/icons-material/SupportAgentOutlined";
 import LayersIcon from "@mui/icons-material/Layers";

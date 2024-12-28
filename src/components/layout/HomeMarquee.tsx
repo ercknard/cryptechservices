@@ -1,18 +1,5 @@
-import React, { useState, useEffect } from "react";
-import {
-  Box,
-  Button,
-  Typography,
-  Container,
-  useTheme,
-  Stack,
-  Card,
-  CardContent,
-  Grid,
-} from "@mui/material";
-import { useThemeContext } from "@/theme/themeProvider";
-import SocialLinksList from "./SocialLInksList";
-import Particlesview from "./Particles";
+import React from "react";
+import { Box, Typography, useTheme } from "@mui/material";
 import Marquee from "react-fast-marquee";
 import { keyframes } from "@emotion/react";
 

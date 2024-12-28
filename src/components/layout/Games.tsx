@@ -58,10 +58,6 @@ const Games: React.FC = () => {
   const imageSrc =
     colorSetImageMap[activeSet.toString()] || colorSetImageMap[1];
 
-  const startYear = 2019;
-  const currentYear = new Date().getFullYear();
-  const CTExperience = currentYear - startYear;
-
   useEffect(() => {
     const fetchGames = async () => {
       const { data, error } = await supabase.from("ztable_games").select("*");

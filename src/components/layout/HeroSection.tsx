@@ -6,25 +6,10 @@ import {
   Container,
   useTheme,
   Stack,
-  Card,
-  CardContent,
-  Grid,
 } from "@mui/material";
 import { useThemeContext } from "@/theme/themeProvider";
-import SocialLinksList from "./SocialLInksList";
 import Particlesview from "./Particles";
-import Marquee from "react-fast-marquee";
-import { keyframes } from "@emotion/react";
 import HomeMarquee from "./HomeMarquee";
-
-const spinAnimation = keyframes`
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-`;
 
 const HeroSection: React.FC = ({}) => {
   const theme = useTheme();

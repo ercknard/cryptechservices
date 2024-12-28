@@ -1,12 +1,9 @@
 // MUI
 import { Breakpoint, Typography, useTheme } from "@mui/material";
-import Box from "@mui/material/Box";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
-import IconButton from "@mui/material/IconButton";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import CloseIcon from "@mui/icons-material/Close";
 
 interface DefaultDialogProps {
   maxWidth?: Breakpoint;
