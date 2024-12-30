@@ -97,6 +97,15 @@ const HomeProducts: React.FC = () => {
     }
   }, [selectedCard]);
 
+  useEffect(() => {
+    // Auto-play functionality to change the selected card every 3 seconds
+    const interval = setInterval(() => {
+      setSelectedCard((prevIndex) => (prevIndex + 1) % itServices.length); // Cycle through cards
+    }, 3000); // Change card every 3 seconds
+
+    return () => clearInterval(interval); // Cleanup interval on unmount
+  }, [itServices.length]);
+
   return (
     <Box
       sx={{
@@ -291,7 +300,7 @@ const HomeProducts: React.FC = () => {
                   padding: 1,
                   position: "relative",
                   height: "100%",
-                  cursor: "pointer",
+                  cursor: selectedCard === null ? "pointer" : "not-allowed", // Disable click when selected
                   transition: "transform 0.3s ease, box-shadow 0.3s ease",
                   backgroundColor:
                     selectedCard === index
@@ -303,7 +312,7 @@ const HomeProducts: React.FC = () => {
                     backgroundColor: "custom.primaryComponents",
                   },
                 }}
-                onClick={() => setSelectedCard(index)} // Set the selected card
+                onClick={() => selectedCard === null && setSelectedCard(index)} // Only allow click if no card is selected
               >
                 <CardContent sx={{ textAlign: "center" }}>
                   <Icon
