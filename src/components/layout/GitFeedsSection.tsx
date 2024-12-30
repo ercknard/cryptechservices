@@ -231,13 +231,13 @@ const GitFeedsSection: React.FC = () => {
                   padding: 3,
                   position: "relative",
                   height: "100%",
-                  cursor: "pointer",
+                  // cursor: "pointer",
                   transition: "transform 0.3s ease, box-shadow 0.3s ease",
                   backgroundColor: "none",
-                  "&:hover": {
-                    boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)",
-                    backgroundColor: "custom.primaryComponents",
-                  },
+                  // "&:hover": {
+                  //   boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)",
+                  //   backgroundColor: "custom.primaryComponents",
+                  // },
                 }}
               >
                 <Stack
@@ -414,14 +414,14 @@ const GitFeedsSection: React.FC = () => {
                     padding: 3,
                     position: "relative",
                     height: "100%",
-                    cursor: "pointer",
+                    // cursor: "pointer",
                     transition: "transform 0.3s ease, box-shadow 0.3s ease",
                     backgroundColor: "none",
                     borderRadius: "5px",
-                    "&:hover": {
-                      boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)",
-                      backgroundColor: "custom.primaryComponents",
-                    },
+                    // "&:hover": {
+                    //   boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)",
+                    //   backgroundColor: "custom.primaryComponents",
+                    // },
                   }}
                 >
                   <Stack

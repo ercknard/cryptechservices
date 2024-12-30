@@ -306,11 +306,11 @@ const HomeProducts: React.FC = () => {
                     selectedCard === index
                       ? "custom.secondaryComponents"
                       : "none",
-                  "&:hover": {
-                    transform: "scale(1.05)",
-                    boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)",
-                    backgroundColor: "custom.primaryComponents",
-                  },
+                  // "&:hover": {
+                  //   transform: "scale(1.05)",
+                  //   boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)",
+                  //   backgroundColor: "custom.primaryComponents",
+                  // },
                 }}
                 onClick={() => selectedCard === null && setSelectedCard(index)} // Only allow click if no card is selected
               >

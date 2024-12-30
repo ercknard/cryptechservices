@@ -97,7 +97,7 @@ const HomeStats: React.FC<StatsProps> = ({
                       color: `${theme.palette.custom.mainColor}`,
                       fontSize: 40,
                       "&:hover": {
-                        cursor: "pointer",
+                                        // cursor: "pointer",,
                       },
                     }}
                   />
@@ -109,7 +109,7 @@ const HomeStats: React.FC<StatsProps> = ({
                       color: `${theme.palette.custom.mainColor}`,
                       fontSize: 40,
                       "&:hover": {
-                        cursor: "pointer",
+                                        // cursor: "pointer",,
                       },
                     }}
                   />
@@ -121,7 +121,7 @@ const HomeStats: React.FC<StatsProps> = ({
                       color: `${theme.palette.custom.mainColor}`,
                       fontSize: 40,
                       "&:hover": {
-                        cursor: "pointer",
+                                        // cursor: "pointer",,
                       },
                     }}
                   />
@@ -133,7 +133,7 @@ const HomeStats: React.FC<StatsProps> = ({
                       color: `${theme.palette.custom.mainColor}`,
                       fontSize: 40,
                       "&:hover": {
-                        cursor: "pointer",
+                                        // cursor: "pointer",,
                       },
                     }}
                   />
@@ -145,7 +145,7 @@ const HomeStats: React.FC<StatsProps> = ({
                       color: `${theme.palette.custom.mainColor}`,
                       fontSize: 40,
                       "&:hover": {
-                        cursor: "pointer",
+                                        // cursor: "pointer",,
                       },
                     }}
                   />
@@ -251,7 +251,7 @@ const HomeStats: React.FC<StatsProps> = ({
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                cursor: "pointer",
+                // cursor: "pointer",,
                 transition: "transform 0.3s ease, box-shadow 0.3s ease",
                 position: "relative", // Added to ensure image stays in position
                 "&:hover": {
@@ -301,7 +301,7 @@ const HomeStats: React.FC<StatsProps> = ({
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                cursor: "pointer",
+                // cursor: "pointer",,
                 transition: "transform 0.3s ease, box-shadow 0.3s ease",
                 position: "relative", // Added to ensure image stays in position
                 "&:hover": {
@@ -350,7 +350,7 @@ const HomeStats: React.FC<StatsProps> = ({
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                cursor: "pointer",
+                // cursor: "pointer",,
                 transition: "transform 0.3s ease, box-shadow 0.3s ease",
                 position: "relative", // Added to ensure image stays in position
                 "&:hover": {
@@ -399,7 +399,7 @@ const HomeStats: React.FC<StatsProps> = ({
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                cursor: "pointer",
+                // cursor: "pointer",,
                 transition: "transform 0.3s ease, box-shadow 0.3s ease",
                 position: "relative", // Added to ensure image stays in position
                 "&:hover": {
@@ -448,7 +448,7 @@ const HomeStats: React.FC<StatsProps> = ({
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                cursor: "pointer",
+                // cursor: "pointer",,
                 transition: "transform 0.3s ease, box-shadow 0.3s ease",
                 position: "relative", // Added to ensure image stays in position
                 "&:hover": {
