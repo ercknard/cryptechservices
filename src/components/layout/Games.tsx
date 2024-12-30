@@ -291,7 +291,7 @@ const Games: React.FC = () => {
         >
           <Grid item xs={12} sm={12} md={4}>
             <Stack direction={"column"} spacing={4} justifyContent="center">
-              {games.slice(0, 3).map((game, index) => (
+              {games.map((game, index) => (
                 <Card
                   key={index}
                   onClick={() => setSelectedCard(index)}
@@ -426,25 +426,26 @@ const Games: React.FC = () => {
                     </Box>
                   </SwiperSlide>
                 ))}
+
+                {games[selectedCard] && (
+                  <Grid item xs={12} sm={12} md={12} mt={2.5}>
+                    <Box display="flex" justifyContent="right">
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        href={`${games[selectedCard].game_link}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        size="large"
+                      >
+                        Visit {games[selectedCard].game_mode}
+                      </Button>
+                    </Box>
+                  </Grid>
+                )}
               </Swiper>
             )}
           </Grid>
-          {games[selectedCard] && (
-            <Grid item xs={12} sm={12} md={12} mt={{ xs: 2.5, md: 0 }}>
-              <Box display="flex" justifyContent="right">
-                <Button
-                  variant="contained"
-                  color="primary"
-                  href={`${games[selectedCard].game_link}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  size="large"
-                >
-                  Visit {games[selectedCard].game_mode}
-                </Button>
-              </Box>
-            </Grid>
-          )}
         </Grid>
       </Container>
     </Box>
