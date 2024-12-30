@@ -259,7 +259,7 @@ const Projects: React.FC = () => {
                     </Typography>
                   </CardContent>
                 </Card>
-                <Box
+                {/* <Box
                   component="img"
                   src={imageSrc}
                   sx={{
@@ -286,7 +286,7 @@ const Projects: React.FC = () => {
                     transform: "scaleX(-1)",
                     display: { xs: "none", md: "block" },
                   }}
-                />
+                /> */}
               </SwiperSlide>
             ))}
           </Swiper>

@@ -10,7 +10,7 @@ const TeamPage = () => {
 
   return (
     <>
-      <DefaultHead title="CT Team" />
+      <DefaultHead title="CS Team" />
       <Wrapper>
         <Box
           paddingTop={"4.25rem"}
