@@ -70,7 +70,8 @@ const HomeFAQ = () => {
         display: "flex",
         alignItems: "center",
         textAlign: "left",
-        paddingY: { xs: "2rem", md: "5rem" },
+        paddingTop: { xs: "2rem", md: "5rem" },
+        paddingBottom: "2.5rem",
       }}
     >
       <Container maxWidth="lg" sx={{ position: "relative" }}>
