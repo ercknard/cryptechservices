@@ -216,7 +216,7 @@ const Projects: React.FC = () => {
             slidesPerView={"auto"}
             spaceBetween={500}
             autoplay={{
-              delay: 3000, // 3 seconds per slide
+              delay: 7500, // 3 seconds per slide
               disableOnInteraction: false, // Continue autoplay after user interaction
             }}
             coverflowEffect={{
