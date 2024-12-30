@@ -101,6 +101,7 @@ export default function Footer() {
         width={"100vw"}
         position={"absolute"}
         left={"0"}
+        marginBottom={1}
         sx={{
           backgroundColor: (theme) =>
             `rgba(${parseInt(
@@ -119,15 +120,16 @@ export default function Footer() {
           container
           item
           xs={12}
-          rowSpacing={2}
+          rowSpacing={{ xs: 2, sm: 2, md: 0, lg: 2 }}
           padding={{ xs: 2, md: 0 }}
           sx={{
             maxWidth: "1600px !important",
             justifyContent: { sm: "center", xs: "left" },
             marginX: "auto",
+            marginBottom: "1rem",
           }}
         >
-          <Grid item lg={7} xs={12}>
+          <Grid item lg={7} xs={11.5}>
             <Stack spacing={1} pb={{ xs: 1, md: 5 }}>
               <Stack
                 display={"flex"}
@@ -221,7 +223,7 @@ export default function Footer() {
           <Grid
             item
             lg={1}
-            sm={4}
+            sm={3.8}
             xs={4}
             display={"flex"}
             sx={{ justifyContent: { lg: "center", xs: "left" } }}
@@ -247,7 +249,7 @@ export default function Footer() {
           <Grid
             item
             lg={1}
-            sm={4}
+            sm={3.8}
             xs={4}
             display={"flex"}
             sx={{ justifyContent: { lg: "center", xs: "left" } }}
@@ -273,7 +275,7 @@ export default function Footer() {
           <Grid
             item
             lg={1}
-            sm={4}
+            sm={3.8}
             xs={4}
             display={"flex"}
             sx={{ justifyContent: { lg: "center", xs: "left" } }}
