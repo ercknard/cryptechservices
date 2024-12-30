@@ -9,6 +9,7 @@ import {
   CardMedia,
   Container,
   Stack,
+  Button,
 } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import {
@@ -213,7 +214,7 @@ const Projects: React.FC = () => {
             grabCursor={false}
             centeredSlides={true}
             slidesPerView={"auto"}
-            spaceBetween={0}
+            spaceBetween={500}
             autoplay={{
               delay: 3000, // 3 seconds per slide
               disableOnInteraction: false, // Continue autoplay after user interaction
@@ -236,29 +237,151 @@ const Projects: React.FC = () => {
           >
             {featuredProjects.map((project, index) => (
               <SwiperSlide key={index}>
-                <Card
-                  sx={{
-                    maxWidth: { xs: "90", md: "35%" },
-                    marginLeft: { xs: "2.5rem", md: "auto" },
-                    marginRight: "auto",
-                    backgroundColor: "custom.primaryComponents",
-                  }}
+                <Grid
+                  container
+                  xs={11}
+                  alignItems={"center"}
+                  spacing={5}
+                  marginX={"auto"}
                 >
-                  <CardMedia
-                    component="img"
-                    height="200"
-                    image={project.project_cover}
-                    alt={project.project_name}
-                  />
-                  <CardContent>
-                    <Typography gutterBottom variant="h6" component="div">
-                      {project.project_name}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      {project.project_main_desc}
-                    </Typography>
-                  </CardContent>
-                </Card>
+                  <Grid item xs={12} sm={6} md={5}>
+                    <Box
+                      sx={{
+                        position: "relative",
+                        transition: "transform 0.3s ease",
+                        transform: animateOnSelect ? "scale(1.05)" : "scale(1)",
+                        "&:hover": {
+                          transform: "scale(1.05)",
+                          transition: "transform 0.3s ease",
+                        },
+                      }}
+                    >
+                      {/* <Box
+                        sx={{
+                          position: "absolute",
+                          top: "50%",
+                          left: "50%",
+                          width: "75%",
+                          height: "75%",
+                          transform: "translate(-50%, -50%)",
+                          background: `${theme.palette.custom.mainColor}`,
+                          transition: "background 0.3s ease", // Transition background color on hover
+                          "&:hover": {
+                            background: `${theme.palette.custom.secondaryComponents}`, // Change background on hover
+                          },
+                        }}
+                      /> */}
+                      <Box
+                        component="img"
+                        src={project.project_cover}
+                        alt={project.project_name}
+                        sx={{
+                          width: "100%",
+                          maxWidth: 600,
+                          marginBottom: 2,
+                          transition: "opacity .3s ease",
+                          opacity: animateOnSelect ? ".5" : "1",
+                        }}
+                      />
+                      {/* <Box
+                        sx={{
+                          position: "absolute",
+                          left: "0",
+                          top: "0",
+                          width: "100%",
+                          height: "100%",
+                          background: `radial-gradient(at center, transparent, ${theme.palette.custom.primaryBackground})`,
+                          transition: "opacity 0.3s ease",
+                          "&:hover": {
+                            opacity: 0.7, // Fade the background slightly on hover
+                          },
+                        }}
+                      />
+
+                      <Box
+                        component={"img"}
+                        src={imageSrc}
+                        sx={{
+                          position: "absolute",
+                          left: "-10%",
+                          top: "10%",
+                          width: "100%",
+                          height: "100%",
+                          transition: "transform 0.3s ease",
+                          "&:hover": {
+                            transform: "scale(1.05)", // Slight zoom effect on hover
+                          },
+                        }}
+                      />
+
+                      <Box
+                        component={"img"}
+                        src={imageSrc}
+                        sx={{
+                          position: "absolute",
+                          left: "10%",
+                          top: "-10%",
+                          width: "100%",
+                          height: "100%",
+                          transform: "scale(-1)",
+                          transition: "transform 0.3s ease",
+                          "&:hover": {
+                            transform: "scale(-1.05)", // Slight zoom effect and scale flip
+                          },
+                        }}
+                      /> */}
+                    </Box>
+                  </Grid>
+
+                  <Grid item xs={12} sm={6} md={7}>
+                    <Box sx={{ position: "relative" }}>
+                      {selectedCard !== null && (
+                        <Box
+                          sx={{
+                            marginTop: "3rem",
+                            transition: "opacity .3s ease",
+                            opacity: animateOnSelect ? ".5" : "1",
+                          }}
+                        >
+                          <Stack direction={"column"} spacing={3}>
+                            <Typography variant="h4" gutterBottom>
+                              {project.project_name}
+                            </Typography>
+
+                            <Typography
+                              variant={"h6"}
+                              color="custom.primaryTextGrayed"
+                              sx={{ marginBottom: 2 }}
+                            >
+                              {project.project_main_desc}
+                            </Typography>
+
+                            <Grid
+                              item
+                              xs={12}
+                              sm={12}
+                              md={12}
+                              mt={{ xs: 2.5, md: 0 }}
+                            >
+                              <Box display="flex" justifyContent="right">
+                                <Button
+                                  variant="contained"
+                                  color="primary"
+                                  href={`${project.project_link}`}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  size="large"
+                                >
+                                  {project.project_name}
+                                </Button>
+                              </Box>
+                            </Grid>
+                          </Stack>
+                        </Box>
+                      )}
+                    </Box>
+                  </Grid>
+                </Grid>
                 {/* <Box
                   component="img"
                   src={imageSrc}
