@@ -48,7 +48,7 @@ const ContactUsPage = () => {
             }}
           />
           <Box zIndex={1}>
-            <Stack direction={{ xs: "column", md: "row" }} spacing={1}>
+            <Stack direction={{ xs: "column", md: "column" }}>
               <Typography variant="title" fontWeight={600} paddingBottom={1}>
                 Cryptech Services&apos;
               </Typography>
@@ -58,6 +58,7 @@ const ContactUsPage = () => {
                 fontSize={"3rem"}
                 color="custom.primaryText"
                 gutterBottom
+                lineHeight={"3rem"}
               >
                 Contact Us
               </Typography>
