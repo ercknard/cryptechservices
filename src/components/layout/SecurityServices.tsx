@@ -337,7 +337,7 @@ const SecurityServices: React.FC = () => {
             <Grid
               item
               xs={12}
-              sm={4}
+              sm={12}
               md={4}
               key={index}
               marginBottom={{ xs: 5, md: 0 }}
@@ -417,7 +417,7 @@ const SecurityServices: React.FC = () => {
           sm={12}
           md={12}
           spacing={{ xs: 0, md: 5 }}
-          mt={5}
+          marginTop={7.5}
           position={"relative"}
           zIndex={10}
         >
