@@ -334,7 +334,14 @@ const SecurityServices: React.FC = () => {
               justifyContent="center"
             > */}
           {security.map((game, index) => (
-            <Grid item xs={12} sm={4} md={4} key={index}>
+            <Grid
+              item
+              xs={12}
+              sm={4}
+              md={4}
+              key={index}
+              marginBottom={{ xs: 5, md: 0 }}
+            >
               <Card
                 onClick={() => setSelectedCard(index)}
                 sx={{
