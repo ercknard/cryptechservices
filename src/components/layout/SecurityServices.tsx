@@ -328,81 +328,80 @@ const SecurityServices: React.FC = () => {
           mt={2.5}
           marginBottom={5}
         >
-          <Grid item xs={12} sm={12} md={12}>
-            <Stack
+          {/* <Stack
               direction={{ xs: "column", md: "row" }}
               spacing={4}
               justifyContent="center"
-            >
-              {security.map((game, index) => (
-                <Card
-                  key={index}
-                  onClick={() => setSelectedCard(index)}
-                  sx={{
-                    padding: 1,
-                    position: "relative",
-                    width: "100%",
-                    height: "100%",
-                    cursor: "pointer",
-                    transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                    backgroundColor:
-                      selectedCard === index
-                        ? "custom.secondaryComponents"
-                        : "none",
-                    "&:hover": {
-                      transform: "scale(1.05)",
-                      boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)",
-                      backgroundColor: "custom.primaryComponents",
-                    },
-                  }}
-                >
-                  <CardContent>
-                    <Box position={"absolute"} top={".5rem"} left={".5rem"}>
-                      <Typography variant="h6" color="custom.primaryText">
-                        {game.security_packagenum}
-                      </Typography>
-                    </Box>
-                    <Box
-                      component={"img"}
-                      src={game.security_cover}
-                      sx={{
-                        marginLeft: "auto",
-                        marginRight: "auto",
-                        marginTop: "1rem",
-                        marginBottom: "1rem",
-                        width: "50%",
-                        transition: "transform 0.3s ease",
-                        "&:hover": {
-                          transform: "scale(1.2)",
-                        },
-                        opacity: ".9",
-                      }}
-                    />
-                    <Box>
-                      <Typography variant="h4" marginTop={3}>
-                        {game.security_name}
-                      </Typography>
-                      <Typography variant="body2" color="textSecondary">
-                        {game.security_desc}
-                      </Typography>
-                    </Box>
-                  </CardContent>
+            > */}
+          {security.map((game, index) => (
+            <Grid item xs={12} sm={4} md={4} key={index}>
+              <Card
+                onClick={() => setSelectedCard(index)}
+                sx={{
+                  padding: 1,
+                  position: "relative",
+                  width: "100%",
+                  height: "100%",
+                  cursor: "pointer",
+                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                  backgroundColor:
+                    selectedCard === index
+                      ? "custom.secondaryComponents"
+                      : "none",
+                  "&:hover": {
+                    transform: "scale(1.05)",
+                    boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)",
+                    backgroundColor: "custom.primaryComponents",
+                  },
+                }}
+              >
+                <CardContent>
+                  <Box position={"absolute"} top={".5rem"} left={".5rem"}>
+                    <Typography variant="h6" color="custom.primaryText">
+                      {game.security_packagenum}
+                    </Typography>
+                  </Box>
                   <Box
                     component={"img"}
-                    src={imageSrc}
+                    src={game.security_cover}
                     sx={{
-                      position: "absolute",
-                      right: "0",
-                      top: "0",
-                      height: "100%",
-                      transition: "opacity 0.3s ease",
-                      opacity: selectedCard === index ? "1" : ".1",
+                      marginLeft: "auto",
+                      marginRight: "auto",
+                      marginTop: "1rem",
+                      marginBottom: "1rem",
+                      width: "50%",
+                      transition: "transform 0.3s ease",
+                      "&:hover": {
+                        transform: "scale(1.2)",
+                      },
+                      opacity: ".9",
                     }}
                   />
-                </Card>
-              ))}
-            </Stack>
-          </Grid>
+                  <Box>
+                    <Typography variant="h4" marginTop={3}>
+                      {game.security_name}
+                    </Typography>
+                    <Typography variant="body2" color="textSecondary">
+                      {game.security_desc}
+                    </Typography>
+                  </Box>
+                </CardContent>
+                <Box
+                  component={"img"}
+                  src={imageSrc}
+                  sx={{
+                    position: "absolute",
+                    right: "0",
+                    top: "0",
+                    height: "100%",
+                    transition: "opacity 0.3s ease",
+                    opacity: selectedCard === index ? "1" : ".1",
+                  }}
+                />
+              </Card>
+            </Grid>
+          ))}
+          {/* </Stack> */}
         </Grid>
 
         <Grid
