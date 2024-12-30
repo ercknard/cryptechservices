@@ -290,7 +290,7 @@ const Games: React.FC = () => {
           paddingTop={5}
         >
           <Grid item xs={12} sm={12} md={4}>
-            <Stack direction={"column"} spacing={4} justifyContent="center">
+            <Stack direction={"column"} spacing={6.4} justifyContent="center">
               {games.map((game, index) => (
                 <Card
                   key={index}
