@@ -186,7 +186,7 @@ const HomeProjects: React.FC = () => {
                   src={imageSrc}
                   sx={{
                     position: "absolute",
-                    right: "25%",
+                    right: "23%",
                     top: "0",
                     height: "100%",
                     pointerEvents: "none",
