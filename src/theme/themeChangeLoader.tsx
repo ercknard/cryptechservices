@@ -64,6 +64,7 @@ const ChangeLoader: React.FC<ChangeLoaderProps> = ({ loading, colorSetId }) => {
     >
       <Box
         component={"img"}
+        alt="Logo"
         sx={{
           position: "absolute",
           left: 0,
@@ -80,6 +81,7 @@ const ChangeLoader: React.FC<ChangeLoaderProps> = ({ loading, colorSetId }) => {
 
       <Box
         component={"img"}
+        alt="Logo"
         sx={{
           position: "absolute",
           left: 0,
@@ -97,6 +99,7 @@ const ChangeLoader: React.FC<ChangeLoaderProps> = ({ loading, colorSetId }) => {
 
       <Box
         component={"img"}
+        alt="Logo"
         sx={{
           position: "absolute",
           left: 0,
@@ -114,6 +117,7 @@ const ChangeLoader: React.FC<ChangeLoaderProps> = ({ loading, colorSetId }) => {
 
       <Box
         component={"img"}
+        alt="Logo"
         sx={{
           position: "absolute",
           left: 0,
