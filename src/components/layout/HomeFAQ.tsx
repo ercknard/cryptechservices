@@ -154,6 +154,7 @@ const HomeFAQ = () => {
                 </Collapse>
                 <Box
                   component="img"
+                  alt="Logo"
                   src={imageSrc}
                   sx={{
                     position: "absolute",

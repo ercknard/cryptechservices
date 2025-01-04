@@ -344,6 +344,7 @@ const HomeProducts: React.FC = () => {
                 </CardContent>
                 <Box
                   component="img"
+                  alt="Logo"
                   src={imageSrc}
                   sx={{
                     position: "absolute",

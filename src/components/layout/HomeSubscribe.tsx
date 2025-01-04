@@ -137,6 +137,7 @@ const HomeSubscribe: React.FC = () => {
           <Box
             component="img"
             src={imageSrc}
+            alt="Logo"
             sx={{
               position: "absolute",
               left: "0",
