@@ -1,5 +1,4 @@
-// components/Stats.tsx
-
+import React, { useState, useEffect } from "react";
 import {
   Grid,
   Card,
@@ -9,11 +8,9 @@ import {
   Container,
   Stack,
 } from "@mui/material";
-import React from "react";
 import { useTheme } from "@mui/material";
 import { useThemeContext } from "@/theme/themeProvider";
 
-// Define the types for the statistics
 interface StatsProps {
   projectsCompleted: number;
   happyClients: number;
@@ -29,6 +26,7 @@ const HomeStats: React.FC<StatsProps> = ({
 }) => {
   const theme = useTheme();
   const { activeSet } = useThemeContext();
+  const [selectedCard, setSelectedCard] = useState<number>(0); // Track selected card
 
   const colorSetImageMap: { [key: string]: string } = {
     1: "/static/images/blue-upper-right.svg",
@@ -45,6 +43,16 @@ const HomeStats: React.FC<StatsProps> = ({
   const startYear = 2019;
   const currentYear = new Date().getFullYear();
   const CTExperience = currentYear - startYear;
+
+  // Auto transition interval
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSelectedCard((prev) => (prev + 1) % 5); // Loop through the cards
+    }, 3000); // Change card every 3 seconds
+
+    // Clear the interval when the component unmounts
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <Box
@@ -85,72 +93,6 @@ const HomeStats: React.FC<StatsProps> = ({
                 services in the realms of cybersecurity , as well as technical
                 support and consultation.
               </Typography>
-
-              {/* <Stack
-                direction={"row"}
-                justifyContent={"space-evenly"}
-                paddingTop={"2.5rem"}
-              >
-                <Tooltip title="Bitcoin" arrow>
-                  <CurrencyBitcoinOutlinedIcon
-                    sx={{
-                      color: `${theme.palette.custom.mainColor}`,
-                      fontSize: 40,
-                      "&:hover": {
-                                        // cursor: "pointer",,
-                      },
-                    }}
-                  />
-                </Tooltip>
-
-                <Tooltip title="Manufacturing" arrow>
-                  <PrecisionManufacturingOutlinedIcon
-                    sx={{
-                      color: `${theme.palette.custom.mainColor}`,
-                      fontSize: 40,
-                      "&:hover": {
-                                        // cursor: "pointer",,
-                      },
-                    }}
-                  />
-                </Tooltip>
-
-                <Tooltip title="Security" arrow>
-                  <ShieldOutlinedIcon
-                    sx={{
-                      color: `${theme.palette.custom.mainColor}`,
-                      fontSize: 40,
-                      "&:hover": {
-                                        // cursor: "pointer",,
-                      },
-                    }}
-                  />
-                </Tooltip>
-
-                <Tooltip title="Design Services" arrow>
-                  <DesignServicesOutlinedIcon
-                    sx={{
-                      color: `${theme.palette.custom.mainColor}`,
-                      fontSize: 40,
-                      "&:hover": {
-                                        // cursor: "pointer",,
-                      },
-                    }}
-                  />
-                </Tooltip>
-
-                <Tooltip title="Support" arrow>
-                  <SupportAgentOutlinedIcon
-                    sx={{
-                      color: `${theme.palette.custom.mainColor}`,
-                      fontSize: 40,
-                      "&:hover": {
-                                        // cursor: "pointer",,
-                      },
-                    }}
-                  />
-                </Tooltip>
-              </Stack> */}
             </Stack>
           </Grid>
 
@@ -243,252 +185,63 @@ const HomeStats: React.FC<StatsProps> = ({
           </Grid>
         </Grid>
 
-        <Grid container spacing={3} justifyContent="center" marginTop={2}>
-          <Grid item xs={12} sm={6} md={4}>
-            <Card
-              sx={{
-                padding: 2,
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                // cursor: "pointer",,
-                transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                position: "relative", // Added to ensure image stays in position
-                "&:hover": {
-                  transform: "scale(1.05)",
-                  boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)",
-                  backgroundColor: "custom.primaryComponents",
-                  "& .image": {
-                    transition: "opacity 0.3s ease",
-                    opacity: 1, // Make the image opacity 1 when the card is hovered
-                  },
-                },
-              }}
-            >
-              <CardContent>
-                <Stack direction={"row"} spacing={2} alignItems={"center"}>
-                  <Typography variant="h4" color="primary" fontWeight="bold">
-                    {CTExperience}
-                  </Typography>
-                  <Typography variant="h6" color="text.secondary">
-                    Years of Experience as CT Team
-                  </Typography>
-                </Stack>
-              </CardContent>
-
-              <Box
-                component="img"
-                src={imageSrc}
+        {/* Card section */}
+        <Grid container spacing={4} justifyContent="center" marginTop={2}>
+          {[
+            { title: CTExperience, subtitle: "Years of Experience as CT Team" },
+            { title: `${projectsCompleted}+`, subtitle: "Projects Completed" },
+            { title: `${happyClients}+`, subtitle: "Happy Clients" },
+            { title: teamMembers, subtitle: "Team Members" },
+            { title: gameServers, subtitle: "Game Servers" },
+          ].map((stat, index) => (
+            <Grid item xs={12} sm={6} md={4} key={index}>
+              <Card
                 sx={{
-                  position: "absolute",
-                  right: "0",
-                  top: "0",
-                  height: "100%",
-                  pointerEvents: "none",
-                  aspectRatio: "auto",
-                  opacity: ".1",
-                  "&.image": {},
+                  padding: 2,
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                  position: "relative",
+                  transform:
+                    selectedCard === index ? "scale(1.05)" : "scale(1)",
+                  boxShadow:
+                    selectedCard === index
+                      ? "0px 8px 16px rgba(0, 0, 0, 0.2)"
+                      : "none",
+                  backgroundColor:
+                    selectedCard === index
+                      ? `${theme.palette.custom.secondaryComponents}`
+                      : "none",
                 }}
-                className="image"
-              />
-            </Card>
-          </Grid>
-
-          <Grid item xs={12} sm={6} md={4}>
-            <Card
-              sx={{
-                padding: 2,
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                // cursor: "pointer",,
-                transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                position: "relative", // Added to ensure image stays in position
-                "&:hover": {
-                  transform: "scale(1.05)",
-                  boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)",
-                  backgroundColor: "custom.primaryComponents",
-                  "& .image": {
-                    transition: "opacity 0.3s ease",
-                    opacity: 1, // Make the image opacity 1 when the card is hovered
-                  },
-                },
-              }}
-            >
-              <CardContent>
-                <Stack direction={"row"} spacing={2} alignItems={"center"}>
-                  <Typography variant="h4" color="primary" fontWeight="bold">
-                    {projectsCompleted}+
-                  </Typography>
-                  <Typography variant="h6" color="text.secondary">
-                    Projects Completed
-                  </Typography>
-                </Stack>
-              </CardContent>
-              <Box
-                component="img"
-                src={imageSrc}
-                sx={{
-                  position: "absolute",
-                  right: "0",
-                  top: "0",
-                  height: "100%",
-                  pointerEvents: "none",
-                  aspectRatio: "auto",
-                  opacity: ".1",
-                  "&.image": {},
-                }}
-                className="image"
-              />
-            </Card>
-          </Grid>
-
-          <Grid item xs={12} sm={6} md={4}>
-            <Card
-              sx={{
-                padding: 2,
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                // cursor: "pointer",,
-                transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                position: "relative", // Added to ensure image stays in position
-                "&:hover": {
-                  transform: "scale(1.05)",
-                  boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)",
-                  backgroundColor: "custom.primaryComponents",
-                  "& .image": {
-                    transition: "opacity 0.3s ease",
-                    opacity: 1, // Make the image opacity 1 when the card is hovered
-                  },
-                },
-              }}
-            >
-              <CardContent>
-                <Stack direction={"row"} spacing={2} alignItems={"center"}>
-                  <Typography variant="h4" color="primary" fontWeight="bold">
-                    {happyClients}+
-                  </Typography>
-                  <Typography variant="h6" color="text.secondary">
-                    Happy Clients
-                  </Typography>
-                </Stack>
-              </CardContent>
-              <Box
-                component="img"
-                src={imageSrc}
-                sx={{
-                  position: "absolute",
-                  right: "0",
-                  top: "0",
-                  height: "100%",
-                  pointerEvents: "none",
-                  aspectRatio: "auto",
-                  opacity: ".1",
-                  "&.image": {},
-                }}
-                className="image"
-              />
-            </Card>
-          </Grid>
-
-          <Grid item xs={12} sm={6} md={4}>
-            <Card
-              sx={{
-                padding: 2,
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                // cursor: "pointer",,
-                transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                position: "relative", // Added to ensure image stays in position
-                "&:hover": {
-                  transform: "scale(1.05)",
-                  boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)",
-                  backgroundColor: "custom.primaryComponents",
-                  "& .image": {
-                    transition: "opacity 0.3s ease",
-                    opacity: 1, // Make the image opacity 1 when the card is hovered
-                  },
-                },
-              }}
-            >
-              <CardContent>
-                <Stack direction={"row"} spacing={2} alignItems={"center"}>
-                  <Typography variant="h4" color="primary" fontWeight="bold">
-                    {teamMembers}
-                  </Typography>
-                  <Typography variant="h6" color="text.secondary">
-                    Team Members
-                  </Typography>
-                </Stack>
-              </CardContent>
-              <Box
-                component="img"
-                src={imageSrc}
-                sx={{
-                  position: "absolute",
-                  right: "0",
-                  top: "0",
-                  height: "100%",
-                  pointerEvents: "none",
-                  aspectRatio: "auto",
-                  opacity: ".1",
-                  "&.image": {},
-                }}
-                className="image"
-              />
-            </Card>
-          </Grid>
-
-          <Grid item xs={12} sm={6} md={4}>
-            <Card
-              sx={{
-                padding: 2,
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                // cursor: "pointer",,
-                transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                position: "relative", // Added to ensure image stays in position
-                "&:hover": {
-                  transform: "scale(1.05)",
-                  boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)",
-                  backgroundColor: "custom.primaryComponents",
-                  "& .image": {
-                    transition: "opacity 0.3s ease",
-                    opacity: 1, // Make the image opacity 1 when the card is hovered
-                  },
-                },
-              }}
-            >
-              <CardContent>
-                <Stack direction={"row"} spacing={2} alignItems={"center"}>
-                  <Typography variant="h4" color="primary" fontWeight="bold">
-                    {gameServers}
-                  </Typography>
-                  <Typography variant="h6" color="text.secondary">
-                    Game Servers
-                  </Typography>
-                </Stack>
-              </CardContent>
-              <Box
-                component="img"
-                src={imageSrc}
-                sx={{
-                  position: "absolute",
-                  right: "0",
-                  top: "0",
-                  height: "100%",
-                  pointerEvents: "none",
-                  aspectRatio: "auto",
-                  opacity: ".1",
-                  "&.image": {},
-                }}
-                className="image"
-              />
-            </Card>
-          </Grid>
+                onClick={() => setSelectedCard(index)} // Allow manual selection too
+              >
+                <CardContent>
+                  <Stack direction={"row"} spacing={2} alignItems={"center"}>
+                    <Typography variant="h4" color="primary" fontWeight="bold">
+                      {stat.title}
+                    </Typography>
+                    <Typography variant="h6" color="text.secondary">
+                      {stat.subtitle}
+                    </Typography>
+                  </Stack>
+                </CardContent>
+                <Box
+                  component="img"
+                  src={imageSrc}
+                  sx={{
+                    position: "absolute",
+                    right: "0",
+                    top: "0",
+                    height: "100%",
+                    pointerEvents: "none",
+                    aspectRatio: "auto",
+                    opacity: selectedCard === index ? `1` : ".1",
+                  }}
+                />
+              </Card>
+            </Grid>
+          ))}
         </Grid>
       </Container>
     </Box>
