@@ -58,7 +58,7 @@ const HeroSection: React.FC = ({}) => {
           top: "0",
           width: "calc(100vw - 5px)",
           height: "85vh",
-          backgroundImage: `url(/static/images/hero-cover.jpg)`,
+          backgroundImage: `url(/static/images/webp/hero-cover.webp)`,
           backgroundSize: "cover",
           backgroundPosition: "right",
           backgroundRepeat: "no-repeat",

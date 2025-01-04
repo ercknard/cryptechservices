@@ -123,7 +123,7 @@ const HomeStats: React.FC<StatsProps> = ({
               />
               <Box
                 component={"img"}
-                src="/static/images/stats-cover.jpg"
+                src="/static/images/webp/stats-cover.webp"
                 sx={{
                   width: "100%",
                   clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)",
