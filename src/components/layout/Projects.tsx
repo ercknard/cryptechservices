@@ -158,7 +158,8 @@ const Projects: React.FC = () => {
       >
 
         <Box
-          component={"img"}
+                              component={"img"}
+                    alt="Logo"
           src={backgroundImage}
           sx={{
             position: "absolute",
@@ -299,7 +300,8 @@ const Projects: React.FC = () => {
                       />
 
                       <Box
-                        component={"img"}
+                                            component={"img"}
+                    alt="Logo"
                         src={imageSrc}
                         sx={{
                           position: "absolute",
@@ -315,7 +317,8 @@ const Projects: React.FC = () => {
                       />
 
                       <Box
-                        component={"img"}
+                                            component={"img"}
+                    alt="Logo"
                         src={imageSrc}
                         sx={{
                           position: "absolute",
@@ -441,7 +444,8 @@ const Projects: React.FC = () => {
                 <CardContent>
                   <Stack direction={"row"} spacing={2.5} alignItems={"center"}>
                     <Box
-                      component={"img"}
+                                          component={"img"}
+                    alt="Logo"
                       src={game.project_cover}
                       sx={{
                         width: "20%",
@@ -460,7 +464,8 @@ const Projects: React.FC = () => {
                   </Stack>
                 </CardContent>
                 <Box
-                  component={"img"}
+                                      component={"img"}
+                    alt="Logo"
                   src={imageSrc}
                   sx={{
                     position: "absolute",
@@ -505,6 +510,7 @@ const Projects: React.FC = () => {
                 </CardContent>
                 <Box
                   component={"img"}
+                  alt="Logo"
                   src={imageSrc}
                   sx={{
                     position: "absolute",

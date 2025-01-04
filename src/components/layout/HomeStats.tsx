@@ -123,6 +123,7 @@ const HomeStats: React.FC<StatsProps> = ({
               />
               <Box
                 component={"img"}
+                alt="Logo"
                 src="/static/images/webp/stats-cover.webp"
                 sx={{
                   width: "100%",
@@ -151,6 +152,7 @@ const HomeStats: React.FC<StatsProps> = ({
 
               <Box
                 component={"img"}
+                alt="Logo"
                 src={imageSrc}
                 sx={{
                   position: "absolute",
@@ -167,6 +169,7 @@ const HomeStats: React.FC<StatsProps> = ({
 
               <Box
                 component={"img"}
+                alt="Logo"
                 src={imageSrc}
                 sx={{
                   position: "absolute",

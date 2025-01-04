@@ -127,6 +127,7 @@ const Games: React.FC = () => {
         {/* Dynamically update the background image based on the selected game */}
         <Box
           component={"img"}
+          alt="Logo"
           src={backgroundImage}
           sx={{
             position: "absolute",
@@ -211,6 +212,7 @@ const Games: React.FC = () => {
                   />
                   <Box
                     component={"img"}
+                    alt="Logo"
                     src={games[selectedCard].game_cover}
                     sx={{
                       width: "100%",
@@ -224,6 +226,7 @@ const Games: React.FC = () => {
                   />
                   <Box
                     component={"img"}
+                    alt="Logo"
                     src={imageSrc}
                     sx={{
                       position: "absolute",
@@ -239,6 +242,7 @@ const Games: React.FC = () => {
                   />
                   <Box
                     component={"img"}
+                    alt="Logo"
                     src={imageSrc}
                     sx={{
                       position: "absolute",
@@ -321,6 +325,7 @@ const Games: React.FC = () => {
                     >
                       <Box
                         component={"img"}
+                        alt="Logo"
                         src={game.game_cover}
                         sx={{
                           width: "20%",
@@ -345,6 +350,7 @@ const Games: React.FC = () => {
                   </CardContent>
                   <Box
                     component={"img"}
+                    alt="Logo"
                     src={imageSrc}
                     sx={{
                       position: "absolute",
@@ -384,6 +390,7 @@ const Games: React.FC = () => {
                     <Box position={"relative"} width={"100%"}>
                       <Box
                         component={"img"}
+                        alt="Logo"
                         src={galleryImage}
                         sx={{
                           width: "100%",
@@ -396,6 +403,7 @@ const Games: React.FC = () => {
                       />
                       <Box
                         component={"img"}
+                        alt="Logo"
                         src={imageSrc}
                         sx={{
                           position: "absolute",
@@ -410,6 +418,7 @@ const Games: React.FC = () => {
                       />
                       <Box
                         component={"img"}
+                        alt="Logo"
                         src={imageSrc}
                         sx={{
                           position: "absolute",

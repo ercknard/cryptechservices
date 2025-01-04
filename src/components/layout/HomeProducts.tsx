@@ -224,6 +224,7 @@ const HomeProducts: React.FC = () => {
 
               <Box
                 component={"img"}
+                alt="Logo"
                 src={imageSrc}
                 sx={{
                   position: "absolute",
@@ -240,6 +241,7 @@ const HomeProducts: React.FC = () => {
 
               <Box
                 component={"img"}
+                alt="Logo"
                 src={imageSrc}
                 sx={{
                   position: "absolute",

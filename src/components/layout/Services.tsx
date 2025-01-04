@@ -192,6 +192,7 @@ const Services: React.FC = () => {
 
               <Box
                 component={"img"}
+                alt="Logo"
                 src={imageSrc}
                 sx={{
                   position: "absolute",
@@ -208,6 +209,7 @@ const Services: React.FC = () => {
 
               <Box
                 component={"img"}
+                alt="Logo"
                 src={imageSrc}
                 sx={{
                   position: "absolute",

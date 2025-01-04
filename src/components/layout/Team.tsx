@@ -233,6 +233,7 @@ const Team: React.FC = () => {
                 </CardContent>
                 <Box
                   component={"img"}
+                  alt="Logo"
                   src={imageSrc}
                   sx={{
                     position: "absolute",
@@ -246,6 +247,7 @@ const Team: React.FC = () => {
                 />
                 <Box
                   component={"img"}
+                  alt="Logo"
                   src={imageSrc}
                   sx={{
                     position: "absolute",
@@ -346,6 +348,7 @@ const Team: React.FC = () => {
                 </CardContent>
                 <Box
                   component={"img"}
+                  alt="Logo"
                   src={imageSrc}
                   sx={{
                     position: "absolute",
@@ -359,6 +362,7 @@ const Team: React.FC = () => {
                 />
                 <Box
                   component={"img"}
+                  alt="Logo"
                   src={imageSrc}
                   sx={{
                     position: "absolute",
@@ -459,6 +463,7 @@ const Team: React.FC = () => {
                 </CardContent>
                 <Box
                   component={"img"}
+                  alt="Logo"
                   src={imageSrc}
                   sx={{
                     position: "absolute",
@@ -472,6 +477,7 @@ const Team: React.FC = () => {
                 />
                 <Box
                   component={"img"}
+                  alt="Logo"
                   src={imageSrc}
                   sx={{
                     position: "absolute",

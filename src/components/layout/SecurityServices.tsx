@@ -142,6 +142,7 @@ const SecurityServices: React.FC = () => {
       {/* Dynamically update the background image based on the selected game */}
       <Box
         component={"img"}
+        alt="Logo"
         src={backgroundImage}
         sx={{
           position: "absolute",
@@ -156,6 +157,7 @@ const SecurityServices: React.FC = () => {
 
       <Box
         component={"img"}
+        alt="Logo"
         src={backgroundImage}
         sx={{
           position: "absolute",
@@ -240,6 +242,7 @@ const SecurityServices: React.FC = () => {
                   />
                   <Box
                     component={"img"}
+                    alt="Logo"
                     src={security[selectedCard].security_cover}
                     sx={{
                       marginLeft: "auto",
@@ -370,6 +373,7 @@ const SecurityServices: React.FC = () => {
                   </Box>
                   <Box
                     component={"img"}
+                    alt="Logo"
                     src={game.security_cover}
                     sx={{
                       marginLeft: "auto",
@@ -395,6 +399,7 @@ const SecurityServices: React.FC = () => {
                 </CardContent>
                 <Box
                   component={"img"}
+                  alt="Logo"
                   src={imageSrc}
                   sx={{
                     position: "absolute",
@@ -465,6 +470,7 @@ const SecurityServices: React.FC = () => {
               </Stack>
               <Box
                 component={"img"}
+                alt="Logo"
                 src={imageSrc}
                 sx={{
                   position: "absolute",
