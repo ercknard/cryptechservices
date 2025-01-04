@@ -310,8 +310,8 @@ const colorPalette = (mode: PaletteMode, setId: number) => {
     palette: {
       mode,
       text: {
-        primary: getColor("#000000", "#ffffff"),
-        secondary: getColor("#000000", "#ffffff"),
+        primary: selectedSet.secondaryTextGrayed,
+        secondary: selectedSet.secondaryTextGrayed,
       },
       primary: {
         main: selectedSet.mainColor,

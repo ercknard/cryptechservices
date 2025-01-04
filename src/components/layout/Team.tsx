@@ -12,6 +12,7 @@ import {
   Container,
   Stack,
 } from "@mui/material";
+import { useTheme } from "@mui/material";
 import { useThemeContext } from "@/theme/themeProvider";
 import supabase from "@/lib/supabase";
 
@@ -27,6 +28,7 @@ interface TeamMember {
 }
 
 const Team: React.FC = () => {
+  const theme = useTheme();
   const { activeSet } = useThemeContext(); // activeSet will determine the theme's background
   const [teamMember, setTeamMember] = useState<TeamMember[]>([]);
   const [teamAdmin, setTeamAdmin] = useState<TeamMember[]>([]);
@@ -148,28 +150,33 @@ const Team: React.FC = () => {
             <Grid item xs={12} sm={6} md={4} key={index}>
               <Card
                 sx={{
-                  padding: 1,
                   position: "relative",
                   width: "100%",
                   height: "100%",
-                  cursor: "pointer",
                   transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                  backgroundColor: "none",
-                  "&:hover": {
-                    transform: "scale(1.05)",
-                    boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)",
-                    backgroundColor: "custom.primaryComponents",
-                  },
+                  backgroundColor: "custom.primaryBackground",
                 }}
               >
                 <CardMedia>
                   <Avatar
-                    sx={{ width: 150, height: 150, margin: "auto", mt: 2 }}
+                    sx={{
+                      width: 150,
+                      height: 150,
+                      margin: "auto",
+                      mt: 2,
+                      opacity: ".65",
+                    }}
                     src={member.team_image}
                     alt={member.team_name}
                   />
                 </CardMedia>
-                <CardContent sx={{ textAlign: "center", marginTop: "1rem" }}>
+                <CardContent
+                  sx={{
+                    textAlign: "center",
+                    marginTop: "1rem",
+                    backgroundImage: `linear-gradient(to top,${theme.palette.custom.secondaryComponents}, transparent)`,
+                  }}
+                >
                   {/* <Box position={"absolute"} top={".5rem"} left={".5rem"}>
                     <Typography variant="h6" color="custom.primaryText">
                       {member.team_role1}
@@ -237,6 +244,20 @@ const Team: React.FC = () => {
                     opacity: 0.05,
                   }}
                 />
+                <Box
+                  component={"img"}
+                  src={imageSrc}
+                  sx={{
+                    position: "absolute",
+                    left: "0",
+                    top: "0",
+                    height: "100%",
+                    transition: "opacity 0.3s ease",
+                    pointerEvents: "none",
+                    opacity: 0.05,
+                    transform: "scaleX(-1)",
+                  }}
+                />
               </Card>
             </Grid>
           ))}
@@ -251,28 +272,33 @@ const Team: React.FC = () => {
             <Grid item xs={12} sm={6} md={4} key={index}>
               <Card
                 sx={{
-                  padding: 1,
                   position: "relative",
                   width: "100%",
                   height: "100%",
-                  cursor: "pointer",
                   transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                  backgroundColor: "none",
-                  "&:hover": {
-                    transform: "scale(1.05)",
-                    boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)",
-                    backgroundColor: "custom.primaryComponents",
-                  },
+                  backgroundColor: "custom.primaryBackground",
                 }}
               >
                 <CardMedia>
                   <Avatar
-                    sx={{ width: 150, height: 150, margin: "auto", mt: 2 }}
+                    sx={{
+                      width: 150,
+                      height: 150,
+                      margin: "auto",
+                      mt: 2,
+                      opacity: ".65",
+                    }}
                     src={member.team_image}
                     alt={member.team_name}
                   />
                 </CardMedia>
-                <CardContent sx={{ textAlign: "center", marginTop: ".5rem" }}>
+                <CardContent
+                  sx={{
+                    textAlign: "center",
+                    marginTop: "1rem",
+                    backgroundImage: `linear-gradient(to top,${theme.palette.custom.secondaryComponents}, transparent)`,
+                  }}
+                >
                   {/* <Box position={"absolute"} top={".5rem"} left={".5rem"}>
                     <Typography variant="h6" color="custom.primaryText">
                       {member.team_mainrole}
@@ -331,6 +357,20 @@ const Team: React.FC = () => {
                     opacity: 0.05,
                   }}
                 />
+                <Box
+                  component={"img"}
+                  src={imageSrc}
+                  sx={{
+                    position: "absolute",
+                    left: "0",
+                    top: "0",
+                    height: "100%",
+                    transition: "opacity 0.3s ease",
+                    pointerEvents: "none",
+                    opacity: 0.05,
+                    transform: "scaleX(-1)",
+                  }}
+                />
               </Card>
             </Grid>
           ))}
@@ -345,28 +385,33 @@ const Team: React.FC = () => {
             <Grid item xs={12} sm={6} md={4} key={index}>
               <Card
                 sx={{
-                  padding: 1,
                   position: "relative",
                   width: "100%",
                   height: "100%",
-                  cursor: "pointer",
                   transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                  backgroundColor: "none",
-                  "&:hover": {
-                    transform: "scale(1.05)",
-                    boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)",
-                    backgroundColor: "custom.primaryComponents",
-                  },
+                  backgroundColor: "custom.primaryBackground",
                 }}
               >
                 <CardMedia>
                   <Avatar
-                    sx={{ width: 150, height: 150, margin: "auto", mt: 2 }}
+                    sx={{
+                      width: 150,
+                      height: 150,
+                      margin: "auto",
+                      mt: 2,
+                      opacity: ".65",
+                    }}
                     src={member.team_image}
                     alt={member.team_name}
                   />
                 </CardMedia>
-                <CardContent sx={{ textAlign: "center", marginTop: ".5rem" }}>
+                <CardContent
+                  sx={{
+                    textAlign: "center",
+                    marginTop: "1rem",
+                    backgroundImage: `linear-gradient(to top,${theme.palette.custom.secondaryComponents}, transparent)`,
+                  }}
+                >
                   {/* <Box position={"absolute"} top={".5rem"} left={".5rem"}>
                     <Typography variant="h6" color="custom.primaryText">
                       {member.team_mainrole}
@@ -423,6 +468,20 @@ const Team: React.FC = () => {
                     transition: "opacity 0.3s ease",
                     pointerEvents: "none",
                     opacity: 0.05,
+                  }}
+                />
+                <Box
+                  component={"img"}
+                  src={imageSrc}
+                  sx={{
+                    position: "absolute",
+                    left: "0",
+                    top: "0",
+                    height: "100%",
+                    transition: "opacity 0.3s ease",
+                    pointerEvents: "none",
+                    opacity: 0.05,
+                    transform: "scaleX(-1)",
                   }}
                 />
               </Card>
