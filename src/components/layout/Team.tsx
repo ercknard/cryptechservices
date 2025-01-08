@@ -174,7 +174,7 @@ const Team: React.FC = () => {
                   sx={{
                     textAlign: "center",
                     marginTop: "1rem",
-                    backgroundImage: `linear-gradient(to top,${theme.palette.custom.secondaryComponents}, transparent)`,
+                    backgroundImage: `linear-gradient(to top,${theme.palette.custom.primaryComponents}, transparent)`,
                   }}
                 >
                   {/* <Box position={"absolute"} top={".5rem"} left={".5rem"}>
@@ -298,7 +298,7 @@ const Team: React.FC = () => {
                   sx={{
                     textAlign: "center",
                     marginTop: "1rem",
-                    backgroundImage: `linear-gradient(to top,${theme.palette.custom.secondaryComponents}, transparent)`,
+                    backgroundImage: `linear-gradient(to top,${theme.palette.custom.primaryComponents}, transparent)`,
                   }}
                 >
                   {/* <Box position={"absolute"} top={".5rem"} left={".5rem"}>
@@ -413,7 +413,7 @@ const Team: React.FC = () => {
                   sx={{
                     textAlign: "center",
                     marginTop: "1rem",
-                    backgroundImage: `linear-gradient(to top,${theme.palette.custom.secondaryComponents}, transparent)`,
+                    backgroundImage: `linear-gradient(to top,${theme.palette.custom.primaryComponents}, transparent)`,
                   }}
                 >
                   {/* <Box position={"absolute"} top={".5rem"} left={".5rem"}>
