@@ -155,18 +155,20 @@ const Team: React.FC = () => {
                   height: "100%",
                   transition: "transform 0.3s ease, box-shadow 0.3s ease",
                   backgroundColor: "custom.primaryBackground",
+                  padding: 1,
                 }}
               >
                 <CardMedia>
                   <Avatar
                     sx={{
-                      width: 150,
-                      height: 150,
+                      width: 100,
+                      height: 100,
                       margin: "auto",
                       mt: 2,
-                      opacity: ".65",
                     }}
-                    src={member.team_image}
+                    src={`https://cdn.discordapp.com/avatars/${
+                      member.team_discord.split(":")[1]
+                    }/${member.team_discord.split(":")[2]}.png?size=1024`}
                     alt={member.team_name}
                   />
                 </CardMedia>
@@ -174,7 +176,7 @@ const Team: React.FC = () => {
                   sx={{
                     textAlign: "center",
                     marginTop: "1rem",
-                    backgroundImage: `linear-gradient(to top,${theme.palette.custom.primaryComponents}, transparent)`,
+                    // backgroundImage: `linear-gradient(to top,${theme.palette.custom.primaryComponents}, transparent)`,
                   }}
                 >
                   {/* <Box position={"absolute"} top={".5rem"} left={".5rem"}>
@@ -223,12 +225,12 @@ const Team: React.FC = () => {
                     >
                       {member.team_email}
                     </Typography>
-                    <Typography
+                    {/* <Typography
                       variant="body1"
                       color="custom.primaryTextGrayed"
                     >
                       Discord: {member.team_discord}
-                    </Typography>
+                    </Typography> */}
                   </Stack>
                 </CardContent>
                 <Box
@@ -279,18 +281,20 @@ const Team: React.FC = () => {
                   height: "100%",
                   transition: "transform 0.3s ease, box-shadow 0.3s ease",
                   backgroundColor: "custom.primaryBackground",
+                  padding: 1,
                 }}
               >
                 <CardMedia>
                   <Avatar
                     sx={{
-                      width: 150,
-                      height: 150,
+                      width: 100,
+                      height: 100,
                       margin: "auto",
                       mt: 2,
-                      opacity: ".65",
                     }}
-                    src={member.team_image}
+                    src={`https://cdn.discordapp.com/avatars/${
+                      member.team_discord.split(":")[1]
+                    }/${member.team_discord.split(":")[2]}.png?size=1024`}
                     alt={member.team_name}
                   />
                 </CardMedia>
@@ -298,7 +302,7 @@ const Team: React.FC = () => {
                   sx={{
                     textAlign: "center",
                     marginTop: "1rem",
-                    backgroundImage: `linear-gradient(to top,${theme.palette.custom.primaryComponents}, transparent)`,
+                    // backgroundImage: `linear-gradient(to top,${theme.palette.custom.primaryComponents}, transparent)`,
                   }}
                 >
                   {/* <Box position={"absolute"} top={".5rem"} left={".5rem"}>
@@ -394,18 +398,20 @@ const Team: React.FC = () => {
                   height: "100%",
                   transition: "transform 0.3s ease, box-shadow 0.3s ease",
                   backgroundColor: "custom.primaryBackground",
+                  padding: 1,
                 }}
               >
                 <CardMedia>
                   <Avatar
                     sx={{
-                      width: 150,
-                      height: 150,
+                      width: 100,
+                      height: 100,
                       margin: "auto",
                       mt: 2,
-                      opacity: ".65",
                     }}
-                    src={member.team_image}
+                    src={`https://cdn.discordapp.com/avatars/${
+                      member.team_discord.split(":")[1]
+                    }/${member.team_discord.split(":")[2]}.png?size=1024`}
                     alt={member.team_name}
                   />
                 </CardMedia>
@@ -413,7 +419,7 @@ const Team: React.FC = () => {
                   sx={{
                     textAlign: "center",
                     marginTop: "1rem",
-                    backgroundImage: `linear-gradient(to top,${theme.palette.custom.primaryComponents}, transparent)`,
+                    // backgroundImage: `linear-gradient(to top,${theme.palette.custom.primaryComponents}, transparent)`,
                   }}
                 >
                   {/* <Box position={"absolute"} top={".5rem"} left={".5rem"}>
