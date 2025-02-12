@@ -38,7 +38,7 @@ export interface Event {
   created_at: string;
 }
 
-// Fetch GitHub events for the organization
+// Fetch GitHub events for the organization and exclude dependabot
 export const fetchGitHubEvents = async (): Promise<Event[]> => {
   try {
     const response = await axios.get<Event[]>(
@@ -51,7 +51,10 @@ export const fetchGitHubEvents = async (): Promise<Event[]> => {
     );
 
     if (response.status === 200) {
-      return response.data; // Return the event data
+      // Filter out events where the actor's login is "dependabot[bot]"
+      return response.data.filter(
+        (event) => event.actor.login !== "dependabot[bot]"
+      );
     } else {
       console.error("Unexpected response status:", response.status);
       return [];
