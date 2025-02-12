@@ -267,7 +267,7 @@ const GitFeedsSection: React.FC = () => {
                     </Typography>
                   </Stack>
                   <Link
-                    href={`https://github.com/${event.repo.name}/commit/${event.payload.commits[0].sha}`}
+                    href={`https://github.com/${event.repo.name}/commit/${event.payload.commits?.[0]?.sha}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     variant="subtitle1"
@@ -451,7 +451,7 @@ const GitFeedsSection: React.FC = () => {
                       </Typography>
                     </Stack>
                     <Link
-                      href={`https://github.com/${event.repo.name}/commit/${event.payload.commits[0].sha}`}
+                      href={`https://github.com/${event.repo.name}/commit/${event.payload.commits?.[0]?.sha}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       variant="subtitle1"
