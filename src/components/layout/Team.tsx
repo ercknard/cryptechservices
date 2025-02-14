@@ -156,15 +156,48 @@ const Team: React.FC = () => {
                   transition: "transform 0.3s ease, box-shadow 0.3s ease",
                   backgroundColor: "custom.primaryBackground",
                   padding: 1,
+                  borderWidth: "2px",
+                  borderColor: "custom.mainColor",
+                  borderRight: "none",
+                  borderTop: "none",
+                  borderBottom: "none",
                 }}
               >
+                <svg
+                  className="absolute bottom-0 left-0 mb-8"
+                  viewBox="0 0 375 283"
+                  fill="none"
+                  style={{ transform: "scale(1.5)", opacity: 0.1 }}
+                >
+                  <rect
+                    x="159.52"
+                    y="175"
+                    width="152"
+                    height="152"
+                    rx="8"
+                    transform="rotate(-45 159.52 175)"
+                    fill="white"
+                  />
+                  <rect
+                    y="107.48"
+                    width="152"
+                    height="152"
+                    rx="8"
+                    transform="rotate(-45 0 107.48)"
+                    fill="white"
+                  />
+                </svg>
                 <CardMedia>
                   <Avatar
                     sx={{
-                      width: 100,
-                      height: 100,
+                      width: 150,
+                      height: 150,
                       margin: "auto",
-                      mt: 2,
+                      mt: 5,
+                      mb: 5,
+                      borderStyle: "dashed",
+                      borderColor: "custom.mainColor",
+                      borderWidth: "2px",
                     }}
                     src={`https://cdn.discordapp.com/avatars/${
                       member.team_discord.split(":")[1]
@@ -282,15 +315,48 @@ const Team: React.FC = () => {
                   transition: "transform 0.3s ease, box-shadow 0.3s ease",
                   backgroundColor: "custom.primaryBackground",
                   padding: 1,
+                  borderWidth: "2px",
+                  borderColor: "custom.mainColor",
+                  borderRight: "none",
+                  borderTop: "none",
+                  borderBottom: "none",
                 }}
               >
+                <svg
+                  className="absolute bottom-0 left-0 mb-8"
+                  viewBox="0 0 375 283"
+                  fill="none"
+                  style={{ transform: "scale(1.5)", opacity: 0.1 }}
+                >
+                  <rect
+                    x="159.52"
+                    y="175"
+                    width="152"
+                    height="152"
+                    rx="8"
+                    transform="rotate(-45 159.52 175)"
+                    fill="white"
+                  />
+                  <rect
+                    y="107.48"
+                    width="152"
+                    height="152"
+                    rx="8"
+                    transform="rotate(-45 0 107.48)"
+                    fill="white"
+                  />
+                </svg>
                 <CardMedia>
                   <Avatar
                     sx={{
-                      width: 100,
-                      height: 100,
+                      width: 150,
+                      height: 150,
                       margin: "auto",
-                      mt: 2,
+                      mt: 5,
+                      mb: 5,
+                      borderStyle: "dashed",
+                      borderColor: "custom.mainColor",
+                      borderWidth: "2px",
                     }}
                     src={`https://cdn.discordapp.com/avatars/${
                       member.team_discord.split(":")[1]
@@ -399,15 +465,48 @@ const Team: React.FC = () => {
                   transition: "transform 0.3s ease, box-shadow 0.3s ease",
                   backgroundColor: "custom.primaryBackground",
                   padding: 1,
+                  borderWidth: "2px",
+                  borderColor: "custom.mainColor",
+                  borderRight: "none",
+                  borderTop: "none",
+                  borderBottom: "none",
                 }}
               >
+                <svg
+                  className="absolute bottom-0 left-0 mb-8"
+                  viewBox="0 0 375 283"
+                  fill="none"
+                  style={{ transform: "scale(1.5)", opacity: 0.1 }}
+                >
+                  <rect
+                    x="159.52"
+                    y="175"
+                    width="152"
+                    height="152"
+                    rx="8"
+                    transform="rotate(-45 159.52 175)"
+                    fill="white"
+                  />
+                  <rect
+                    y="107.48"
+                    width="152"
+                    height="152"
+                    rx="8"
+                    transform="rotate(-45 0 107.48)"
+                    fill="white"
+                  />
+                </svg>
                 <CardMedia>
                   <Avatar
                     sx={{
-                      width: 100,
-                      height: 100,
+                      width: 150,
+                      height: 150,
                       margin: "auto",
-                      mt: 2,
+                      mt: 5,
+                      mb: 5,
+                      borderStyle: "dashed",
+                      borderColor: "custom.mainColor",
+                      borderWidth: "2px",
                     }}
                     src={`https://cdn.discordapp.com/avatars/${
                       member.team_discord.split(":")[1]
