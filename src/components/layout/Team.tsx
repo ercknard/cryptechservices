@@ -15,6 +15,7 @@ import {
 import { useTheme } from "@mui/material";
 import { useThemeContext } from "@/theme/themeProvider";
 import supabase from "@/lib/supabase";
+import { Theme } from "@mui/material/styles";
 
 interface TeamMember {
   team_name: string;
@@ -149,25 +150,26 @@ const Team: React.FC = () => {
           {teamAdmin.map((member, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
               <Card
-                sx={{
+                sx={(theme: Theme) => ({
                   position: "relative",
                   width: "100%",
                   height: "100%",
                   transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                  backgroundColor: "custom.primaryBackground",
+                  background: `linear-gradient(to top, ${theme.palette.custom.primaryBackground}, ${theme.palette.custom.primaryComponents})`, // Gradient with custom.primaryBackground
                   padding: 1,
                   borderWidth: "2px",
                   borderColor: "custom.mainColor",
                   borderRight: "none",
                   borderTop: "none",
                   borderBottom: "none",
-                }}
+                  boxShadow: "0 4px 8px rgba(0, 0, 0, 1)",
+                })}
               >
                 <svg
                   className="absolute bottom-0 left-0 mb-8"
                   viewBox="0 0 375 283"
                   fill="none"
-                  style={{ transform: "scale(1.5)", opacity: 0.1 }}
+                  style={{ transform: "scale(1.5)", opacity: 0.01 }}
                 >
                   <rect
                     x="159.52"
@@ -308,25 +310,26 @@ const Team: React.FC = () => {
           {teamMember.map((member, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
               <Card
-                sx={{
+                sx={(theme: Theme) => ({
                   position: "relative",
                   width: "100%",
                   height: "100%",
                   transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                  backgroundColor: "custom.primaryBackground",
+                  background: `linear-gradient(to top, ${theme.palette.custom.primaryBackground}, ${theme.palette.custom.primaryComponents})`, // Gradient with custom.primaryBackground
                   padding: 1,
                   borderWidth: "2px",
                   borderColor: "custom.mainColor",
                   borderRight: "none",
                   borderTop: "none",
                   borderBottom: "none",
-                }}
+                  boxShadow: "0 4px 8px rgba(0, 0, 0, 1)",
+                })}
               >
                 <svg
                   className="absolute bottom-0 left-0 mb-8"
                   viewBox="0 0 375 283"
                   fill="none"
-                  style={{ transform: "scale(1.5)", opacity: 0.1 }}
+                  style={{ transform: "scale(1.5)", opacity: 0.01 }}
                 >
                   <rect
                     x="159.52"
@@ -458,25 +461,26 @@ const Team: React.FC = () => {
           {teamMods.map((member, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
               <Card
-                sx={{
+                sx={(theme: Theme) => ({
                   position: "relative",
                   width: "100%",
                   height: "100%",
                   transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                  backgroundColor: "custom.primaryBackground",
+                  background: `linear-gradient(to top, ${theme.palette.custom.primaryBackground}, ${theme.palette.custom.primaryComponents})`, // Gradient with custom.primaryBackground
                   padding: 1,
                   borderWidth: "2px",
                   borderColor: "custom.mainColor",
                   borderRight: "none",
                   borderTop: "none",
                   borderBottom: "none",
-                }}
+                  boxShadow: "0 4px 8px rgba(0, 0, 0, 1)",
+                })}
               >
                 <svg
                   className="absolute bottom-0 left-0 mb-8"
                   viewBox="0 0 375 283"
                   fill="none"
-                  style={{ transform: "scale(1.5)", opacity: 0.1 }}
+                  style={{ transform: "scale(1.5)", opacity: 0.01 }}
                 >
                   <rect
                     x="159.52"
