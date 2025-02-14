@@ -197,9 +197,9 @@ const Team: React.FC = () => {
                       margin: "auto",
                       mt: 5,
                       mb: 5,
-                      borderStyle: "dashed",
-                      borderColor: "custom.mainColor",
-                      borderWidth: "2px",
+                      // borderStyle: "dashed",
+                      // borderColor: "custom.mainColor",
+                      // borderWidth: "2px",
                     }}
                     src={`https://cdn.discordapp.com/avatars/${
                       member.team_discord.split(":")[1]
