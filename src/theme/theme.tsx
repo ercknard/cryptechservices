@@ -285,8 +285,8 @@ const colorPalette = (mode: PaletteMode, setId: number) => {
       tertiaryBorders: getColor("#5f5f5f", "#5f5f5f"),
       primarySolidColors: getColor("#eeeeee", "#eeeeee"),
       secondarySolidColors: getColor("#e5e5e5", "#e5e5e5"),
-      primaryText: getColor("#b4b4b4", "#b4b4b4"),
-      secondaryText: getColor("#eeeeee", "#eeeeee"),
+      primaryText: getColor("#ffffff", "#ffffff"),
+      secondaryText: getColor("#cccccc", "#cccccc"),
       //gray
       primaryBackgroundGrayed: getColor("#121212", "#121212"),
       secondaryBackgroundGrayed: getColor("#191919", "#191919"),
@@ -299,7 +299,7 @@ const colorPalette = (mode: PaletteMode, setId: number) => {
       primarySolidColorsGrayed: getColor("#6e6e6e", "#6e6e6e"),
       secondarySolidColorsGrayed: getColor("#7c7c7c", "#7c7c7c"),
       primaryTextGrayed: getColor("#b4b4b4", "#b4b4b4"),
-      secondaryTextGrayed: getColor("#eeeeee", "#eeeeee"),
+      secondaryTextGrayed: getColor("#cccccc", "#cccccc"),
     },
   };
 
